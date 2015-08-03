@@ -48,9 +48,12 @@ public class FormDataRepositoryImpl extends FormDataRepository{
         designDocMap.put(AllConstants.FormEntityTypes.ELIGIBLE_COUPLE_TYPE, "EligibleCouple");
         designDocMap.put(AllConstants.FormEntityTypes.MOTHER_TYPE, "Mother");
         designDocMap.put(AllConstants.FormEntityTypes.CHILD_TYPE, "Child");
+        designDocMap.put(AllConstants.FormEntityTypes.KARTU_IBU_TYPE, "Mother");
+
         fieldSetMap.put(AllConstants.FormEntityTypes.ELIGIBLE_COUPLE_TYPE, EligibleCouple.class.getDeclaredFields());
         fieldSetMap.put(AllConstants.FormEntityTypes.MOTHER_TYPE, Mother.class.getDeclaredFields());
         fieldSetMap.put(AllConstants.FormEntityTypes.CHILD_TYPE, Child.class.getDeclaredFields());
+
     }
 
     public String saveEntity(String entityType, String fields) {
