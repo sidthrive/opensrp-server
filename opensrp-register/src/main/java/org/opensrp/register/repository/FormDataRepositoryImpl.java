@@ -13,6 +13,8 @@ import org.opensrp.repository.FormDataRepository;
 import org.ektorp.CouchDbConnector;
 import org.ektorp.ViewQuery;
 import org.ektorp.ViewResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -36,6 +38,8 @@ public class FormDataRepositoryImpl extends FormDataRepository{
     private CouchDbConnector db;
     private Map<String, String> designDocMap;
 
+    Logger logger = LoggerFactory.getLogger(FormDataRepository.class);
+
     @Autowired
     public FormDataRepositoryImpl(@Qualifier(AllConstants.OPENSRP_DATABASE_CONNECTOR) CouchDbConnector db) {
         this.db = db;
@@ -53,6 +57,7 @@ public class FormDataRepositoryImpl extends FormDataRepository{
         fieldSetMap.put(AllConstants.FormEntityTypes.ELIGIBLE_COUPLE_TYPE, EligibleCouple.class.getDeclaredFields());
         fieldSetMap.put(AllConstants.FormEntityTypes.MOTHER_TYPE, Mother.class.getDeclaredFields());
         fieldSetMap.put(AllConstants.FormEntityTypes.CHILD_TYPE, Child.class.getDeclaredFields());
+        fieldSetMap.put(AllConstants.FormEntityTypes.KARTU_IBU_TYPE, Mother.class.getDeclaredFields());
 
     }
 
