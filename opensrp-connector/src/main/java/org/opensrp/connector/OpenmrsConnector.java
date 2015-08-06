@@ -55,6 +55,10 @@ public class OpenmrsConnector {
 	public boolean isOpenmrsForm(FormSubmission fs) {
 		List<String> a = new ArrayList<>();
 		a .add("encounter_type");
+		Map<String,String> map = formAttributeMapper.getUniqueAttributeValue(a,fs);
+		if(map.size() == 0 || !map.keySet().contains("encounter_type")){
+			return false;
+		}
 		String eventType = formAttributeMapper.getUniqueAttributeValue(a , fs).get("encounter_type");
 		return !StringUtils.isEmptyOrWhitespaceOnly(eventType);
 	}

@@ -27,13 +27,13 @@ public class ApplicationStartupListener implements ApplicationListener<ContextRe
     		@Value("#{opensrp['mcts.poll.time.interval.in.minutes']}") int mctsPollIntervalInHours) {
         this.scheduler = scheduler;
         formSchedule = new RepeatingSchedule(DrishtiScheduleConstants.FORM_SCHEDULE_SUBJECT, 2, TimeUnit.MINUTES, formPollInterval, TimeUnit.MINUTES);
-        anmReportScheduler = new RepeatingSchedule(DrishtiScheduleConstants.ANM_REPORT_SCHEDULE_SUBJECT, 10, TimeUnit.MINUTES, 6, TimeUnit.HOURS);
-        mctsReportScheduler = new RepeatingSchedule(DrishtiScheduleConstants.MCTS_REPORT_SCHEDULE_SUBJECT, 10, TimeUnit.MINUTES, mctsPollIntervalInHours, TimeUnit.HOURS);
+        anmReportScheduler = new RepeatingSchedule(DrishtiScheduleConstants.ANM_REPORT_SCHEDULE_SUBJECT, 2, TimeUnit.MINUTES, 2, TimeUnit.MINUTES);
+        mctsReportScheduler = new RepeatingSchedule(DrishtiScheduleConstants.MCTS_REPORT_SCHEDULE_SUBJECT, 2, TimeUnit.MINUTES, 2, TimeUnit.MINUTES);
     }
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent contextRefreshedEvent) {
-        if (APPLICATION_ID.equals(contextRefreshedEvent.getApplicationContext().getId())) {
+        if (APPLICATION_ID.equals(contextRefreshedEvent.getApplicationContext().getId()+"/opensrp")) {
             scheduler.startJob(formSchedule);
             scheduler.startJob(anmReportScheduler);
             scheduler.startJob(mctsReportScheduler);

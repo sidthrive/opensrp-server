@@ -284,6 +284,11 @@ public class FormAttributeMapper {
 			expression += expressionQuery;
 			expression += "]";
 			nodeList = (NodeList) xpath.evaluate(expression, document, XPathConstants.NODESET);
+
+			if(nodeList == null || nodeList.getLength() == 0){
+				return map;
+			}
+
 			lastNode = nodeList.item(0);
 			
 			NamedNodeMap attributes = lastNode.getAttributes();

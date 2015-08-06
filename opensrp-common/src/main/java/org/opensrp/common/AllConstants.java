@@ -32,7 +32,7 @@ public class AllConstants {
         public static final String FP_REFERRAL_FOLLOWUP = "fp_referral_followup";
         public static final String EC_CLOSE = "ec_close";
         public static final String EC_EDIT = "ec_edit";
-        public static final String ANC_REGISTRATION = "kartu_ibu_anc";
+        public static final String ANC_REGISTRATION = "kartu_anc_registration";
         public static final String ANC_REGISTRATION_OA = "anc_registration_oa";
         public static final String ANC_VISIT = "anc_visit";
         public static final String ANC_INVESTIGATIONS = "anc_investigations";

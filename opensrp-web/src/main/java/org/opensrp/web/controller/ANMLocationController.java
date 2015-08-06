@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
 
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -44,9 +45,10 @@ public class ANMLocationController {
         try {
             String anmIdentifier = userController.currentUser().getUsername();
             response = httpAgent.get(opensrpANMVillagesURL + "?anm-id=" + anmIdentifier);
-            VillagesDTO villagesDTOs = new Gson().fromJson(response.body(),
-                    new TypeToken<VillagesDTO>() {
-                    }.getType());
+//            VillagesDTO villagesDTOs = new Gson().fromJson(response.body(),
+//                    new TypeToken<VillagesDTO>() {
+//                    }.getType());
+            VillagesDTO villagesDTOs = new VillagesDTO("district","phcName","phcIdentifier","subcenter", new ArrayList<String>());
             logger.info("Fetched Villages for the ANM");
             return new ResponseEntity<>(villagesDTOs, HttpStatus.OK);
         } catch (Exception exception) {
