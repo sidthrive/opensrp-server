@@ -26,7 +26,7 @@ public class ApplicationStartupListener implements ApplicationListener<ContextRe
     		@Value("#{opensrp['form.poll.time.interval']}") int formPollInterval,
     		@Value("#{opensrp['mcts.poll.time.interval.in.minutes']}") int mctsPollIntervalInHours) {
         this.scheduler = scheduler;
-        formSchedule = new RepeatingSchedule(DrishtiScheduleConstants.FORM_SCHEDULE_SUBJECT, 2, TimeUnit.MINUTES, formPollInterval, TimeUnit.MINUTES);
+        formSchedule = new RepeatingSchedule(DrishtiScheduleConstants.FORM_SCHEDULE_SUBJECT, 2, TimeUnit.MINUTES, 2, TimeUnit.MINUTES);
         anmReportScheduler = new RepeatingSchedule(DrishtiScheduleConstants.ANM_REPORT_SCHEDULE_SUBJECT, 2, TimeUnit.MINUTES, 2, TimeUnit.MINUTES);
         mctsReportScheduler = new RepeatingSchedule(DrishtiScheduleConstants.MCTS_REPORT_SCHEDULE_SUBJECT, 2, TimeUnit.MINUTES, 2, TimeUnit.MINUTES);
     }
