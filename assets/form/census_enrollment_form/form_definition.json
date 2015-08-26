@@ -1,5 +1,5 @@
 {
-  "form_data_definition_version": "10",
+  "form_data_definition_version": "1",
   "form": {
     "default_bind_path": "/model/instance/CensusNewWomanRegistrationForm",
     "bind_type": "household",
@@ -65,7 +65,7 @@
     ],
     "sub_forms": [
       {
-        "name": "elco_registration",
+        "name": "elco_registration_ce",
         "bind_type": "elco",
         "default_bind_path": "/model/instance/CensusNewWomanRegistrationForm/woman",
         "fields": [
@@ -76,16 +76,12 @@
             "name": "relationalid"
           },
           {
-            "name": "WomanREGDATE",
-            "bind": "/model/instance/CensusNewWomanRegistrationForm/woman/CENDATE"
-          },
-          {
             "name": "GOBHHID",
-            "bind": "/model/instance/CensusNewWomanRegistrationForm/woman/FWGOBHHID"
+            "bind": "/model/instance/CensusNewWomanRegistrationForm/woman/GOBHHID"
           },
           {
             "name": "JiVitAHHID",
-            "bind": "/model/instance/CensusNewWomanRegistrationForm/woman/FWJIVHHID"
+            "bind": "/model/instance/CensusNewWomanRegistrationForm/woman/JiVitAHHID"
           },
           {
             "name": "FWWOMFNAME",

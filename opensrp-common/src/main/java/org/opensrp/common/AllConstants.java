@@ -32,7 +32,7 @@ public class AllConstants {
         public static final String FP_REFERRAL_FOLLOWUP = "fp_referral_followup";
         public static final String EC_CLOSE = "ec_close";
         public static final String EC_EDIT = "ec_edit";
-        public static final String ANC_REGISTRATION = "anc_registration";
+        public static final String ANC_REGISTRATION = "kartu_anc_registration";
         public static final String ANC_REGISTRATION_OA = "anc_registration_oa";
         public static final String ANC_VISIT = "anc_visit";
         public static final String ANC_INVESTIGATIONS = "anc_investigations";
@@ -154,7 +154,7 @@ public class AllConstants {
     }
 
     public static class ANCFormFields {
-        public static final String MOTHER_ID = "motherId";
+        public static final String MOTHER_ID = "id";
         public static final String REGISTRATION_DATE = "registrationDate";
         public static final String ANC_VISIT_DATE_FIELD = "ancVisitDate";
         public static final String ANC_VISIT_NUMBER_FIELD = "ancVisitNumber";
@@ -432,9 +432,10 @@ public class AllConstants {
 
     public static class FormEntityTypes {
         public static final String CHILD_TYPE = "child";
-        public static final String MOTHER_TYPE = "mother";
+        public static final String MOTHER_TYPE = "ibu";
         public static final String ELIGIBLE_COUPLE_TYPE = "eligible_couple";
         public static final String MCTS_REPORT_TYPE = "MCTSReport";
+        public static final String KARTU_IBU_TYPE = "kartu_ibu";
     }
 
     public static class HTTP {

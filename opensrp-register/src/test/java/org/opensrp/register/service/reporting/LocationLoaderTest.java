@@ -57,7 +57,7 @@ public class LocationLoaderTest {
     public void shouldReturnLocationFromMotherEntityIfBindTypeIsMother() {
         when(allMothers.findByCaseId("mother id 1")).thenReturn(mother);
 
-        locationLoader.loadLocationFor("mother", "mother id 1");
+        locationLoader.loadLocationFor("ibu", "mother id 1");
 
         verify(mother).ecCaseId();
         //verify(eligibleCouple).locationId();

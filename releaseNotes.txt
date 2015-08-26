@@ -1,17 +1,16 @@
-Date of Release: 27-Jul-2015
+Date of Release: 08-Jul-2015
 
 New Features
 ============
-- Added javadoc for all important functions
-- Added testcase for empty repeat group handling
 
 Changes
 =======
-- Removed unnecessary and/or commented out code
 
 Fixes
 =====
-- Fixed a bug for wrong handling of entity parent id mapping of openmrs attributes in OpenmrsConnector
+- Fixed #65. HH now submits with empty repeat group. 
+Note: This is not a solution but a hack because actual change should be in client/mobile app. 
+The code only guess empty group by empty first name not identifier assigned
 
 Known Issues
 ============

@@ -17,7 +17,11 @@ import org.opensrp.common.util.DateUtil;
 import org.opensrp.connector.openmrs.constants.OpenmrsConstants.Encounter;
 import org.opensrp.connector.openmrs.constants.OpenmrsConstants.OpenmrsEntity;
 import org.opensrp.connector.openmrs.constants.OpenmrsConstants.Person;
+import org.opensrp.connector.openmrs.service.EncounterService;
+import org.opensrp.connector.openmrs.service.OpenmrsLocationService;
 import org.opensrp.connector.openmrs.service.OpenmrsService;
+import org.opensrp.connector.openmrs.service.OpenmrsUserService;
+import org.opensrp.connector.openmrs.service.PatientService;
 import org.opensrp.form.domain.FormField;
 import org.opensrp.form.domain.FormSubmission;
 import org.opensrp.form.domain.SubFormData;
@@ -29,31 +33,36 @@ import com.mysql.jdbc.StringUtils;
 @Service
 public class OpenmrsConnector {
 
+	private EncounterService encounterService;
+	//private HouseholdService householdService; 
+	private PatientService patientService;
+	private OpenmrsLocationService locationService;
+	private OpenmrsUserService userService;
 	private FormAttributeMapper formAttributeMapper;
 		
 	@Autowired
-	public OpenmrsConnector(FormAttributeMapper formAttributeMapper) {
+	public OpenmrsConnector(EncounterService encounterService,
+			/*HouseholdService householdService,*/ PatientService patientService,
+			OpenmrsLocationService locationService, OpenmrsUserService userService, FormAttributeMapper formAttributeMapper) {
+		this.encounterService = encounterService;
+		//this.householdService = householdService;
+		this.patientService = patientService;
+		this.locationService = locationService;
+		this.userService = userService;
 		this.formAttributeMapper = formAttributeMapper;
 	}
 	
-	/**
-	 * Whether form submission is an openmrs form. The xlsform made openmrs form by mapping to an encounter_type in settings in xlsform.
-	 * @param fs
-	 * @return
-	 */
 	public boolean isOpenmrsForm(FormSubmission fs) {
 		List<String> a = new ArrayList<>();
 		a .add("encounter_type");
+		Map<String,String> map = formAttributeMapper.getUniqueAttributeValue(a,fs);
+		if(map.size() == 0 || !map.keySet().contains("encounter_type")){
+			return false;
+		}
 		String eventType = formAttributeMapper.getUniqueAttributeValue(a , fs).get("encounter_type");
 		return !StringUtils.isEmptyOrWhitespaceOnly(eventType);
 	}
 	
-	/** 
-	 * Extract Event from given form submission
-	 * @param fs
-	 * @return
-	 * @throws ParseException
-	 */
 	public Event getEventFromFormSubmission(FormSubmission fs) throws ParseException {
 		String encounterDateField = getFieldName(Encounter.encounter_date, fs);
 		String encounterLocation = getFieldName(Encounter.location_id, fs);
@@ -85,15 +94,6 @@ public class OpenmrsConnector {
 		return e;
 	}
 	
-	/**
-	 * Extract Event for given subform with given data mapped to specified Encounter Type.
-	 * @param fs
-	 * @param subform
-	 * @param eventType
-	 * @param subformInstance
-	 * @return
-	 * @throws ParseException
-	 */
 	private Event getEventForSubform(FormSubmission fs, String subform, String eventType, Map<String, String> subformInstance) throws ParseException {
 		String encounterDateField = getFieldName(Encounter.encounter_date, fs);
 		String encounterLocation = getFieldName(Encounter.location_id, fs);
@@ -123,50 +123,29 @@ public class OpenmrsConnector {
 		return e;
 	}
 	
-	/**
-	 * Get field name for specified openmrs entity in given form submission
-	 * @param en
-	 * @param fs
-	 * @return
-	 */
-	String getFieldName(OpenmrsEntity en, FormSubmission fs) {
+	public String getFieldName(OpenmrsEntity en, FormSubmission fs) {
 		Map<String, String> m = new HashMap<String, String>();
 		m.put("openmrs_entity" , en.entity());
 		m.put("openmrs_entity_id" , en.entityId());
 		return formAttributeMapper.getFieldName(m , fs);
 	}
 	
-	/**
-	 * Get field name for specified openmrs entity in given form submission for given subform
-	 * @param en
-	 * @param subform
-	 * @param fs
-	 * @return
-	 */
-	String getFieldName(OpenmrsEntity en, String subform, FormSubmission fs) {
+	public String getFieldName(OpenmrsEntity en, String subform, FormSubmission fs) {
 		Map<String, String> m = new HashMap<String, String>();
 		m.put("openmrs_entity" , en.entity());
 		m.put("openmrs_entity_id" , en.entityId());
 		return formAttributeMapper.getFieldName(m , subform, fs);
 	}
 	
-	/**
-	 * Get field name for specified openmrs attribute mappings in given form submission
-	 * @param entity
-	 * @param entityId
-	 * @param entityParentId
-	 * @param fs
-	 * @return
-	 */
-	String getFieldName(String entity, String entityId, String entityParentId, FormSubmission fs) {
+	public String getFieldName(String entity, String entityId, String entityParentId, FormSubmission fs) {
 		Map<String, String> m = new HashMap<String, String>();
 		m.put("openmrs_entity" , entity);
 		m.put("openmrs_entity_id" , entityId);
-		m.put("openmrs_entity_parent" , entityParentId);
+		m.put("openmrs_entity_parent" , entityId);
 		return formAttributeMapper.getFieldName(m , fs);
 	}
 	
-	Map<String, Address> extractAddresses(FormSubmission fs, String subform) throws ParseException {
+	public Map<String, Address> extractAddresses(FormSubmission fs, String subform) throws ParseException {
 		Map<String, Address> paddr = new HashMap<>();
 		for (FormField fl : fs.instance().form().fields()) {
 			Map<String, String> att = new HashMap<>();
@@ -225,7 +204,7 @@ public class OpenmrsConnector {
 		return paddr;
 	}
 	
-	Map<String, String> extractIdentifiers(FormSubmission fs) {
+	public Map<String, String> extractIdentifiers(FormSubmission fs) {
 		Map<String, String> pids = new HashMap<>();
 		for (FormField fl : fs.instance().form().fields()) {
 			if(!StringUtils.isEmptyOrWhitespaceOnly(fl.value())){
@@ -240,7 +219,7 @@ public class OpenmrsConnector {
 		return pids;
 	}
 	
-	Map<String, String> extractIdentifiers(Map<String, String> subformInstanceData, String subform, FormSubmission fs) {
+	public Map<String, String> extractIdentifiers(Map<String, String> subformInstanceData, String subform, FormSubmission fs) {
 		Map<String, String> pids = new HashMap<>();
 		for (Entry<String, String> fl : subformInstanceData.entrySet()) {
 			if(!StringUtils.isEmptyOrWhitespaceOnly(fl.getValue())){
@@ -254,7 +233,7 @@ public class OpenmrsConnector {
 		return pids;
 	}
 	
-	Map<String, Object> extractAttributes(FormSubmission fs) {
+	public Map<String, Object> extractAttributes(FormSubmission fs) {
 		Map<String, Object> pattributes = new HashMap<>();
 		for (FormField fl : fs.instance().form().fields()) {
 			if(!StringUtils.isEmptyOrWhitespaceOnly(fl.value())){
@@ -268,7 +247,7 @@ public class OpenmrsConnector {
 		return pattributes;
 	}
 	
-	Map<String, Object> extractAttributes(Map<String, String> subformInstanceData, String subform, FormSubmission fs) {
+	public Map<String, Object> extractAttributes(Map<String, String> subformInstanceData, String subform, FormSubmission fs) {
 		Map<String, Object> pattributes = new HashMap<>();
 		for (Entry<String, String> fl : subformInstanceData.entrySet()) {
 			if(!StringUtils.isEmptyOrWhitespaceOnly(fl.getValue())){
@@ -282,12 +261,6 @@ public class OpenmrsConnector {
 		return pattributes;
 	}
 	
-	/**
-	 * Extract Client from given form submission
-	 * @param fs
-	 * @return
-	 * @throws ParseException
-	 */
 	public Client getClientFromFormSubmission(FormSubmission fs) throws ParseException {
 		String firstName = fs.getField(getFieldName(Person.first_name, fs));
 		String middleName = fs.getField(getFieldName(Person.middle_name, fs));
@@ -308,19 +281,6 @@ public class OpenmrsConnector {
 		return c;
 	}
 	
-	/**
-	 * Extract Client and Event from given form submission for entities dependent on main beneficiary (excluding main beneficiary). 
-	 * The dependent entities are specified via subforms (repeat groups) in xls forms.
-	 * @param fs
-	 * @return The clients and events Map with id of dependent entity as key. Each entry in Map contains an 
-	 * internal map that holds Client and Event info as "client" and "event" respectively for that 
-	 * dependent entity (whose id is the key of main Map).
-	 * Ex: 
-	 * {222222-55d555-ffffff-232323-ffffff: {client: ClientObjForGivenID, event: EventObjForGivenIDAndForm}},
-	 * {339393-545445-ffdddd-333333-ffffff: {client: ClientObjForGivenID, event: EventObjForGivenIDAndForm}},
-	 * {278383-765766-dddddd-767666-ffffff: {client: ClientObjForGivenID, event: EventObjForGivenIDAndForm}}
-	 * @throws ParseException
-	 */
 	public Map<String, Map<String, Object>> getDependentClientsFromFormSubmission(FormSubmission fs) throws ParseException {
 		Map<String, Map<String, Object>> map = new HashMap<>();
 		for (SubFormData sbf : fs.subForms()) {

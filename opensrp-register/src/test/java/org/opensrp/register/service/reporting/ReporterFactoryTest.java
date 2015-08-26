@@ -35,7 +35,7 @@ public class ReporterFactoryTest {
 
     @Test
     public void shouldReturnMotherReporterWhenBindTypeIsMother() {
-        IReporter reporter = reporterFactory.reporterFor("mother");
+        IReporter reporter = reporterFactory.reporterFor("ibu");
         assertTrue(reporter instanceof MotherReporter);
     }
 

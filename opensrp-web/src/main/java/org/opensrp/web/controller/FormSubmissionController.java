@@ -111,6 +111,7 @@ public class FormSubmissionController {
             System.out.println("MMMMMMMMMMMYYYYYYYYYYYYYY::"+json);
             List<FormSubmissionDTO> formSubmissions = new Gson().fromJson(json, new TypeToken<List<FormSubmissionDTO>>() {
             }.getType());
+//            formSubmissionService.submit(formSubmissions);
             List<FormSubmission> fsl = with(formSubmissions).convert(new Converter<FormSubmissionDTO, FormSubmission>() {
                 @Override
                 public FormSubmission convert(FormSubmissionDTO submission) {

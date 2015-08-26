@@ -6,9 +6,6 @@ import java.util.List;
 import org.opensrp.api.domain.Client;
 import org.opensrp.api.domain.Event;
 
-/**
- * Organizer for multiple Clients and Events as a single household.
- */
 public class OpenmrsHouseHold {
 
 	private HouseholdMember householdHead;

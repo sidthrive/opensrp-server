@@ -35,11 +35,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mysql.jdbc.StringUtils;
 
-/**
- * The class is the bridge that allows parsing and mapping of formSubmission fields with 
- * those defined in xls form for OpenMRS entity mappings.
- */
-
 @Service
 public class FormAttributeMapper {
 	
@@ -54,14 +49,6 @@ public class FormAttributeMapper {
 		this.xmlFilePath = formDirPath;
 	}
 	
-	/**
-	 * The method returns the field name in form submission mapped with openmrs attributes given as attributeMap.
-	 * Ex: What is the field name in given form submission that is mapped with openmrs_entity=person 
-	 * and openmrs_entity_id=first_name
-	 * @param attributeMap
-	 * @param formSubmission
-	 * @return
-	 */
 	public String getFieldName(Map<String, String> attributeMap,FormSubmission formSubmission)
 	{
 		String fieldName = "";
@@ -71,15 +58,6 @@ public class FormAttributeMapper {
 		return fieldName;
 	}
 	
-	/**
-	 * The method returns the field name in form submission in given subform(repeat group) mapped with openmrs attributes given as attributeMap.
-	 * Ex: What is the field name in given form submission in subform=child_born that is 
-	 * mapped with openmrs_entity=person and openmrs_entity_id=first_name
-	 * @param attributeMap
-	 * @param subform
-	 * @param formSubmission
-	 * @return
-	 */
 	public String getFieldName(Map<String, String> attributeMap, String subform, FormSubmission formSubmission)
 	{
 		String fieldName = "";
@@ -89,13 +67,7 @@ public class FormAttributeMapper {
 		return fieldName;
 	}
 	
-	/**
-	 * Returns the field name in form submission with given bind path
-	 * @param bind
-	 * @param formSubmission
-	 * @return
-	 */
-	String getFieldNameFromFormDefinition(String bind,FormSubmission formSubmission)
+	public String getFieldNameFromFormDefinition(String bind,FormSubmission formSubmission)
 	{
 		String fieldAttribute = "";
 		String formName = formSubmission.formName();
@@ -172,14 +144,7 @@ public class FormAttributeMapper {
     	return null;
 	}
 	
-	/**
-	 * Returns the field name in given subform of given form submission with specified bind path
-	 * @param bind
-	 * @param subform
-	 * @param formSubmission
-	 * @return
-	 */
-	String getFieldNameFromFormDefinition(String bind, String subform, FormSubmission formSubmission)
+	public String getFieldNameFromFormDefinition(String bind, String subform, FormSubmission formSubmission)
 	{
 		String formName = formSubmission.formName();
 		JsonParser parser = new JsonParser();
@@ -208,13 +173,7 @@ public class FormAttributeMapper {
     	return null;
 	}
 	
-	/**
-	 * Returns the Node in model.xml of given form submission that maps to given custom attributes
-	 * @param attributeMapForm
-	 * @param formSubmission
-	 * @return
-	 */
-	Node getFieldTagFromModel(Map<String,String> attributeMapForm,FormSubmission formSubmission)
+	public Node getFieldTagFromModel(Map<String,String> attributeMapForm,FormSubmission formSubmission)
 	{
 		Node lastNode = null;
 		String formName = formSubmission.formName();
@@ -255,13 +214,6 @@ public class FormAttributeMapper {
 		return lastNode;
 	}
 	
-	/**
- 	 * Returns the Node in model.xml of given subform of given form submission that maps to given custom attributes
-	 * @param attributeMapForm
-	 * @param subform
-	 * @param formSubmission
-	 * @return
-	 */
 	public Node getFieldTagFromModel(Map<String,String> attributeMapForm, String subform, FormSubmission formSubmission)
 	{
 		Node lastNode = null;
@@ -303,13 +255,6 @@ public class FormAttributeMapper {
 		return lastNode;
 	}
 	
-	/**
-	 * Get attributes and their values for given list of mappings. This should only be used for mapping those are 
-	 * unique in xls forms. Otherwise may lead to inconsistent and incomplete data
-	 * @param attributeName
-	 * @param formSubmission
-	 * @return
-	 */
 	public Map<String, String> getUniqueAttributeValue(List<String> attributeName, FormSubmission formSubmission)
 	{
 		Map<String, String> map = new HashMap<>();
@@ -339,6 +284,11 @@ public class FormAttributeMapper {
 			expression += expressionQuery;
 			expression += "]";
 			nodeList = (NodeList) xpath.evaluate(expression, document, XPathConstants.NODESET);
+
+			if(nodeList == null || nodeList.getLength() == 0){
+				return map;
+			}
+
 			lastNode = nodeList.item(0);
 			
 			NamedNodeMap attributes = lastNode.getAttributes();
@@ -368,12 +318,6 @@ public class FormAttributeMapper {
 	    return getXPath(node.getParentNode()) + "/" + node.getNodeName();
 	}
 	
-	/**
-	 * Returns the list of custom attributes or mappings associated with given field in given form submission
-	 * @param fieldName
-	 * @param formSubmission
-	 * @return
-	 */
 	public Map<String, String> getAttributesForField (String fieldName,FormSubmission formSubmission){
 	
 		String formBindForField = "";
@@ -407,12 +351,6 @@ public class FormAttributeMapper {
 	    return attributeMap; 
 	}
 	
-	/**
-	 * Returns the custom attributes associated with the given subform in given form submission
-	 * @param subformName
-	 * @param formSubmission
-	 * @return
-	 */
 	public Map<String, String> getAttributesForSubform (String subformName, FormSubmission formSubmission){
 		String formBindForField = "";
 		Node tagAndAttributes = null;
@@ -427,13 +365,6 @@ public class FormAttributeMapper {
 	    return convertToMap(tagAndAttributes); 
 	}
 	
-	/**
-	 * Returns the custom attributes associated with specified field in given subform in given form submission
-	 * @param subformName
-	 * @param field
-	 * @param formSubmission
-	 * @return
-	 */
 	public Map<String, String> getAttributesForSubform (String subformName, String field, FormSubmission formSubmission){
 		String formBindForField = "";
 		Node tagAndAttributes = null;
@@ -448,15 +379,6 @@ public class FormAttributeMapper {
 	    return convertToMap(tagAndAttributes); 
 	}
 	
-	/**
-	 * Returns the value of openmrs_code associated with specified field and selected value for given subform and form submission.
-	 * The function is used to get openmrs_code value of selected option in form submission from choices sheet in xls form.
-	 * @param fieldName
-	 * @param fieldVal
-	 * @param subform
-	 * @param formSubmission
-	 * @return
-	 */
 	public String getInstanceAttributesForFormFieldAndValue(String fieldName, String fieldVal, String subform, FormSubmission formSubmission)
 	{		
 		String formName = formSubmission.formName();
@@ -542,8 +464,8 @@ public class FormAttributeMapper {
 		
 	}
 	
-	/**
-	 * read default bind path from form_definition.json for given subform in given formSubmission. This is used to get the xpath in model.xml for subform.
+	/*
+	 * read form_definition.json for given formSubmission from disk 
 	 */
 	String getDefaultBindPathFromSubformDefinition(String subformName, FormSubmission formSubmission)
 	{		
@@ -567,13 +489,6 @@ public class FormAttributeMapper {
     	return null;
 	}
 	
-	/**
-	 * Gets the bind path of specified field for given subform in given form submission
-	 * @param subformName
-	 * @param field
-	 * @param formSubmission
-	 * @return
-	 */
 	String getPathFromSubformDefinition(String subformName, String field, FormSubmission formSubmission)
 	{		
 		JsonParser parser = new JsonParser();
@@ -601,8 +516,9 @@ public class FormAttributeMapper {
     	return null;
 	}
 	
-	/**
-	 * Gets the bind path from form_definition.json in given formSubmission for specified field 
+	/*
+	 * read form_definition.json for given formSubmission from disk 
+	 * bindAttribute = get bind attribute for provided fieldName
 	 */
 	String getPropertyBindFromFormDefinition(String fieldName,FormSubmission formSubmission)
 	{		
@@ -680,9 +596,10 @@ public class FormAttributeMapper {
     	
     	return null;
 	}
-	
-	/**
-	 * Gets the Node from model.xml that maps to specified bind path in given form submission   	
+	/*
+	 * read model.xml
+	 * use xpath for finding the path directly in the model.xml
+	 * or split path by / and decend by each parent node unless last child specified is reached    	
 	 */
 	Node getFormPropertyNameForAttribute(String formBindForField,FormSubmission formSubmission)
 	{
