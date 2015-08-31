@@ -18,5 +18,6 @@ public class ANCVisitHandler implements FormSubmissionHandler {
     @Override
     public void handle(FormSubmission submission) {
         ancService.ancVisit(submission);
+        ancService.indonesiaTtProvided(submission);
     }
 }
