@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "dim_anm")
-@NamedQuery(name = ANM.FIND_BY_ANM_ID, query = "select r from ANM r where r.anmIdentifier=:anmIdentifier")
+@NamedQuery(name = ANM.FIND_BY_ANM_ID, query = "select r from ANM r where r.anmIdentifier=:anmIdentifier" )
 public class ANM {
     public static final String FIND_BY_ANM_ID = "find.by.anm.id";
 
