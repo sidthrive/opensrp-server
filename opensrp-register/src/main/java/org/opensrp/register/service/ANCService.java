@@ -153,6 +153,21 @@ public class ANCService {
         reportingService.ttProvided(new SafeMap(submission.getFields(reportFields)));
     }
 
+    public void indonesiaTtProvided(FormSubmission submission){
+        Mother mother = allMothers.findByCaseId(submission.entityId());
+        if (mother == null) {
+            logger.warn("Tried to handle Indonesia TT provided without registered mother. Submission: " + submission);
+            return;
+        }
+
+        //ambil value dari form dengan nama field = "statusImunisasitt"
+        String statusImunisasiTt = submission.getField("statusImunisasitt");
+        ancSchedulesService.InaTtVisitHasHappened(submission.entityId(),
+                submission.anmId(),
+                statusImunisasiTt,
+                submission.getField("referenceDate"));
+    }
+
     public void ifaTabletsGiven(FormSubmission submission) {
         Mother mother = allMothers.findByCaseId(submission.entityId());
         if (mother == null) {

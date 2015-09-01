@@ -73,6 +73,18 @@ public class ANCSchedulesService {
         }
     }
 
+    public void InaTtVisitHasHappened(String entityId, String anmId, String ttVisit, String date){
+        if("tt_ke_0".equalsIgnoreCase(ttVisit)){
+            scheduler.enrollIntoSchedule(entityId,"TT KE 0", date);
+        }else if("tt_ke_1".equalsIgnoreCase(ttVisit)){
+            fulfillMilestoneIfPossible(entityId,anmId,"TT KE 0","TT KE 0",parse(date));
+            scheduler.enrollIntoSchedule(entityId,"TT KE 1", date);
+        }else if("tt_ke_2".equalsIgnoreCase(ttVisit)){
+            fulfillMilestoneIfPossible(entityId,anmId,"TT KE 1","TT KE 1",parse(date));
+            scheduler.enrollIntoSchedule(entityId,"TT KE 2", date);
+        }
+    }
+
     public void ifaTabletsGiven(String entityId, String anmId, String numberOfIFATabletsGiven, String ifaGivenDate) {
         if (tryParse(numberOfIFATabletsGiven, 0) <= 0) {
             logger.info("Number of IFA tablets given is zero so not updating schedules for entity: " + entityId);

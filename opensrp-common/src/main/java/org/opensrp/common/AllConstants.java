@@ -34,7 +34,7 @@ public class AllConstants {
         public static final String EC_EDIT = "ec_edit";
         public static final String ANC_REGISTRATION = "kartu_anc_registration";
         public static final String ANC_REGISTRATION_OA = "anc_registration_oa";
-        public static final String ANC_VISIT = "anc_visit";
+        public static final String ANC_VISIT = "kartu_anc_visit";
         public static final String ANC_INVESTIGATIONS = "anc_investigations";
         public static final String ANC_CLOSE = "anc_close";
         public static final String IFA = "ifa";
