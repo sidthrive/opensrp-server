@@ -8,6 +8,7 @@ import org.opensrp.common.util.HttpAgent;
 import org.opensrp.common.util.HttpResponse;
 import org.opensrp.common.util.VerhouffUtil;
 import org.opensrp.dto.ANMDTO;
+import org.opensrp.dto.LastIdDTO;
 import org.opensrp.dto.LocationDTO;
 import org.opensrp.dto.UniqueIdDTO;
 import org.opensrp.reporting.domain.Location;
@@ -80,6 +81,15 @@ public class ANMController {
         }
         return new ResponseEntity<UniqueIdDTO>(dto,allowOrigin("*"),OK);
         
+    }
+
+    @RequestMapping(method = {RequestMethod.POST, RequestMethod.OPTIONS}, value ="/last-id")
+    @ResponseBody
+    public ResponseEntity<LastIdDTO> getLastId(@RequestParam("anm-id") String anmIdentifier, @RequestParam("last-id") String lastId){
+           int status = anmService.insertlastIdforAnm(anmIdentifier,Long.parseLong(lastId)) ? 1:0;
+           LastIdDTO lastIdDTO = new LastIdDTO(status);
+        return  new ResponseEntity<LastIdDTO>(lastIdDTO,allowOrigin("*"),OK);
+
     }
 
     private List<UniqueIdDTO> convertToUniqueIdDTo(List<UniqueId> uniqueIds) {
