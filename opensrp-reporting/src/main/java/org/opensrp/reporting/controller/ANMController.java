@@ -6,10 +6,13 @@ import com.google.gson.reflect.TypeToken;
 import org.opensrp.common.domain.UserDetail;
 import org.opensrp.common.util.HttpAgent;
 import org.opensrp.common.util.HttpResponse;
+import org.opensrp.common.util.VerhouffUtil;
 import org.opensrp.dto.ANMDTO;
 import org.opensrp.dto.LocationDTO;
+import org.opensrp.dto.UniqueIdDTO;
 import org.opensrp.reporting.domain.Location;
 import org.opensrp.reporting.domain.SP_ANM;
+import org.opensrp.reporting.domain.UniqueId;
 import org.opensrp.reporting.factory.DetailsFetcherFactory;
 import org.opensrp.reporting.service.ANMService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +67,34 @@ public class ANMController {
             e.printStackTrace();
         }
         return new ResponseEntity<>(null, allowOrigin(opensrpSiteUrl), OK);
+    }
+
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.OPTIONS}, value = "/unique-id")
+    @ResponseBody
+    public ResponseEntity<UniqueIdDTO> getUniqueId(@RequestParam("anm-id") String anmIdentifier){
+        List uniqueIdsforAnm = anmService.getUniqueIdsforAnm(anmIdentifier);
+        List<UniqueIdDTO> dtos = convertToUniqueIdDTo(uniqueIdsforAnm);
+        UniqueIdDTO dto = null;
+        if(dtos != null && !dtos.isEmpty()){
+            dto = dtos.get(dtos.size()-1);
+        }
+        return new ResponseEntity<UniqueIdDTO>(dto,allowOrigin("*"),OK);
+        
+    }
+
+    private List<UniqueIdDTO> convertToUniqueIdDTo(List<UniqueId> uniqueIds) {
+        return with(uniqueIds).convert(new Converter<UniqueId, UniqueIdDTO>() {
+            @Override
+            public UniqueIdDTO convert(UniqueId uniqueId){
+                UniqueIdDTO dto = new UniqueIdDTO();
+                for (long i = uniqueId.getLastValue() - UniqueId.INCREMENT + 1; i<= uniqueId.getLastValue();i++){
+                    String verhouffId = VerhouffUtil.generateVerhoeff(Long.toString(i));
+                    String withVerhouff = i + "" + verhouffId;
+                    dto.getIds().add(Long.parseLong(withVerhouff));
+                }
+                return dto;
+            }
+        });
     }
 
     private List<ANMDTO> convertToDTO(List<SP_ANM> anms) {
