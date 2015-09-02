@@ -1,27 +1,20 @@
 {
-  "name": "KB Injection Depoprovera",
+  "name": "KB Implant",
   "absolute": true,
   "milestones": [
     {
-      "name": "KB Injection Depoprovera",
+      "name": "KB Implant",
       "scheduleWindows": {
-        "due": ["12 Weeks"],
-        "late": ["1 Year"],
-        "max": ["1 Year", "1 Day"]
+        "due": ["5 Years"],
+        "max": ["6 Years", "1 Day"]
       },
       "alerts": [
 
         {
           "window": "due",
-          "offset": ["11 Weeks"],
-          "interval": ["1 Day"],
-          "count": "7"
-        },
-        {
-          "window": "late",
-          "offset": ["12 Weeks"],
-          "interval": ["1 Day"],
-          "count": "279"
+          "offset": ["1 Year"],
+          "interval": ["1 Week"],
+          "count": "365"
         }
       ]
     }

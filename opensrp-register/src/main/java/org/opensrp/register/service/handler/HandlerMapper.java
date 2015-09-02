@@ -52,6 +52,7 @@ public class HandlerMapper implements IHandlerMapper {
             RecordECPsHandler recordECPsHandler,
             ECEditHandler ecEditHandler,
             ANCInvestigationsHandler ancInvestigationsHandler,
+            KbHandler kbHandler,
 
             MCTSReportService mctsReportService)
 	{
@@ -89,6 +90,7 @@ public class HandlerMapper implements IHandlerMapper {
                 .put(RECORD_ECPS, recordECPsHandler)
                 .put(EC_EDIT, ecEditHandler)
                 .put(ANC_INVESTIGATIONS, ancInvestigationsHandler)
+                .put(KOHORT_KB_PELAYANAN, kbHandler)
                 .map();
 
 	}

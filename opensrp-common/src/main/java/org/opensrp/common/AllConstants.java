@@ -60,6 +60,7 @@ public class AllConstants {
         public static final String VITAMIN_A = "vitamin_a";
         public static final String PPFP = "postpartum_family_planning";
         public static final String RECORD_ECPS = "record_ecps";
+        public static final String KOHORT_KB_PELAYANAN = "kohort_kb_pelayanan";
     }
 
     public static class Report {
