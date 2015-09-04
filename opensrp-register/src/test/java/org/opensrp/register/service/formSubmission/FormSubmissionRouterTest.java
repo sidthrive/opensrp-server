@@ -11,36 +11,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-import org.opensrp.register.service.handler.ANCCloseHandler;
-import org.opensrp.register.service.handler.ANCInvestigationsHandler;
-import org.opensrp.register.service.handler.ANCRegistrationHandler;
-import org.opensrp.register.service.handler.ANCRegistrationOAHandler;
-import org.opensrp.register.service.handler.ANCVisitHandler;
-import org.opensrp.register.service.handler.ChildCloseHandler;
-import org.opensrp.register.service.handler.ChildIllnessHandler;
-import org.opensrp.register.service.handler.ChildImmunizationsHandler;
-import org.opensrp.register.service.handler.ChildRegistrationECHandler;
-import org.opensrp.register.service.handler.ChildRegistrationOAHandler;
-import org.opensrp.register.service.handler.DeliveryOutcomeHandler;
-import org.opensrp.register.service.handler.DeliveryPlanHandler;
-import org.opensrp.register.service.handler.ECCloseHandler;
-import org.opensrp.register.service.handler.ECEditHandler;
-import org.opensrp.register.service.handler.ECRegistrationHandler;
-import org.opensrp.register.service.handler.FPChangeHandler;
-import org.opensrp.register.service.handler.FPComplicationsHandler;
-import org.opensrp.register.service.handler.FPFollowupHandler;
-import org.opensrp.register.service.handler.FPReferralFollowupHandler;
-import org.opensrp.register.service.handler.HandlerMapper;
-import org.opensrp.register.service.handler.HbTestHandler;
-import org.opensrp.register.service.handler.IFAHandler;
-import org.opensrp.register.service.handler.PNCCloseHandler;
-import org.opensrp.register.service.handler.PNCRegistrationOAHandler;
-import org.opensrp.register.service.handler.PNCVisitHandler;
-import org.opensrp.register.service.handler.PostpartumFamilyPlanningHandler;
-import org.opensrp.register.service.handler.RecordECPsHandler;
-import org.opensrp.register.service.handler.RenewFPProductHandler;
-import org.opensrp.register.service.handler.TTHandler;
-import org.opensrp.register.service.handler.VitaminAHandler;
+import org.opensrp.register.service.handler.*;
 import org.opensrp.register.service.reporting.MCTSReportService;
 import org.opensrp.service.formSubmission.FormSubmissionRouter;
 import org.opensrp.service.formSubmission.handler.FormSubmissionHandler;
@@ -125,6 +96,8 @@ public class FormSubmissionRouterTest {
     private FormSubmissionRouter router;
 	@Mock
 	private HandlerMapper handlerMapper;
+    @Mock
+    private KbHandler kbHandler;
 	@Before
     public void setUp() throws Exception {
     	
@@ -162,6 +135,7 @@ public class FormSubmissionRouterTest {
 	             recordECPsHandler,
 	             ecEditHandler,
 	             ancInvestigationsHandler,
+                 kbHandler,
 	             mReportService);
 	
 
@@ -248,7 +222,7 @@ public class FormSubmissionRouterTest {
 
     @Test
     public void shouldDelegateANCRegistrationFormSubmissionHandlingToANCRegistrationHandler() throws Exception {
-        FormSubmission formSubmission = new FormSubmission("anm id 1", "instance id 1", "anc_registration", "entity id 1", 0L, "1", null, 0L);
+        FormSubmission formSubmission = new FormSubmission("anm id 1", "instance id 1", "kartu_anc_registration", "entity id 1", 0L, "1", null, 0L);
         when(formSubmissionsRepository.findByInstanceId("instance id 1")).thenReturn(formSubmission);
 
         router.route("instance id 1");
@@ -279,7 +253,7 @@ public class FormSubmissionRouterTest {
 
     @Test
     public void shouldDelegateANCVisitFormSubmissionHandlingToANCVisitHandler() throws Exception {
-        FormSubmission formSubmission = new FormSubmission("anm id 1", "instance id 1", "anc_visit", "entity id 1", 0L, "1", null, 0L);
+        FormSubmission formSubmission = new FormSubmission("anm id 1", "instance id 1", "kartu_anc_visit", "entity id 1", 0L, "1", null, 0L);
         when(formSubmissionsRepository.findByInstanceId("instance id 1")).thenReturn(formSubmission);
 
         router.route("instance id 1");

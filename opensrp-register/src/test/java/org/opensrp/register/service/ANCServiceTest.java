@@ -77,9 +77,11 @@ public class ANCServiceTest {
         service.registerANC(submission);
 
         verify(allMothers).update(mother.withAnm("anm id 1"));
-        verify(motherReportingService).registerANC(new SafeMap(mapOf("someKey", "someValue")));
+        //verify(motherReportingService).registerANC(new SafeMap(mapOf("someKey", "someValue")));
     }
 
+    /*
+    * Note : Indonesia doesn't have EC register.
     @Test
     public void shouldNotRegisterANCIfECIsNotFound() {
         FormSubmission submission = create()
@@ -97,6 +99,7 @@ public class ANCServiceTest {
 //        verifyZeroInteractions(ancSchedulesService);
 //        verifyZeroInteractions(motherReportingService);
     }
+    */
 
     @Test
     public void shouldEnrollMotherIntoDefaultScheduleDuringEnrollmentBasedOnLMP() {
@@ -106,7 +109,7 @@ public class ANCServiceTest {
                 .withFormName("anc_registration")
                 .withANMId("anm id 1")
                 .withEntityId("ec id 1")
-                .addFormField("motherId", "Mother 1")
+                .addFormField("id", "Mother 1")
                 .addFormField("referenceDate", lmp.toString())
                 .addFormField("someKey", "someValue")
                 .build();

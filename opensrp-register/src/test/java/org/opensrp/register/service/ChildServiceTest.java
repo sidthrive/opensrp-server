@@ -180,7 +180,7 @@ public class ChildServiceTest extends BaseUnitTest {
                 .withFormName("child_registration_ec")
                 .withANMId("anm id 1")
                 .withEntityId("ec id 1")
-                .addFormField("motherId", "mother id 1")
+                .addFormField("id", "mother id 1")
                 .addFormField("childId", "child id 1")
                 .addFormField("immunizationsGiven", "bcg opv_0")
                 .addFormField("bcgDate", "2013-01-01")
