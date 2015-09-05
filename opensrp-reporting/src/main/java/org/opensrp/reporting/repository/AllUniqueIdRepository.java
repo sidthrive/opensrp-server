@@ -45,4 +45,10 @@ public class AllUniqueIdRepository {
             return false;
         }
     }
+
+    public List fetchLastUsedId(String anmIdentifier) {
+        return dataAccessTemplate.findByNamedQueryAndNamedParam(LastId.FIND_LAST_USED_ID_BY_ANM_IDENTIFIER,
+                new String[]{"anmIdentifier"}, new Object[]{anmIdentifier});
+    }
+
 }

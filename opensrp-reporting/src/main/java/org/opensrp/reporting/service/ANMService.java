@@ -59,4 +59,8 @@ public class ANMService {
     public boolean insertlastIdforAnm(String anmIdentifier, Long lastId){
         return allUniqueIdRepository.saveLastId(anmIdentifier, lastId);
     }
+    @Transactional("service_provided")
+    public List getLastUsedIdForAnm(String anmIdentifier) {
+        return allUniqueIdRepository.fetchLastUsedId(anmIdentifier);
+    }
 }

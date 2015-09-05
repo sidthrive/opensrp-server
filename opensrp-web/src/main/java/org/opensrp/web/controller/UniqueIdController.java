@@ -5,6 +5,7 @@ import org.apache.commons.lang.exception.ExceptionUtils;
 import org.opensrp.common.util.HttpAgent;
 import org.opensrp.common.util.HttpResponse;
 
+import org.opensrp.dto.LastIdDTO;
 import org.opensrp.dto.UniqueIdDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,13 +31,16 @@ import static org.springframework.web.bind.annotation.RequestMethod.GET;
 public class UniqueIdController {
     private static Logger logger = LoggerFactory.getLogger(UniqueIdController.class.toString());
     private final String drishtiUniqueIdURL;
+    private final String lastUsedIdURL;
     private UserController userController;
     private HttpAgent httpAgent;
 
     @Autowired
     public UniqueIdController(@Value("#{opensrp['opensrp.anm.uniqueid.url']}") String drishtiUniqueIdURL,
+                              @Value("#{opensrp['opensrp.anm.lastUsedId.url']}") String lastUsedIdURL,
                               UserController userController,
                               HttpAgent httpAgent) {
+        this.lastUsedIdURL = lastUsedIdURL;
         this.drishtiUniqueIdURL = drishtiUniqueIdURL;
         this.userController = userController;
         this.httpAgent = httpAgent;
@@ -55,6 +59,23 @@ public class UniqueIdController {
         } catch (Exception exception) {
             logger.error(MessageFormat.format("{0} occurred while fetching Unique ID for anm. StackTrace: \n {1}", exception.getMessage(), ExceptionUtils.getFullStackTrace(exception)));
             logger.error(MessageFormat.format("Response with status {0} and body: {1} was obtained from {2}", response.isSuccess(), response.body(), drishtiUniqueIdURL));
+        }
+        return new ResponseEntity<>(INTERNAL_SERVER_ERROR);
+    }
+
+    @RequestMapping(method = RequestMethod.GET, value = "/last-used-id")
+    @ResponseBody
+    public ResponseEntity<LastIdDTO> lastUsedIdForUser() {
+        HttpResponse response = new HttpResponse(false, null);
+        try {
+            String anmIdentifier = userController.currentUser().getUsername();
+            response = httpAgent.get(lastUsedIdURL + "?anm-id=" + anmIdentifier);
+            LastIdDTO dto = new Gson().fromJson(response.body(), LastIdDTO.class);
+            logger.info("Fetched last used id for ANM: " + anmIdentifier);
+            return new ResponseEntity<LastIdDTO>(dto, HttpStatus.OK);
+        } catch (Exception e) {
+            logger.error(MessageFormat.format("{0} occurred while fetching last used Unique ID for anm. StackTrace: \n {1}", e.getMessage(), ExceptionUtils.getFullStackTrace(e)));
+            logger.error(MessageFormat.format("Response with status {0} and body: {1} was obtained from {2}", response.isSuccess(), response.body(), lastUsedIdURL));
         }
         return new ResponseEntity<>(INTERNAL_SERVER_ERROR);
     }
