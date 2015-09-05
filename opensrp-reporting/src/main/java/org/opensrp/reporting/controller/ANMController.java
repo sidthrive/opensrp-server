@@ -96,7 +96,7 @@ public class ANMController {
                 dto = Collections.max(dtos, new Comparator<LastIdDTO>() {
                     @Override
                     public int compare(LastIdDTO o1, LastIdDTO o2) {
-                        return o1.getId() > o2.getId() ? 1 : 0;
+                        return o1.getLastUsedId() > o2.getLastUsedId() ? 1 : 0;
                     }
                 });
             } else {
@@ -109,11 +109,11 @@ public class ANMController {
 
     @RequestMapping(method = {RequestMethod.POST, RequestMethod.OPTIONS}, value ="/last-id")
     @ResponseBody
-    public ResponseEntity<LastIdDTO> getLastId(@RequestParam("anm-id") String anmIdentifier, @RequestParam("last-id") String lastId){
+    public ResponseEntity<LastIdDTO> setLastId(@RequestParam("anm-id") String anmIdentifier, @RequestParam("last-id") String lastId){
         int status = anmService.insertlastIdforAnm(anmIdentifier,Long.parseLong(lastId)) ? 1:0;
         LastIdDTO lastIdDTO = new LastIdDTO();
         lastIdDTO.setStatus(status);
-        lastIdDTO.setId(Long.parseLong(lastId));
+        lastIdDTO.setLastUsedId(Long.parseLong(lastId));
         return  new ResponseEntity<>(lastIdDTO,allowOrigin("*"),OK);
 
     }

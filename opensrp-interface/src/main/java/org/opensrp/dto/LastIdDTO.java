@@ -6,22 +6,22 @@ import java.util.List;
 public class LastIdDTO {
 
     private Integer status;
-    private Long id;
+    private Long lastUsedId;
 
     public LastIdDTO(){
         this.status = 0;
     }
 
-    public LastIdDTO(Long id) {
-        this.id = id;
+    public LastIdDTO(Long lastUsedId) {
+        this.lastUsedId = lastUsedId;
     }
 
-    public Long getId() {
-        return id;
+    public Long getLastUsedId() {
+        return lastUsedId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setLastUsedId(Long lastUsedId) {
+        this.lastUsedId = lastUsedId;
     }
 
     public int getStatus() {
