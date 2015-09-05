@@ -43,3 +43,45 @@ CREATE TABLE report.service_provided (ID SERIAL, service_provider INTEGER NOT NU
   CONSTRAINT FK_SP_DI_ID FOREIGN KEY (indicator) REFERENCES report.dim_indicator (ID),
   CONSTRAINT FK_SP_DD_ID FOREIGN KEY (date_) REFERENCES report.dim_date (ID),
   CONSTRAINT FK_SP_DL_ID FOREIGN KEY (location) REFERENCES report.dim_location (ID));
+
+CREATE SEQUENCE report.unique_id_id_seq
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 3
+  CACHE 1;
+
+CREATE TABLE report.unique_id
+(
+  id integer NOT NULL DEFAULT nextval('report.unique_id_id_seq'::regclass),
+  anm_id integer,
+  last_value bigint,
+  CONSTRAINT pk_unique_id PRIMARY KEY (id),
+  CONSTRAINT fk_id_anm_dim_anm FOREIGN KEY (anm_id)
+      REFERENCES report.dim_anm (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+
+CREATE SEQUENCE report.last_id_id_seq
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 3
+  CACHE 1;
+
+CREATE TABLE report.last_id
+(
+  id integer NOT NULL DEFAULT nextval('report.last_id_id_seq'::regclass),
+  anm_id integer,
+  last_id bigint,
+  CONSTRAINT pk_last_id PRIMARY KEY (id),
+  CONSTRAINT fk_id_anm_dim_anm FOREIGN KEY (anm_id)
+      REFERENCES report.dim_anm (id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
