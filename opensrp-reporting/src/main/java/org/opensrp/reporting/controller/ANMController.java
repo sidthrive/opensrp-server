@@ -85,6 +85,7 @@ public class ANMController {
         return new ResponseEntity<UniqueIdDTO>(dto,allowOrigin("*"),OK);
     }
 
+
     @RequestMapping(method = {RequestMethod.GET, RequestMethod.OPTIONS}, value = "/last-used-id")
     @ResponseBody
     public ResponseEntity<LastIdDTO> getLastUsedId(@RequestParam("anm-id") String anmIdentifier){
@@ -116,6 +117,14 @@ public class ANMController {
         lastIdDTO.setLastUsedId(Long.parseLong(lastId));
         return  new ResponseEntity<>(lastIdDTO,allowOrigin("*"),OK);
 
+    }
+
+    @RequestMapping(method = {RequestMethod.POST, RequestMethod.OPTIONS}, value="/refill-unique-id")
+    @ResponseBody
+    public ResponseEntity<HttpResponse> refillUniqueId(@RequestParam("anm-id") String anmIdentifier) {
+        boolean status = anmService.refillUniqueId(anmIdentifier);
+        HttpResponse httpResponse = new HttpResponse(status,"");
+        return new ResponseEntity<>(httpResponse, OK);
     }
 
     private List<UniqueIdDTO> convertToUniqueIdDTo(List<UniqueId> uniqueIds) {

@@ -6,11 +6,14 @@ import javax.persistence.*;
 @Table(name="unique_id")
 @NamedQueries({
         @NamedQuery(name = UniqueId.FIND_UNIQUE_ID_BY_ANM_IDENTIFIER,
-        query = "select r from UniqueId r, ANM a where a.anmIdentifier = :anmIdentifier and r.anm.id = a.id")
+        query = "select r from UniqueId r, ANM a where a.anmIdentifier = :anmIdentifier and r.anm.id = a.id"),
+        @NamedQuery(name = UniqueId.FIND_HIGHEST_UNIQUE_ID,
+        query = "select r from UniqueId r where r.lastValue = (select max(a.lastValue) from UniqueId a)")
 })
 
 public class UniqueId {
     public static final String FIND_UNIQUE_ID_BY_ANM_IDENTIFIER = "find.unique.id.by.anm.identifier";
+    public static final String FIND_HIGHEST_UNIQUE_ID = "find.max.unique.id";
     public static final int INCREMENT = 100;
 
     @Id

@@ -63,4 +63,8 @@ public class ANMService {
     public List getLastUsedIdForAnm(String anmIdentifier) {
         return allUniqueIdRepository.fetchLastUsedId(anmIdentifier);
     }
+    @Transactional("service_provided")
+    public boolean refillUniqueId(String anmIdentifier) {
+        return allUniqueIdRepository.refillUniqueId(anmIdentifier);
+    }
 }
