@@ -45,4 +45,38 @@ public class AllUniqueIdRepository {
             return false;
         }
     }
+
+    public List fetchLastUsedId(String anmIdentifier) {
+        return dataAccessTemplate.findByNamedQueryAndNamedParam(LastId.FIND_LAST_USED_ID_BY_ANM_IDENTIFIER,
+                new String[]{"anmIdentifier"}, new Object[]{anmIdentifier});
+    }
+
+    public boolean refillUniqueId(String anmIdentifier) {
+        UniqueId uid = new UniqueId();
+        List obj = dataAccessTemplate.findByNamedQueryAndNamedParam(
+                ANM.FIND_BY_ANM_ID,
+                new String[]{"anmIdentifier"},
+                new Object[]{anmIdentifier});
+        if(obj == null || obj.isEmpty()){
+            return false;
+        }
+        ANM anm = (ANM)obj.get(0);
+        uid.setAnm(anm);
+        // get highest last id and add 1000
+        List ids = dataAccessTemplate.findByNamedQuery(UniqueId.FIND_HIGHEST_UNIQUE_ID);
+        if(ids == null || ids.isEmpty()) {
+            return false;
+        }
+        UniqueId uniqueId = (UniqueId)ids.get(0);
+        uid.setLastValue(uniqueId.getLastValue()+1000);
+
+        try {
+            dataAccessTemplate.save(uid);
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+
 }

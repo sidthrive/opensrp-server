@@ -29,6 +29,7 @@ public class ANCVisitHandlerTest {
 
         handler.handle(submission);
 
-        verify(ancService).ancVisit(submission);
+        //verify(ancService).ancVisit(submission);
+        verify(ancService).indonesiaTtProvided(submission);
     }
 }

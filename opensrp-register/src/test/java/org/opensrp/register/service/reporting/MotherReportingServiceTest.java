@@ -106,7 +106,7 @@ public class MotherReportingServiceTest extends BaseUnitTest {
     public void shouldReportANCRegistrationWhichHasBeenDoneAfterTwelveWeeksLMPAsLateRegistration() throws Exception {
         SafeMap reportData = new SafeMap();
         reportData.put("referenceDate", "2011-10-08");
-        reportData.put("motherId", "CASE-1");
+        reportData.put("id", "CASE-1");
         reportData.put("registrationDate", "2012-01-01");
         reportData.put("submissionDate", "2012-01-01");
         when(allMothers.findByCaseId("CASE-1")).thenReturn(MOTHER);
@@ -123,7 +123,7 @@ public class MotherReportingServiceTest extends BaseUnitTest {
     public void shouldReportANCRegistrationWhichHasBeenDoneBeforeTwelveWeeksLMPAsEarlyRegistration() throws Exception {
         SafeMap reportData = new SafeMap();
         reportData.put("referenceDate", "2011-10-08");
-        reportData.put("motherId", "CASE-1");
+        reportData.put("id", "CASE-1");
         reportData.put("registrationDate", "2011-12-15");
         reportData.put("submissionDate", "2011-12-15");
         when(allMothers.findByCaseId("CASE-1")).thenReturn(MOTHER);
@@ -642,7 +642,7 @@ public class MotherReportingServiceTest extends BaseUnitTest {
         when(allEligibleCouples.findByCaseId("EC-CASE-1")).thenReturn(new EligibleCouple().withLocationId("bherya"));
         when(reportMonth.areDatesBelongToSameReportingMonth(parse("2012-01-01"), parse("2012-01-02"))).thenReturn(true);
 
-        Map<String, String> reportData = create("motherId", "CASE-1")
+        Map<String, String> reportData = create("id", "CASE-1")
                 .put("referenceDate", "2012-01-01")
                 .put("deliveryType", "cesarean")
                 .put("deliveryPlace", "phc")
@@ -663,7 +663,7 @@ public class MotherReportingServiceTest extends BaseUnitTest {
         when(allEligibleCouples.findByCaseId("EC-CASE-1")).thenReturn(new EligibleCouple().withLocationId("bherya"));
         when(reportMonth.areDatesBelongToSameReportingMonth(parse("2012-01-01"), parse("2012-01-02"))).thenReturn(true);
 
-        Map<String, String> reportData = create("motherId", "CASE-1")
+        Map<String, String> reportData = create("id", "CASE-1")
                 .put("referenceDate", "2012-01-01")
                 .put("deliveryType", "cesarean")
                 .put("deliveryPlace", "private_facility")
@@ -683,7 +683,7 @@ public class MotherReportingServiceTest extends BaseUnitTest {
         when(allEligibleCouples.findByCaseId("EC-CASE-1")).thenReturn(new EligibleCouple().withLocationId("bherya"));
         when(reportMonth.areDatesBelongToSameReportingMonth(parse("2012-01-01"), parse("2012-01-02"))).thenReturn(true);
 
-        Map<String, String> reportData = create("motherId", "CASE-1")
+        Map<String, String> reportData = create("id", "CASE-1")
                 .put("referenceDate", "2012-01-01")
                 .put("deliveryType", "cesarean")
                 .put("deliveryPlace", "phc")
@@ -701,7 +701,7 @@ public class MotherReportingServiceTest extends BaseUnitTest {
         when(allEligibleCouples.findByCaseId("EC-CASE-1")).thenReturn(new EligibleCouple().withLocationId("bherya"));
         when(reportMonth.areDatesBelongToSameReportingMonth(parse("2012-01-01"), parse("2012-01-02"))).thenReturn(true);
 
-        Map<String, String> reportData = create("motherId", "CASE-1")
+        Map<String, String> reportData = create("id", "CASE-1")
                 .put("referenceDate", "2012-01-01")
                 .put("deliveryOutcome", "live_birth")
                 .put("deliveryPlace", "home")
@@ -924,7 +924,7 @@ public class MotherReportingServiceTest extends BaseUnitTest {
     private void assertThatIndicatorIsSetBasedOnLMP(String lmp, Indicator indicator) {
         SafeMap reportData = new SafeMap();
         reportData.put("referenceDate", lmp);
-        reportData.put("motherId", "CASE-1");
+        reportData.put("id", "CASE-1");
         reportData.put("registrationDate", "2012-01-01");
         reportData.put("submissionDate", "2012-01-01");
         when(allMothers.findByCaseId("CASE-1")).thenReturn(MOTHER);

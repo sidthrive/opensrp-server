@@ -133,6 +133,7 @@ public class FormDataRepositoryIntegrationTest {
         assertEquals(expectedEligibleCouple, savedEC);
     }
 
+    /*
     @Test
     public void shouldUpdateMotherEntity() throws Exception {
         Map<String, String> fields =
@@ -152,4 +153,5 @@ public class FormDataRepositoryIntegrationTest {
         Mother expectedMother = new Mother("entity id 1", "ec 123", "thayi1").withDetails(expectedDetails);
         assertEquals(expectedMother, savedMother);
     }
+    */
 }

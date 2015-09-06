@@ -4,7 +4,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="last_id")
+@NamedQueries({
+        @NamedQuery(name = LastId.FIND_LAST_USED_ID_BY_ANM_IDENTIFIER,
+        query = "select r from LastId r, ANM a where a.anmIdentifier = :anmIdentifier and r.anm.id = a.id")
+})
 public class LastId {
+    public static final String FIND_LAST_USED_ID_BY_ANM_IDENTIFIER = "find.last.used.id.by.anm.identifier";
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

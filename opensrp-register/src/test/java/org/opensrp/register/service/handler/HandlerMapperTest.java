@@ -78,9 +78,11 @@ public class HandlerMapperTest {
 	@Mock
     ECEditHandler ecEditHandler;
 	@Mock
-    ANCInvestigationsHandler ancInvestigationsHandler;
-	@Mock
     MCTSReportService mctsReportService;
+	@Mock
+	ANCInvestigationsHandler ancInvestigationsHandler;
+	@Mock
+	KbHandler kbHandler;
 
 	@Mock
 	private HandlerMapper handlerMapper;
@@ -119,8 +121,9 @@ public class HandlerMapperTest {
 	             postpartumFamilyPlanningHandler,
 	             recordECPsHandler,
 	             ecEditHandler,
-	             ancInvestigationsHandler,
-	             mctsReportService);
+				ancInvestigationsHandler,
+				kbHandler,
+				mctsReportService);
 	}
 	
 	 @Test

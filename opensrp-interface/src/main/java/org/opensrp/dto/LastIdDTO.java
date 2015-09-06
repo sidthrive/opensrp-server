@@ -5,22 +5,30 @@ import java.util.List;
 
 public class LastIdDTO {
 
-
     private Integer status;
+    private Long lastUsedId;
 
     public LastIdDTO(){
         this.status = 0;
     }
 
-    public LastIdDTO(int status) {
-        this.status = status;
+    public LastIdDTO(Long lastUsedId) {
+        this.lastUsedId = lastUsedId;
     }
 
-    public int getIds() {
+    public Long getLastUsedId() {
+        return lastUsedId;
+    }
+
+    public void setLastUsedId(Long lastUsedId) {
+        this.lastUsedId = lastUsedId;
+    }
+
+    public int getStatus() {
         return status;
     }
 
-    public void setIds(int status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 }
