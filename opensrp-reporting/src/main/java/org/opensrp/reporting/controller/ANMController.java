@@ -32,6 +32,7 @@ import java.util.List;
 
 import static org.opensrp.reporting.HttpHeaderFactory.allowOrigin;
 import static ch.lambdaj.collection.LambdaCollections.with;
+import static org.springframework.http.HttpStatus.NO_CONTENT;
 import static org.springframework.http.HttpStatus.OK;
 
 @Controller
@@ -116,15 +117,17 @@ public class ANMController {
         lastIdDTO.setStatus(status);
         lastIdDTO.setLastUsedId(Long.parseLong(lastId));
         return  new ResponseEntity<>(lastIdDTO,allowOrigin("*"),OK);
-
     }
 
     @RequestMapping(method = {RequestMethod.POST, RequestMethod.OPTIONS}, value="/refill-unique-id")
     @ResponseBody
-    public ResponseEntity<HttpResponse> refillUniqueId(@RequestParam("anm-id") String anmIdentifier) {
+    public ResponseEntity<UniqueIdDTO> refillUniqueId(@RequestParam("anm-id") String anmIdentifier) {
         boolean status = anmService.refillUniqueId(anmIdentifier);
-        HttpResponse httpResponse = new HttpResponse(status,"");
-        return new ResponseEntity<>(httpResponse, OK);
+        if (status) {
+            return getUniqueId(anmIdentifier);
+        }
+        UniqueIdDTO dto = null;
+        return new ResponseEntity<>(dto, OK);
     }
 
     private List<UniqueIdDTO> convertToUniqueIdDTo(List<UniqueId> uniqueIds) {
