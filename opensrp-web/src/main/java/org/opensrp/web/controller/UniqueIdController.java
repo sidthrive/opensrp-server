@@ -32,6 +32,7 @@ public class UniqueIdController {
     private final String drishtiUniqueIdURL;
     private final String lastUsedIdURL;
     private final String lastIdUrl;
+    private final String refillIdUrl;
     private UserController userController;
     private HttpAgent httpAgent;
 
@@ -39,6 +40,7 @@ public class UniqueIdController {
     public UniqueIdController(@Value("#{opensrp['opensrp.anm.uniqueid.url']}") String drishtiUniqueIdURL,
                               @Value("#{opensrp['opensrp.anm.lastUsedId.url']}") String lastUsedIdURL,
                               @Value("#{opensrp['opensrp.anm.lastId.url']}") String lastIdUrl,
+                              @Value("#{opensrp['opensrp.anm.refillUniqueId.url']}") String refillIdUrl,
                               UserController userController,
                               HttpAgent httpAgent) {
         this.lastUsedIdURL = lastUsedIdURL;
@@ -46,6 +48,7 @@ public class UniqueIdController {
         this.userController = userController;
         this.httpAgent = httpAgent;
         this.lastIdUrl = lastIdUrl;
+        this.refillIdUrl = refillIdUrl;
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/unique-id")
@@ -86,12 +89,28 @@ public class UniqueIdController {
     public ResponseEntity<LastIdDTO> setLastId(@RequestParam("anm-id") String anmIdentifier, @RequestParam("last-id") String lastId) {
         HttpResponse response = new HttpResponse(false, null);
         try {
-            response = httpAgent.post(lastIdUrl + "?anm-id=" + anmIdentifier + "&last-id=" +lastId, "", "application/json");
+            response = httpAgent.post(lastIdUrl + "?anm-id=" + anmIdentifier + "&last-id=" + lastId, "", "application/json");
             LastIdDTO dto = new Gson().fromJson(response.body(), LastIdDTO.class);
             logger.info("Saved last used id for ANM: " + anmIdentifier);
             return new ResponseEntity<>(dto, HttpStatus.OK);
         } catch (Exception e) {
             logger.error(MessageFormat.format("{0} occurred while saving last used Unique ID for anm. StackTrace: \n {1}", e.getMessage(), ExceptionUtils.getFullStackTrace(e)));
+            logger.error(MessageFormat.format("Response with status {0} and body: {1} was obtained from {2}", response.isSuccess(), response.body(), lastUsedIdURL));
+        }
+        return new ResponseEntity<>(INTERNAL_SERVER_ERROR);
+    }
+
+    @RequestMapping(method = {RequestMethod.POST, RequestMethod.OPTIONS}, value="/refill-unique-id")
+    @ResponseBody
+    public ResponseEntity<UniqueIdDTO> refillUniqueId(@RequestParam("anm-id") String anmIdentifier) {
+        HttpResponse response = new HttpResponse(false, null);
+        try {
+            response = httpAgent.post(refillIdUrl + "?anm-id=" + anmIdentifier, "", "application/json");
+            UniqueIdDTO dto = new Gson().fromJson(response.body(), UniqueIdDTO.class);
+            logger.info("Refill unique id for ANM: " + anmIdentifier);
+            return new ResponseEntity<>(dto, HttpStatus.OK);
+        } catch (Exception e) {
+            logger.error(MessageFormat.format("{0} occurred while refilling Unique ID for anm. StackTrace: \n {1}", e.getMessage(), ExceptionUtils.getFullStackTrace(e)));
             logger.error(MessageFormat.format("Response with status {0} and body: {1} was obtained from {2}", response.isSuccess(), response.body(), lastUsedIdURL));
         }
         return new ResponseEntity<>(INTERNAL_SERVER_ERROR);
