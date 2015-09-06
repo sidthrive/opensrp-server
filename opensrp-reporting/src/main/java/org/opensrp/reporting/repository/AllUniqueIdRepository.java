@@ -68,7 +68,7 @@ public class AllUniqueIdRepository {
             return false;
         }
         UniqueId uniqueId = (UniqueId)ids.get(0);
-        uid.setLastValue(uniqueId.getLastValue()+1000);
+        uid.setLastValue(uniqueId.getLastValue()+100);
 
         try {
             dataAccessTemplate.save(uid);
