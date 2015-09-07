@@ -85,10 +85,11 @@ public class UniqueIdController {
         return new ResponseEntity<>(INTERNAL_SERVER_ERROR);
     }
 
-    @RequestMapping(headers = {"Accept=application/json"}, method = POST, value = "/last-id")
-    public ResponseEntity<LastIdDTO> setLastId(@RequestParam("anm-id") String anmIdentifier, @RequestParam("last-id") String lastId) {
+    @RequestMapping(headers = {"Accept=application/json"}, method = POST, value = "/last-used-id")
+    public ResponseEntity<LastIdDTO> setLastId(@RequestParam("last-id") String lastId) {
         HttpResponse response = new HttpResponse(false, null);
         try {
+            String anmIdentifier = userController.currentUser().getUsername();
             response = httpAgent.post(lastIdUrl + "?anm-id=" + anmIdentifier + "&last-id=" + lastId, "", "application/json");
             LastIdDTO dto = new Gson().fromJson(response.body(), LastIdDTO.class);
             logger.info("Saved last used id for ANM: " + anmIdentifier);
@@ -102,9 +103,10 @@ public class UniqueIdController {
 
     @RequestMapping(method = {RequestMethod.POST, RequestMethod.OPTIONS}, value="/refill-unique-id")
     @ResponseBody
-    public ResponseEntity<UniqueIdDTO> refillUniqueId(@RequestParam("anm-id") String anmIdentifier) {
+    public ResponseEntity<UniqueIdDTO> refillUniqueId() {
         HttpResponse response = new HttpResponse(false, null);
         try {
+            String anmIdentifier = userController.currentUser().getUsername();
             response = httpAgent.post(refillIdUrl + "?anm-id=" + anmIdentifier, "", "application/json");
             UniqueIdDTO dto = new Gson().fromJson(response.body(), UniqueIdDTO.class);
             logger.info("Refill unique id for ANM: " + anmIdentifier);
