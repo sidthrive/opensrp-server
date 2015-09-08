@@ -93,7 +93,7 @@ public class UniqueIdController {
             response = httpAgent.post(lastIdUrl + "?anm-id=" + anmIdentifier + "&last-id=" + lastId.getLastUsedId(), "", "application/json");
             LastIdDTO dto = new Gson().fromJson(response.body(), LastIdDTO.class);
             logger.info("Saved last used id for ANM: " + anmIdentifier);
-            return new ResponseEntity<>(dto, HttpStatus.OK);
+            return new ResponseEntity<>(dto, HttpStatus.CREATED);
         } catch (Exception e) {
             logger.error(MessageFormat.format("{0} occurred while saving last used Unique ID for anm. StackTrace: \n {1}", e.getMessage(), ExceptionUtils.getFullStackTrace(e)));
             logger.error(MessageFormat.format("Response with status {0} and body: {1} was obtained from {2}", response.isSuccess(), response.body(), lastUsedIdURL));
@@ -110,7 +110,7 @@ public class UniqueIdController {
             response = httpAgent.post(refillIdUrl + "?anm-id=" + anmIdentifier, "", "application/json");
             UniqueIdDTO dto = new Gson().fromJson(response.body(), UniqueIdDTO.class);
             logger.info("Refill unique id for ANM: " + anmIdentifier);
-            return new ResponseEntity<>(dto, HttpStatus.OK);
+            return new ResponseEntity<>(dto, HttpStatus.CREATED);
         } catch (Exception e) {
             logger.error(MessageFormat.format("{0} occurred while refilling Unique ID for anm. StackTrace: \n {1}", e.getMessage(), ExceptionUtils.getFullStackTrace(e)));
             logger.error(MessageFormat.format("Response with status {0} and body: {1} was obtained from {2}", response.isSuccess(), response.body(), lastUsedIdURL));
