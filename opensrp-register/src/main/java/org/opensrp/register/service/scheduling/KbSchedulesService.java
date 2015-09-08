@@ -4,23 +4,7 @@ import static java.text.MessageFormat.format;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.joda.time.LocalDate.parse;
 import static org.opensrp.common.util.IntegerUtil.tryParse;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_ANC;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_ANC_1;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_ANC_2;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_ANC_3;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_ANC_4;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_ANC_MILESTONE_PREFIX;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_DELIVERY_PLAN;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_EDD;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_HB_FOLLOWUP_TEST;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_HB_TEST_1;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_HB_TEST_2;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_IFA_1;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_IFA_2;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_IFA_3;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_LAB;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_TT_1;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_TT_2;
+import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.*;
 
 import org.joda.time.LocalDate;
 import org.joda.time.Weeks;
@@ -46,16 +30,17 @@ public class KbSchedulesService {
 
     public void kbHasHappen(String entityId, String anmId, String jenisKontrasepsiYangDigunakan, String referenceDate) {
         if ("Implant".equalsIgnoreCase(jenisKontrasepsiYangDigunakan)){
-            scheduler.enrollIntoSchedule(entityId,"KB Implant",parse(referenceDate));
+            scheduler.enrollIntoSchedule(entityId,SCHEDULE_KB_IMPLANT,parse(referenceDate));
         }
-        /*json schedule belum dibuat
-        else if ("iud".equalsIgnoreCase(keteranganTentangPesertaKB)){
-            scheduler.enrollIntoSchedule(entityId,"KB IUD", parse(referenceDate));
+        else if("suntik_depoprovera".equalsIgnoreCase(jenisKontrasepsiYangDigunakan)){
+            scheduler.enrollIntoSchedule(entityId,SCHEDULE_KB_INJECT_DEPOPROVERA, parse(referenceDate));
         }
-        //json schedule belum dibuat
-        else if("suntik".equalsIgnoreCase(keteranganTentangPesertaKB)){
-            scheduler.enrollIntoSchedule(entityId,"KB Injection Depoprovera", parse(referenceDate));
+        else if("suntik_cyclofem".equalsIgnoreCase(jenisKontrasepsiYangDigunakan)){
+            scheduler.enrollIntoSchedule(entityId,SCHEDULE_KB_INJECT_CYCLOFEM, parse(referenceDate));
         }
-        */
+        else if("iud".equalsIgnoreCase(jenisKontrasepsiYangDigunakan)){
+            scheduler.enrollIntoSchedule(entityId,SCHEDULE_KB_IUD, parse(referenceDate));
+        }
+
     }
 }

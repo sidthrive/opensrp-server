@@ -24,19 +24,7 @@ import static org.opensrp.register.DrishtiScheduleConstants.ECSchedulesConstants
 import static org.opensrp.register.DrishtiScheduleConstants.ECSchedulesConstants.EC_SCHEDULE_IUD_FOLLOWUP;
 import static org.opensrp.register.DrishtiScheduleConstants.ECSchedulesConstants.EC_SCHEDULE_MALE_STERILIZATION_FOLLOWUP;
 import static org.opensrp.register.DrishtiScheduleConstants.ECSchedulesConstants.EC_SCHEDULE_OCP_REFILL;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_ANC;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_AUTO_CLOSE_PNC;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_DELIVERY_PLAN;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_EDD;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_HB_FOLLOWUP_TEST;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_HB_TEST_1;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_HB_TEST_2;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_IFA_1;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_IFA_2;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_IFA_3;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_LAB;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_TT_1;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_TT_2;
+import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.*;
 import static org.opensrp.scheduler.Matcher.any;
 import static org.opensrp.scheduler.Matcher.anyOf;
 import static org.opensrp.scheduler.Matcher.eq;
@@ -90,7 +78,7 @@ public class AlertHandler {
     private Matcher motherSchedules() {
         return anyOf(SCHEDULE_ANC, SCHEDULE_TT_1, SCHEDULE_TT_2, SCHEDULE_IFA_1, SCHEDULE_IFA_2, SCHEDULE_IFA_3,
                 SCHEDULE_LAB, SCHEDULE_EDD, SCHEDULE_HB_TEST_1, SCHEDULE_HB_TEST_2, SCHEDULE_HB_FOLLOWUP_TEST,
-                SCHEDULE_DELIVERY_PLAN, "TT KE 1", "TT KE 2", "KB Implant");
+                SCHEDULE_DELIVERY_PLAN, SCHEDULE_TT_INA_1, SCHEDULE_TT_INA_2, SCHEDULE_KB_IMPLANT,SCHEDULE_KB_INJECT_DEPOPROVERA,SCHEDULE_KB_INJECT_CYCLOFEM,SCHEDULE_KB_IUD);
     }
 
     private Matcher ecSchedules() {
