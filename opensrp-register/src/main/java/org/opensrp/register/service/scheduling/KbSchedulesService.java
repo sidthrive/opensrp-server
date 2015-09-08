@@ -48,14 +48,9 @@ public class KbSchedulesService {
         if ("Implant".equalsIgnoreCase(jenisKontrasepsiYangDigunakan)){
             scheduler.enrollIntoSchedule(entityId,"KB Implant",parse(referenceDate));
         }
-        /*json schedule belum dibuat
-        else if ("iud".equalsIgnoreCase(keteranganTentangPesertaKB)){
-            scheduler.enrollIntoSchedule(entityId,"KB IUD", parse(referenceDate));
-        }
-        //json schedule belum dibuat
-        else if("suntik".equalsIgnoreCase(keteranganTentangPesertaKB)){
+        else if("suntik_depoprovera".equalsIgnoreCase(jenisKontrasepsiYangDigunakan)){
             scheduler.enrollIntoSchedule(entityId,"KB Injection Depoprovera", parse(referenceDate));
         }
-        */
+
     }
 }
