@@ -1,5 +1,7 @@
 package org.opensrp.register;
 
+import org.omg.CORBA.PUBLIC_MEMBER;
+
 public class DrishtiScheduleConstants {
 	public static class OpenSRPEvent{
 		public static final String FORM_SUBMISSION = "FORM_SUBMISSION";
@@ -48,6 +50,13 @@ public class DrishtiScheduleConstants {
         public static final String SCHEDULE_HB_TEST_2 = "Hb Test 2";
         public static final String SCHEDULE_HB_FOLLOWUP_TEST = "Hb Followup Test";
         public static final String SCHEDULE_DELIVERY_PLAN = "Delivery Plan";
+        public static final String SCHEDULE_TT_INA_1 = "TT KE 1";
+        public static final String SCHEDULE_TT_INA_2 = "TT KE 2";
+        public static final String SCHEDULE_KB_IMPLANT = "KB Implant";
+        public static final String SCHEDULE_KB_INJECT_DEPOPROVERA = "KB Injection Depoprovera";
+        public static final String SCHEDULE_KB_INJECT_CYCLOFEM = "KB Injection Cyclofem";
+        public static final String SCHEDULE_KB_IUD = "KB IUD";
+
     }
 
     public static class ECSchedulesConstants {
