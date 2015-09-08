@@ -54,6 +54,9 @@ public class KbSchedulesService {
         else if("suntik_cyclofem".equalsIgnoreCase(jenisKontrasepsiYangDigunakan)){
             scheduler.enrollIntoSchedule(entityId,"KB Injection Cyclofem", parse(referenceDate));
         }
+        else if("iud".equalsIgnoreCase(jenisKontrasepsiYangDigunakan)){
+            scheduler.enrollIntoSchedule(entityId,"KB IUD", parse(referenceDate));
+        }
 
     }
 }
