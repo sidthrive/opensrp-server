@@ -1,11 +1,15 @@
 package org.opensrp.dto;
 
+import org.codehaus.jackson.annotate.JsonProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class LastIdDTO {
 
+    @JsonProperty
     private Integer status;
+    @JsonProperty
     private Long lastUsedId;
 
     public LastIdDTO(){

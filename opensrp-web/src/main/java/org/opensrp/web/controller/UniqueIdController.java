@@ -86,11 +86,11 @@ public class UniqueIdController {
     }
 
     @RequestMapping(headers = {"Accept=application/json"}, method = POST, value = "/last-used-id")
-    public ResponseEntity<LastIdDTO> setLastId(@RequestParam("last-id") String lastId) {
+    public ResponseEntity<LastIdDTO> setLastId(@RequestBody LastIdDTO lastId) {
         HttpResponse response = new HttpResponse(false, null);
         try {
             String anmIdentifier = userController.currentUser().getUsername();
-            response = httpAgent.post(lastIdUrl + "?anm-id=" + anmIdentifier + "&last-id=" + lastId, "", "application/json");
+            response = httpAgent.post(lastIdUrl + "?anm-id=" + anmIdentifier + "&last-id=" + lastId.getLastUsedId(), "", "application/json");
             LastIdDTO dto = new Gson().fromJson(response.body(), LastIdDTO.class);
             logger.info("Saved last used id for ANM: " + anmIdentifier);
             return new ResponseEntity<>(dto, HttpStatus.OK);
