@@ -83,6 +83,8 @@ public class HandlerMapperTest {
 	ANCInvestigationsHandler ancInvestigationsHandler;
 	@Mock
 	KbHandler kbHandler;
+	@Mock
+	KbFollowUpHandler kbFollowUpHandler;
 
 	@Mock
 	private HandlerMapper handlerMapper;
@@ -123,6 +125,7 @@ public class HandlerMapperTest {
 	             ecEditHandler,
 				ancInvestigationsHandler,
 				kbHandler,
+				kbFollowUpHandler,
 				mctsReportService);
 	}
 	

@@ -53,7 +53,7 @@ public class HandlerMapper implements IHandlerMapper {
             ECEditHandler ecEditHandler,
             ANCInvestigationsHandler ancInvestigationsHandler,
             KbHandler kbHandler,
-
+            KbFollowUpHandler kbFollowUpHandler,
             MCTSReportService mctsReportService)
 	{
 		
@@ -91,6 +91,7 @@ public class HandlerMapper implements IHandlerMapper {
                 .put(EC_EDIT, ecEditHandler)
                 .put(ANC_INVESTIGATIONS, ancInvestigationsHandler)
                 .put(KOHORT_KB_PELAYANAN, kbHandler)
+                .put(KOHORT_KB_UPDATE, kbFollowUpHandler)
                 .map();
 
 	}

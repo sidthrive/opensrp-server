@@ -98,6 +98,8 @@ public class FormSubmissionRouterTest {
 	private HandlerMapper handlerMapper;
     @Mock
     private KbHandler kbHandler;
+    @Mock
+    private KbFollowUpHandler kbFollowUpHandler;
 	@Before
     public void setUp() throws Exception {
     	
@@ -136,6 +138,7 @@ public class FormSubmissionRouterTest {
 	             ecEditHandler,
 	             ancInvestigationsHandler,
                  kbHandler,
+                kbFollowUpHandler,
 	             mReportService);
 	
 

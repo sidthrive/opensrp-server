@@ -61,6 +61,7 @@ public class AllConstants {
         public static final String PPFP = "postpartum_family_planning";
         public static final String RECORD_ECPS = "record_ecps";
         public static final String KOHORT_KB_PELAYANAN = "kohort_kb_pelayanan";
+        public static final String KOHORT_KB_UPDATE ="kohort_kb_update";
     }
 
     public static class Report {
@@ -176,6 +177,16 @@ public class AllConstants {
         public static final String RISK_OBSERVED_DURING_ANC = "riskObservedDuringANC";
         public static final String BLEEDING_VALUE = "bleeding";
         public static final String WEIGHT = "weight";
+    }
+
+    public static class KbFormFields{
+        public static final String TANGGAL_KUNJUNGAN = "tanggalkunjungan";
+        public static final String JENIS_KONTRASEPSI="jenisKontrasepsi";
+        public static final String IMPLANT = "Implant";
+        public static final String KB_IUD = "iud";
+        public static final String SUNTIK_DEPOPROVERA ="suntik_depoprovera";
+        public static final String SUNTIK_CYCLOFEM ="suntik_cyclofem";
+
     }
 
     public static class HbTestFormFields {
