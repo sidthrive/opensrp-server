@@ -23,14 +23,14 @@ public class IsFourthANCVisitRuleTest {
 
     @Test
     public void shouldPassWhenANCVisitIsTheFourthOne() throws Exception {
-        Map<String, String> fields = EasyMap.create("ancVisitNumber", "4").map();
+        Map<String, String> fields = EasyMap.create("ancKe", "4").map();
 
         assertTrue(rule.apply(new SafeMap(fields)));
     }
 
     @Test
     public void shouldFailWhenANCVisitIsNotTheFourthOne() throws Exception {
-        Map<String, String> fields = EasyMap.create("ancVisitNumber", "1").map();
+        Map<String, String> fields = EasyMap.create("ancKe", "1").map();
 
         assertFalse(rule.apply(new SafeMap(fields)));
     }

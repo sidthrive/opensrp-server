@@ -159,7 +159,7 @@ public class AllConstants {
         public static final String MOTHER_ID = "id";
         public static final String REGISTRATION_DATE = "registrationDate";
         public static final String ANC_VISIT_DATE_FIELD = "ancVisitDate";
-        public static final String ANC_VISIT_NUMBER_FIELD = "ancVisitNumber";
+        public static final String ANC_VISIT_NUMBER_FIELD = "ancKe";
         public static final String TT1_DOSE_VALUE = "tt1";
         public static final String TT2_DOSE_VALUE = "tt2";
         public static final String TT_BOOSTER_DOSE_VALUE = "ttbooster";

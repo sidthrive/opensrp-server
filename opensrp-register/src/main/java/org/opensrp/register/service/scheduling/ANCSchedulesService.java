@@ -74,10 +74,7 @@ public class ANCSchedulesService {
     }
 
     public void InaTtVisitHasHappened(String entityId, String anmId, String ttVisit, String date){
-        if("tt_ke_0".equalsIgnoreCase(ttVisit)){
-            scheduler.enrollIntoSchedule(entityId,"TT KE 0", date);
-        }else if("tt_ke_1".equalsIgnoreCase(ttVisit)){
-            fulfillMilestoneIfPossible(entityId,anmId,"TT KE 0","TT KE 0",parse(date));
+        if("tt_ke_1".equalsIgnoreCase(ttVisit)){
             scheduler.enrollIntoSchedule(entityId,"TT KE 1", date);
         }else if("tt_ke_2".equalsIgnoreCase(ttVisit)){
             fulfillMilestoneIfPossible(entityId,anmId,"TT KE 1","TT KE 1",parse(date));

@@ -104,8 +104,8 @@ public class ANCService {
         ancSchedulesService.ancVisitHasHappened(submission.entityId(), submission.anmId(),
                 parseInt(submission.getField(AllConstants.ANCFormFields.ANC_VISIT_NUMBER_FIELD)), submission.getField(AllConstants.ANCFormFields.ANC_VISIT_DATE_FIELD));
 
-        List<String> reportFields = reportFieldsDefinition.get(submission.formName());
-        reportingService.ancVisit(new SafeMap(submission.getFields(reportFields)));
+      //  List<String> reportFields = reportFieldsDefinition.get(submission.formName());
+      //  reportingService.ancVisit(new SafeMap(submission.getFields(reportFields)));
     }
 
     private void updateMotherAfterANCVisit(FormSubmission submission, Mother mother) {
@@ -165,7 +165,7 @@ public class ANCService {
         ancSchedulesService.InaTtVisitHasHappened(submission.entityId(),
                 submission.anmId(),
                 statusImunisasiTt,
-                submission.getField("referenceDate"));
+                submission.getField(ANC_VISIT_DATE_FIELD));
     }
 
     public void ifaTabletsGiven(FormSubmission submission) {

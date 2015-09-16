@@ -64,7 +64,7 @@ public class MCTSReportServiceTest {
                 .withEntityId("mother id 1")
                 .addFormField("submissionDate", "2012-03-02")
                 .addFormField("ancVisitDate", "2012-03-01")
-                .addFormField("ancVisitNumber", "1")
+                .addFormField("ancKe", "1")
                 .build();
         when(rulesFactory.ruleByName(any(String.class))).thenReturn(rule);
         when(reportDefinitionLoader.load()).thenReturn(reportDefinition());
@@ -90,7 +90,7 @@ public class MCTSReportServiceTest {
                 .withEntityId("mother id 1")
                 .addFormField("submissionDate", "2012-03-02")
                 .addFormField("ancVisitDate", "2012-03-01")
-                .addFormField("ancVisitNumber", "1")
+                .addFormField("ancKe", "1")
                 .build();
         when(rulesFactory.ruleByName(any(String.class))).thenReturn(rule);
         when(reportDefinitionLoader.load()).thenReturn(reportDefinition());
@@ -108,7 +108,7 @@ public class MCTSReportServiceTest {
                 .create("thayiCardNumber", "thayi card 1")
                 .put("id", "mother id 1")
                 .put("registrationDate", "2012-02-01")
-                .put("ancVisitNumber", "1")
+                .put("ancKe", "1")
                 .put("submissionDate", "2012-03-02")
                 .map()));
     }
@@ -119,7 +119,7 @@ public class MCTSReportServiceTest {
                         new MCTSFormIndicator("anc_visit",
                                 asList(new MCTSReportIndicator(
                                         "ANC1", "mother", "ancVisitDate",
-                                        asList("id", "ancVisitNumber"),
+                                        asList("id", "ancKe"),
                                         new ReferenceData("mother", "id",
                                                 asList("thayiCardNumber", "registrationDate")),
                                         asList("IsChildLessThanOneYearOldRule")
