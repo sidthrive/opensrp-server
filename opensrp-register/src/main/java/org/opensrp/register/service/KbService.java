@@ -63,6 +63,24 @@ public class KbService {
         this.reportFieldsDefinition = reportFieldsDefinition;
     }
 
+    public void registerKB(FormSubmission submission) {
+        String motherId = submission.getField(AllConstants.ANCFormFields.MOTHER_ID);
+
+//        if (!eligibleCouples.exists(submission.entityId())) {
+//            logger.warn(format("Found mother without registered eligible couple. Ignoring: {0} for mother with id: {1} for ANM: {2}",
+//                    submission.entityId(), motherId, submission.anmId()));
+//            return;
+//        }
+
+        Mother mother = allMothers.findByCaseId(motherId);
+        allMothers.update(mother.withAnm(submission.anmId()));
+
+//        KbInjection(submission);
+
+//        List<String> reportFields = reportFieldsDefinition.get(submission.formName());
+//        reportingService.registerANC(new SafeMap(submission.getFields(reportFields)));
+    }
+
     public void KbInjection(FormSubmission submission) {
         String motherId = submission.getField(AllConstants.ANCFormFields.MOTHER_ID);
 
