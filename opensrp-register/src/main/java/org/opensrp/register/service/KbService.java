@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import java.util.List;
 import java.util.Map;
 
@@ -40,6 +41,7 @@ import static org.joda.time.LocalDate.parse;
 
 @Service
 public class KbService {
+
     private static Logger logger = LoggerFactory.getLogger(KbService.class.toString());
 
     private AllMothers allMothers;
@@ -61,6 +63,24 @@ public class KbService {
         this.reportFieldsDefinition = reportFieldsDefinition;
     }
 
+    public void registerKB(FormSubmission submission) {
+        String motherId = submission.getField(AllConstants.ANCFormFields.MOTHER_ID);
+
+//        if (!eligibleCouples.exists(submission.entityId())) {
+//            logger.warn(format("Found mother without registered eligible couple. Ignoring: {0} for mother with id: {1} for ANM: {2}",
+//                    submission.entityId(), motherId, submission.anmId()));
+//            return;
+//        }
+
+        Mother mother = allMothers.findByCaseId(motherId);
+        allMothers.update(mother.withAnm(submission.anmId()));
+
+//        KbInjection(submission);
+
+//        List<String> reportFields = reportFieldsDefinition.get(submission.formName());
+//        reportingService.registerANC(new SafeMap(submission.getFields(reportFields)));
+    }
+
     public void KbInjection(FormSubmission submission) {
         String motherId = submission.getField(AllConstants.ANCFormFields.MOTHER_ID);
 
@@ -80,5 +100,24 @@ public class KbService {
                 submission.getField("tanggalkunjungan"));
     }
 
+    public void KbFollowUp(FormSubmission submission) {
+        String motherId = submission.getField(AllConstants.ANCFormFields.MOTHER_ID);
+
+        Mother mother = allMothers.findByCaseId(motherId);
+
+        //    ancSchedulesService.enrollMother(motherId, parse(submission.getField(REFERENCE_DATE)));
+
+//        List<String> reportFields = reportFieldsDefinition.get(submission.formName());
+        if (mother == null) {
+            logger.warn("Tried to handle KB provided without registered mother. Submission: " + submission);
+            return;
+        }
+        String jenisKontrasepsiYangDigunakan = submission.getField("jenisKontrasepsi");
+        kbSchedulesService.kbFollowUpHasHappen(submission.entityId(),
+                submission.anmId(),
+                jenisKontrasepsiYangDigunakan,
+                submission.getField("tanggalkunjungan"));
+
+    }
 }
 

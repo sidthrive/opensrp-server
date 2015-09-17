@@ -24,8 +24,8 @@ public class IsHypertensionStateChangedRuleTest {
     public void shouldReturnTrueWhenHyperTensionStateChanged() {
         Map<String, String> reportFields =
                 create("id", "mother id 1")
-                        .put("bpSystolic","140")
-                        .put("bpDiastolic", "90")
+                        .put("tandaVitalTDSistolik","140")
+                        .put("tandaVitalTDDiastolik", "90")
                         .put("previousBpSystolic", "130")
                         .put("previousBpDiastolic", "80")
                         .map();
@@ -34,8 +34,8 @@ public class IsHypertensionStateChangedRuleTest {
 
         reportFields =
                 create("id", "mother id 1")
-                        .put("bpSystolic","140")
-                        .put("bpDiastolic", "80")
+                        .put("tandaVitalTDSistolik","140")
+                        .put("tandaVitalTDDiastolik", "80")
                         .put("previousBpSystolic", "130")
                         .put("previousBpDiastolic", "80")
                         .map();
@@ -45,8 +45,8 @@ public class IsHypertensionStateChangedRuleTest {
 
         reportFields =
                 create("id", "mother id 1")
-                        .put("bpSystolic","120")
-                        .put("bpDiastolic", "90")
+                        .put("tandaVitalTDSistolik","120")
+                        .put("tandaVitalTDDiastolik", "90")
                         .put("previousBpSystolic", "130")
                         .put("previousBpDiastolic", "80")
                         .map();
@@ -58,8 +58,8 @@ public class IsHypertensionStateChangedRuleTest {
     public void shouldReturnFalseWhenHyperTensionStateIsNotChanged() {
         Map<String, String> reportFields =
                 create("id", "mother id 1")
-                        .put("bpSystolic", "125")
-                        .put("bpDiastolic", "80")
+                        .put("tandaVitalTDSistolik", "125")
+                        .put("tandaVitalTDDiastolik", "80")
                         .put("previousBpSystolic", "130")
                         .put("previousBpDiastolic", "80")
 

@@ -61,6 +61,7 @@ public class AllConstants {
         public static final String PPFP = "postpartum_family_planning";
         public static final String RECORD_ECPS = "record_ecps";
         public static final String KOHORT_KB_PELAYANAN = "kohort_kb_pelayanan";
+        public static final String KOHORT_KB_UPDATE ="kohort_kb_update";
     }
 
     public static class Report {
@@ -158,7 +159,7 @@ public class AllConstants {
         public static final String MOTHER_ID = "id";
         public static final String REGISTRATION_DATE = "registrationDate";
         public static final String ANC_VISIT_DATE_FIELD = "ancVisitDate";
-        public static final String ANC_VISIT_NUMBER_FIELD = "ancVisitNumber";
+        public static final String ANC_VISIT_NUMBER_FIELD = "ancKe";
         public static final String TT1_DOSE_VALUE = "tt1";
         public static final String TT2_DOSE_VALUE = "tt2";
         public static final String TT_BOOSTER_DOSE_VALUE = "ttbooster";
@@ -168,14 +169,24 @@ public class AllConstants {
     }
 
     public static class ANCVisitFormFields {
-        public static final String BP_DIASTOLIC = "bpDiastolic";
+        public static final String BP_DIASTOLIC = "tandaVitalTDDiastolik";
         public static final String PREVIOUS_BP_DIASTOLIC = "previousBpDiastolic";
         public static final String PREVIOUS_BP_SYSTOLIC = "previousBpSystolic";
-        public static final String BP_SYSTOLIC = "bpSystolic";
+        public static final String BP_SYSTOLIC = "tandaVitalTDSistolik";
         public static final String IS_HYPERTENSION_DETECTED_FOR_FIRST_TIME = "isHypertensionDetectedForFirstTime";
         public static final String RISK_OBSERVED_DURING_ANC = "riskObservedDuringANC";
         public static final String BLEEDING_VALUE = "bleeding";
-        public static final String WEIGHT = "weight";
+        public static final String WEIGHT = "bbKg";
+    }
+
+    public static class KbFormFields{
+        public static final String TANGGAL_KUNJUNGAN = "tanggalkunjungan";
+        public static final String JENIS_KONTRASEPSI="jenisKontrasepsi";
+        public static final String IMPLANT = "Implant";
+        public static final String KB_IUD = "iud";
+        public static final String SUNTIK_DEPOPROVERA ="suntik_depoprovera";
+        public static final String SUNTIK_CYCLOFEM ="suntik_cyclofem";
+
     }
 
     public static class HbTestFormFields {

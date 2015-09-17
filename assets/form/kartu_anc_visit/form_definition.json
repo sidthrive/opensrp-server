@@ -14,7 +14,7 @@
         "source": "ibu.kartu_ibu.id"
       },
       {
-        "name": "referenceDate",
+        "name": "ancVisitDate",
         "bind": "/model/instance/ANC_Visit/anc_date"
       },
       {

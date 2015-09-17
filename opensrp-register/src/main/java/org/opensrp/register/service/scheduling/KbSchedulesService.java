@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.opensrp.common.AllConstants.KbFormFields.*;
 
 @Service
 public class KbSchedulesService {
@@ -28,7 +29,30 @@ public class KbSchedulesService {
         this.scheduler = scheduler;
     }
 
+    //enroll schedule for kb_registration
     public void kbHasHappen(String entityId, String anmId, String jenisKontrasepsiYangDigunakan, String referenceDate) {
+        if ("Implant".equalsIgnoreCase(jenisKontrasepsiYangDigunakan)){
+            scheduler.enrollIntoSchedule(entityId,SCHEDULE_KB_IMPLANT,parse(referenceDate));
+        }
+        else if("suntik_depoprovera".equalsIgnoreCase(jenisKontrasepsiYangDigunakan)){
+            scheduler.enrollIntoSchedule(entityId,SCHEDULE_KB_INJECT_DEPOPROVERA, parse(referenceDate));
+        }
+        else if("suntik_cyclofem".equalsIgnoreCase(jenisKontrasepsiYangDigunakan)){
+            scheduler.enrollIntoSchedule(entityId,SCHEDULE_KB_INJECT_CYCLOFEM, parse(referenceDate));
+        }
+        else if("iud".equalsIgnoreCase(jenisKontrasepsiYangDigunakan)){
+            scheduler.enrollIntoSchedule(entityId,SCHEDULE_KB_IUD, parse(referenceDate));
+        }
+
+    }
+
+    public void kbFollowUpHasHappen(String entityId, String anmId, String jenisKontrasepsiYangDigunakan, String referenceDate) {
+
+        //unenroll from all kohort_kb_registration schedule
+        scheduler.unEnrollFromAllSchedules(entityId);
+
+
+        //enroll again for schedule from kohort_kb_update
         if ("Implant".equalsIgnoreCase(jenisKontrasepsiYangDigunakan)){
             scheduler.enrollIntoSchedule(entityId,SCHEDULE_KB_IMPLANT,parse(referenceDate));
         }

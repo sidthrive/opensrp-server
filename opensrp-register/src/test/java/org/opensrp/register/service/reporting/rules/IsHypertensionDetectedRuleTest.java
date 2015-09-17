@@ -24,16 +24,16 @@ public class IsHypertensionDetectedRuleTest {
     public void shouldReturnTrueWhenHyperTensionDetected() {
         Map<String, String> reportFields =
                 create("id", "mother id 1")
-                        .put("bpSystolic","140")
-                        .put("bpDiastolic", "90")
+                        .put("tandaVitalTDSistolik","140")
+                        .put("tandaVitalTDDiastolik", "90")
                         .map();
 
         assertTrue(isHypertensionDetectedRule.apply(new SafeMap(reportFields)));
 
         reportFields =
                 create("id", "mother id 1")
-                        .put("bpSystolic","145")
-                        .put("bpDiastolic", "70")
+                        .put("tandaVitalTDSistolik","145")
+                        .put("tandaVitalTDDiastolik", "70")
                         .map();
 
         assertTrue(isHypertensionDetectedRule.apply(new SafeMap(reportFields)));
@@ -41,8 +41,8 @@ public class IsHypertensionDetectedRuleTest {
 
         reportFields =
                 create("id", "mother id 1")
-                        .put("bpSystolic","120")
-                        .put("bpDiastolic", "90")
+                        .put("tandaVitalTDSistolik","120")
+                        .put("tandaVitalTDDiastolik", "90")
                         .map();
 
         assertTrue(isHypertensionDetectedRule.apply(new SafeMap(reportFields)));
@@ -52,8 +52,8 @@ public class IsHypertensionDetectedRuleTest {
     public void shouldReturnFalseWhenHyperTensionDetected() {
         Map<String, String> reportFields =
                 create("id", "mother id 1")
-                        .put("bpSystolic", "125")
-                        .put("bpDiastolic", "80")
+                        .put("tandaVitalTDSistolik", "125")
+                        .put("tandaVitalTDDiastolik", "80")
                         .map();
 
         assertFalse(isHypertensionDetectedRule.apply(new SafeMap(reportFields)));

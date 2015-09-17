@@ -244,7 +244,7 @@ public class PNCServiceTest extends BaseUnitTest {
                 .thenReturn(new Mother("mother id 1", "ec id 1", "tc 1")
                         .withChildrenDetails(asList(EasyMap.create("id", "child id")
                                 .put("gender", "female")
-                                .put("weight", "2.5")
+                                .put("bbKg", "2.5")
                                 .put("immunizationsGiven", "bcg")
                                 .map())));
         FormSubmission submission = create()
@@ -256,12 +256,12 @@ public class PNCServiceTest extends BaseUnitTest {
                 .withSubForm(new SubFormData("child_registration",
                         asList(EasyMap.create("id", "child id 1")
                                         .put("gender", "male")
-                                        .put("weight", "2")
+                                        .put("bbKg", "2")
                                         .put("immunizationsGiven", "bcg")
                                         .map(),
                                 EasyMap.create("id", "child id 2")
                                         .put("gender", "female")
-                                        .put("weight", "3")
+                                        .put("bbKg", "3")
                                         .map()
                         )
                 ))
@@ -272,17 +272,17 @@ public class PNCServiceTest extends BaseUnitTest {
         verify(allMothers).update(new Mother("mother id 1", "ec id 1", "tc 1")
                 .withChildrenDetails(asList(EasyMap.create("id", "child id")
                                 .put("gender", "female")
-                                .put("weight", "2.5")
+                                .put("bbKg", "2.5")
                                 .put("immunizationsGiven", "bcg")
                                 .map(),
                         EasyMap.create("id", "child id 1")
                                 .put("gender", "male")
-                                .put("weight", "2")
+                                .put("bbKg", "2")
                                 .put("immunizationsAtBirth", "bcg")
                                 .map(),
                         EasyMap.create("id", "child id 2")
                                 .put("gender", "female")
-                                .put("weight", "3")
+                                .put("bbKg", "3")
                                 .put("immunizationsAtBirth", null)
                                 .map()
                 )));
@@ -301,11 +301,11 @@ public class PNCServiceTest extends BaseUnitTest {
                 .withSubForm(new SubFormData("child_registration_oa",
                         asList(EasyMap.create("id", "child id 1")
                                         .put("gender", "male")
-                                        .put("weight", "2")
+                                        .put("bbKg", "2")
                                         .map(),
                                 EasyMap.create("id", "child id 2")
                                         .put("gender", "female")
-                                        .put("weight", "3")
+                                        .put("bbKg", "3")
                                         .map()
                         )
                 ))
@@ -317,12 +317,12 @@ public class PNCServiceTest extends BaseUnitTest {
                 .withAnm("anm id 1")
                 .withChildrenDetails(asList(EasyMap.create("id", "child id 1")
                                         .put("gender", "male")
-                                        .put("weight", "2")
+                                        .put("bbKg", "2")
                                         .put("immunizationsAtBirth", null)
                                         .map(),
                                 EasyMap.create("id", "child id 2")
                                         .put("gender", "female")
-                                        .put("weight", "3")
+                                        .put("bbKg", "3")
                                         .put("immunizationsAtBirth", null)
                                         .map()
                         )
