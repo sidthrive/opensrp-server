@@ -267,4 +267,21 @@ public class ANCService {
         mother.updateANCInvestigationsInformation(ancInvestigations);
         allMothers.update(mother);
     }
+
+    public void RegisterHbTest(FormSubmission submission) {
+        Mother mother = allMothers.findByCaseId(submission.entityId());
+        if(mother == null){
+            logger.warn("Tried to Register HB test without registered mother for CASE ID" + submission.entityId());
+            return;
+        }
+        Map<String, String> hbTest = create(REFERENCE_DATE, submission.getField(REFERENCE_DATE))
+                .put("laboratoriumPeriksaHbHasil", submission.getField("laboratoriumPeriksaHbHasil"))
+                .map();
+        mother.updateHBTestInformation(hbTest);
+        allMothers.update(mother);
+
+        ancSchedulesService.hbTestRegistrationDone(submission.entityId(), submission.anmId(),submission.getField("laboratoriumPeriksaHbDilakukan"), submission.getField(REFERENCE_DATE),
+                submission.getField("laboratoriumPeriksaHbAnemia"));
+
+    }
 }

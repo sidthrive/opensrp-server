@@ -1,0 +1,35 @@
+{
+    "name": "INA Hb Test Follow",
+    "absolute": true,
+    "milestones": [
+        {
+            "name": "INA Hb Test Follow",
+            "scheduleWindows": {
+                "earliest": ["1 Month"],
+                "due": ["4 Weeks"],
+                "late": ["1 Month"],
+                "max": ["52 Weeks", "1 Day"]
+            },
+            "alerts": [
+                {
+                    "window": "earliest",
+                    "offset": ["0 Weeks"],
+                    "interval": ["1 Day"],
+                    "count": "30"
+                },
+                {
+                    "window": "due",
+                    "offset": ["4 weeks"],
+                    "interval": ["1 Day"],
+                    "count": "14"
+                },
+                {
+                    "window": "late",
+                    "offset": ["1 Month", "2 Weeks"],
+                    "interval": ["1 Day"],
+                    "count": "655"
+                }
+            ]
+        }
+    ]
+}

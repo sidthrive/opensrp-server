@@ -17,6 +17,8 @@ public class ANCRegistrationHandler implements FormSubmissionHandler {
 
     @Override
     public void handle(FormSubmission submission) {
+
         ancService.registerANC(submission);
+        ancService.RegisterHbTest(submission);
     }
 }

@@ -17,6 +17,9 @@ public class TTHandler implements FormSubmissionHandler {
 
     @Override
     public void handle(FormSubmission submission) {
-        ancService.ttProvided(submission);
+
+        //TT indonesia is provided in anv_visit forms
+
+        //ancService.ttProvided(submission);
     }
 }

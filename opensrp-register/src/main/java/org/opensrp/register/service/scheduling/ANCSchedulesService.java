@@ -75,7 +75,7 @@ public class ANCSchedulesService {
 
     public void InaTtVisitHasHappened(String entityId, String anmId, String ttVisit, String date){
         if("tt_ke_1".equalsIgnoreCase(ttVisit)){
-            scheduler.enrollIntoSchedule(entityId,"TT KE 1", date);
+            scheduler.enrollIntoSchedule(entityId, "TT KE 1", date);
         }else if("tt_ke_2".equalsIgnoreCase(ttVisit)){
             fulfillMilestoneIfPossible(entityId,anmId,"TT KE 1","TT KE 1",parse(date));
             scheduler.enrollIntoSchedule(entityId,"TT KE 2", date);
@@ -187,4 +187,18 @@ public class ANCSchedulesService {
     private boolean isNotEnrolled(String caseId, String scheduleName) {
         return scheduler.isNotEnrolled(caseId, scheduleName);
     }
+
+    public void hbTestRegistrationDone(String entityId, String anmId, String laboratoriumPeriksaHbDilakukan,String date, String laboratoriumPeriksaHbAnemia) {
+        if("ya".equalsIgnoreCase(laboratoriumPeriksaHbDilakukan)) {
+            if ("positif".equalsIgnoreCase(laboratoriumPeriksaHbAnemia)) {
+                scheduler.enrollIntoSchedule(entityId, "INA Hb Test Follow", parse(date));
+            } else {
+                scheduler.enrollIntoSchedule(entityId, "INA Hb Test 1", parse(date));
+            }
+        }else{
+            scheduler.enrollIntoSchedule(entityId,"INA Hb Test 1",parse(date));
+        }
+
+    }
+
 }
