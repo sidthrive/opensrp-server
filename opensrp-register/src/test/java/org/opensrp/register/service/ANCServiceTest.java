@@ -171,9 +171,9 @@ public class ANCServiceTest {
                 .addFormField("ancVisitDate", "2013-01-01")
                 .addFormField("ancKe", "2")
                 .addFormField("someKey", "someValue")
-                .addFormField("weight", "55")
-                .addFormField("bpSystolic", "120")
-                .addFormField("bpDiastolic", "80")
+                .addFormField("bbKg", "55")
+                .addFormField("tandaVitalTDSistolik", "120")
+                .addFormField("tandaVitalTDDiastolik", "80")
                 .build();
 
         Mother mother = new Mother("entity id 1", "ec id 1", "TC1")
@@ -186,9 +186,9 @@ public class ANCServiceTest {
         verify(allMothers).update(mother
                 .withANCVisits(asList(
                         create("ancVisitDate", "2013-01-01")
-                                .put("weight", "55")
-                                .put("bpSystolic", "120")
-                                .put("bpDiastolic", "80")
+                                .put("bbKg", "55")
+                                .put("tandaVitalTDSistolik", "120")
+                                .put("tandaVitalTDDiastolik", "80")
                                 .map()
                 )));
         verify(ancSchedulesService).ancVisitHasHappened("entity id 1", "anm id 1", 2, "2013-01-01");
@@ -204,15 +204,15 @@ public class ANCServiceTest {
                 .addFormField("ancVisitDate", "2013-01-01")
                 .addFormField("ancKe", "2")
                 .addFormField("someKey", "someValue")
-                .addFormField("weight", "55")
-                .addFormField("bpSystolic", "120")
-                .addFormField("bpDiastolic", "80")
+                .addFormField("bbKg", "55")
+                .addFormField("tandaVitalTDSistolik", "120")
+                .addFormField("tandaVitalTDDiastolik", "80")
                 .build();
         List<Map<String, String>> ancVisits = new ArrayList<>();
         ancVisits.add(create("ancVisitDate", "2012-09-01")
-                .put("weight", "55")
-                .put("bpSystolic", "121")
-                .put("bpDiastolic", "81")
+                .put("bbKg", "55")
+                .put("tandaVitalTDSistolik", "121")
+                .put("tandaVitalTDDiastolik", "81")
                 .put("ancKe", "1")
                 .map());
         Mother mother = new Mother("entity id 1", "ec id 1", "TC1")
@@ -227,15 +227,15 @@ public class ANCServiceTest {
                 .withDetails(mapOf("someKey", "someValue"))
                 .withANCVisits(asList(
                         create("ancVisitDate", "2012-09-01")
-                                .put("weight", "55")
-                                .put("bpSystolic", "121")
-                                .put("bpDiastolic", "81")
+                                .put("bbKg", "55")
+                                .put("tandaVitalTDSistolik", "121")
+                                .put("tandaVitalTDDiastolik", "81")
                                 .put("ancKe", "1")
                                 .map(),
                         create("ancVisitDate", "2013-01-01")
-                                .put("weight", "55")
-                                .put("bpSystolic", "120")
-                                .put("bpDiastolic", "80")
+                                .put("bbKg", "55")
+                                .put("tandaVitalTDSistolik", "120")
+                                .put("tandaVitalTDDiastolik", "80")
                                 .put("ancKe", "2")
                                 .map()
                 ));
@@ -256,30 +256,30 @@ public class ANCServiceTest {
                 .addFormField("ancVisitDate", "2013-01-01")
                 .addFormField("ancKe", "2")
                 .addFormField("someKey", "someValue")
-                .addFormField("bpSystolic", "140")
-                .addFormField("bpDiastolic", "90")
+                .addFormField("tandaVitalTDSistolik", "140")
+                .addFormField("tandaVitalTDDiastolik", "90")
                 .build();
         Mother mother = new Mother("mother id 1", "ec id 1", "TC1")
-                .withDetails(create("someKey", "someValue").put("bpDiastolic", "90").put("bpSystolic", "140").map());
+                .withDetails(create("someKey", "someValue").put("tandaVitalTDDiastolik", "90").put("tandaVitalTDSistolik", "140").map());
         when(allMothers.findByCaseId("mother id 1")).thenReturn(mother);
-   //     when(reportFieldsDefinition.get("anc_visit")).thenReturn(asList("someKey", "bpSystolic", "bpDiastolic"));
+   //     when(reportFieldsDefinition.get("anc_visit")).thenReturn(asList("someKey", "tandaVitalTDSistolik", "tandaVitalTDDiastolik"));
 
         service.ancVisit(submission);
 
         verify(ancSchedulesService).ancVisitHasHappened("mother id 1", "anm id 1", 2, "2013-01-01");
-     //   verify(motherReportingService).ancVisit(new SafeMap(create("someKey", "someValue").put("bpDiastolic", "90").put("bpSystolic", "140").map()));
+     //   verify(motherReportingService).ancVisit(new SafeMap(create("someKey", "someValue").put("tandaVitalTDDiastolik", "90").put("tandaVitalTDSistolik", "140").map()));
 
         Mother updatedMother = new Mother("mother id 1", "ec id 1", "TC1")
                 .withANCVisits(asList(create("ancVisitDate", "2013-01-01")
-                        .put("weight", null)
-                        .put("bpSystolic", "140")
-                        .put("bpDiastolic", "90")
+                        .put("bbKg", null)
+                        .put("tandaVitalTDSistolik", "140")
+                        .put("tandaVitalTDDiastolik", "90")
                         .put("ancKe", "2")
                         .map()))
                 .withDetails(create("someKey", "someValue")
                         .put("isHypertensionDetectedForFirstTime", "true")
-                        .put("bpDiastolic", "90")
-                        .put("bpSystolic", "140")
+                        .put("tandaVitalTDDiastolik", "90")
+                        .put("tandaVitalTDSistolik", "140")
                         .map());
         verify(allMothers).update(updatedMother);
     }
@@ -295,33 +295,33 @@ public class ANCServiceTest {
                 .addFormField("ancVisitDate", "2013-01-01")
                 .addFormField("ancKe", "2")
                 .addFormField("someKey", "someValue")
-                .addFormField("bpSystolic", "140")
-                .addFormField("bpDiastolic", "90")
+                .addFormField("tandaVitalTDSistolik", "140")
+                .addFormField("tandaVitalTDDiastolik", "90")
                 .build();
         Mother mother = new Mother("mother id 1", "ec id 1", "TC1")
                 .withDetails(create("someKey", "someValue")
-                        .put("bpDiastolic", "90")
-                        .put("bpSystolic", "140")
+                        .put("tandaVitalTDDiastolik", "90")
+                        .put("tandaVitalTDSistolik", "140")
                         .put("isHypertensionDetectedForFirstTime", "true")
                         .map());
         when(allMothers.findByCaseId("mother id 1")).thenReturn(mother);
-     //   when(reportFieldsDefinition.get("anc_visit")).thenReturn(asList("someKey", "bpSystolic", "bpDiastolic"));
+     //   when(reportFieldsDefinition.get("anc_visit")).thenReturn(asList("someKey", "tandaVitalTDSistolik", "tandaVitalTDDiastolik"));
 
         service.ancVisit(submission);
 
         verify(ancSchedulesService).ancVisitHasHappened("mother id 1", "anm id 1", 2, "2013-01-01");
-     //   verify(motherReportingService).ancVisit(new SafeMap(create("someKey", "someValue").put("bpDiastolic", "90").put("bpSystolic", "140").map()));
+     //   verify(motherReportingService).ancVisit(new SafeMap(create("someKey", "someValue").put("tandaVitalTDDiastolik", "90").put("tandaVitalTDSistolik", "140").map()));
         Mother updatedMother = new Mother("mother id 1", "ec id 1", "TC1")
                 .withANCVisits(asList(create("ancVisitDate", "2013-01-01")
-                        .put("weight", null)
-                        .put("bpSystolic", "140")
-                        .put("bpDiastolic", "90")
+                        .put("bbKg", null)
+                        .put("tandaVitalTDSistolik", "140")
+                        .put("tandaVitalTDDiastolik", "90")
                         .put("ancKe", "2")
                         .map()))
                 .withDetails(create("someKey", "someValue")
                         .put("isHypertensionDetectedForFirstTime", "false")
-                        .put("bpDiastolic", "90")
-                        .put("bpSystolic", "140")
+                        .put("tandaVitalTDDiastolik", "90")
+                        .put("tandaVitalTDSistolik", "140")
                         .map());
         verify(allMothers).update(updatedMother);
     }
@@ -337,23 +337,23 @@ public class ANCServiceTest {
                 .addFormField("ancVisitDate", "2013-01-01")
                 .addFormField("ancKe", "2")
                 .addFormField("someKey", "someValue")
-                .addFormField("bpSystolic", "120")
-                .addFormField("bpDiastolic", "80")
+                .addFormField("tandaVitalTDSistolik", "120")
+                .addFormField("tandaVitalTDDiastolik", "80")
                 .build();
         Mother mother = new Mother("mother id 1", "ec id 1", "TC1")
-                .withDetails(create("someKey", "someValue").put("bpDiastolic", "80").put("bpSystolic", "120").map());
+                .withDetails(create("someKey", "someValue").put("tandaVitalTDDiastolik", "80").put("tandaVitalTDSistolik", "120").map());
         when(allMothers.findByCaseId("mother id 1")).thenReturn(mother);
-        when(reportFieldsDefinition.get("anc_visit")).thenReturn(asList("someKey", "bpSystolic", "bpDiastolic"));
+        when(reportFieldsDefinition.get("anc_visit")).thenReturn(asList("someKey", "tandaVitalTDSistolik", "tandaVitalTDDiastolik"));
 
         service.ancVisit(submission);
 
         verify(ancSchedulesService).ancVisitHasHappened("mother id 1", "anm id 1", 2, "2013-01-01");
-   //     verify(motherReportingService).ancVisit(new SafeMap(create("someKey", "someValue").put("bpDiastolic", "80").put("bpSystolic", "120").map()));
+   //     verify(motherReportingService).ancVisit(new SafeMap(create("someKey", "someValue").put("tandaVitalTDDiastolik", "80").put("tandaVitalTDSistolik", "120").map()));
 
         Mother updatedMother = new Mother("mother id 1", "ec id 1", "TC1").withDetails(
                 create("someKey", "someValue")
-                        .put("bpDiastolic", "80")
-                        .put("bpSystolic", "120")
+                        .put("tandaVitalTDDiastolik", "80")
+                        .put("tandaVitalTDSistolik", "120")
                         .map()
         );
         verify(allMothers, never()).update(updatedMother);

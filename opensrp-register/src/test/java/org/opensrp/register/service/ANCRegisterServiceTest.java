@@ -40,8 +40,8 @@ public class ANCRegisterServiceTest {
                 .withANCVisits(asList(
                         create("ancVisitDate", "2013-01-01")
                                 .put("weight", "55")
-                                .put("bpSystolic", "120")
-                                .put("bpDiastolic", "80")
+                                .put("tandaVitalTDSistolik", "120")
+                                .put("tandaVitalTDDiastolik", "80")
                                 .map()))
                 .withIFATablets(asList(
                         create("ifaTabletsDate", "2013-05-24")
@@ -134,8 +134,8 @@ public class ANCRegisterServiceTest {
                 .withANCVisits(asList(
                         create("ancVisitDate", "2013-01-01")
                                 .put("weight", "55")
-                                .put("bpSystolic", "120")
-                                .put("bpDiastolic", "80")
+                                .put("tandaVitalTDSistolik", "120")
+                                .put("tandaVitalTDDiastolik", "80")
                                 .map()))
                 .withANCInvestigations(asList(
                         create("testDate", "2012-09-01")

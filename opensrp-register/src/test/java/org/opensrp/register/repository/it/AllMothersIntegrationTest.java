@@ -47,13 +47,13 @@ public class AllMothersIntegrationTest {
                 .withANCVisits(asList(
                         create("ancVisitDate", "2014-02-14")
                                 .put("weight", "70")
-                                .put("bpSystolic", "150")
-                                .put("bpDiastolic", "100")
+                                .put("tandaVitalTDSistolik", "150")
+                                .put("tandaVitalTDDiastolik", "100")
                                 .map(),
                         create("ancVisitDate", "2014-04-14")
                                 .put("weight", "72")
-                                .put("bpSystolic", "120")
-                                .put("bpDiastolic", "80")
+                                .put("tandaVitalTDSistolik", "120")
+                                .put("tandaVitalTDDiastolik", "80")
                                 .map()
                 ))
                 .withDetails(details);
