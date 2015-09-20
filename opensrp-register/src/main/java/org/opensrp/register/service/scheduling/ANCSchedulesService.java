@@ -4,23 +4,7 @@ import static java.text.MessageFormat.format;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 import static org.joda.time.LocalDate.parse;
 import static org.opensrp.common.util.IntegerUtil.tryParse;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_ANC;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_ANC_1;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_ANC_2;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_ANC_3;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_ANC_4;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_ANC_MILESTONE_PREFIX;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_DELIVERY_PLAN;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_EDD;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_HB_FOLLOWUP_TEST;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_HB_TEST_1;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_HB_TEST_2;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_IFA_1;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_IFA_2;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_IFA_3;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_LAB;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_TT_1;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_TT_2;
+import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.*;
 
 import org.joda.time.LocalDate;
 import org.joda.time.Weeks;
@@ -38,8 +22,8 @@ public class ANCSchedulesService {
     public static final int NUMBER_OF_WEEKS_BEFORE_HB_TEST_2_BECOMES_DUE = 28;
     private static Logger logger = LoggerFactory.getLogger(ANCSchedulesService.class.toString());
 
-    private static final String[] NON_ANC_SCHEDULES = {SCHEDULE_EDD, SCHEDULE_LAB, SCHEDULE_TT_1, SCHEDULE_IFA_1,
-            SCHEDULE_HB_TEST_1, SCHEDULE_DELIVERY_PLAN};
+    private static final String[] NON_ANC_SCHEDULES = {SCHEDULE_EDD, SCHEDULE_LAB,  SCHEDULE_TT_1, SCHEDULE_IFA_1,
+            SCHEDULE_HB_TEST_1,  SCHEDULE_DELIVERY_PLAN};
     private HealthSchedulerService scheduler;
 
     @Autowired
@@ -187,18 +171,40 @@ public class ANCSchedulesService {
     private boolean isNotEnrolled(String caseId, String scheduleName) {
         return scheduler.isNotEnrolled(caseId, scheduleName);
     }
-
+    //indonesian version
     public void hbTestRegistrationDone(String entityId, String anmId, String laboratoriumPeriksaHbDilakukan,String date, String laboratoriumPeriksaHbAnemia) {
         if("ya".equalsIgnoreCase(laboratoriumPeriksaHbDilakukan)) {
             if ("positif".equalsIgnoreCase(laboratoriumPeriksaHbAnemia)) {
-                scheduler.enrollIntoSchedule(entityId, "INA Hb Test Follow", parse(date));
+                scheduler.enrollIntoSchedule(entityId, SCHEDULE_INA_HB_FOLLOW, parse(date));
             } else {
-                scheduler.enrollIntoSchedule(entityId, "INA Hb Test 1", parse(date));
+                scheduler.enrollIntoSchedule(entityId, SCHEDULE_INA_HB_1, parse(date));
             }
         }else{
-            scheduler.enrollIntoSchedule(entityId,"INA Hb Test 1",parse(date));
+            scheduler.enrollIntoSchedule(entityId,SCHEDULE_INA_HB_1,parse(date));
         }
 
     }
-
+    //indonesian version
+    public void hbTestVisitDone(String entityId, String anmId, String laboratoriumPeriksaHbDilakukan1, String date, String laboratoriumPeriksaHbAnemia1,LocalDate lmp) {
+        if("ya".equalsIgnoreCase(laboratoriumPeriksaHbDilakukan1)) {
+            if(fulfillMilestoneIfPossible(entityId,anmId,SCHEDULE_INA_HB_1,SCHEDULE_INA_HB_1,parse(date))){
+                if ("positif".equalsIgnoreCase(laboratoriumPeriksaHbAnemia1)) {
+                    scheduler.enrollIntoSchedule(entityId, SCHEDULE_INA_HB_FOLLOW, parse(date));
+                } else {
+                    scheduler.enrollIntoSchedule(entityId, SCHEDULE_INA_HB_2, parse(date));
+                }
+            }
+            else if(fulfillMilestoneIfPossible(entityId,anmId,SCHEDULE_INA_HB_FOLLOW,SCHEDULE_INA_HB_FOLLOW,parse(date))){
+                if (parse(date).isAfter(lmp.plusWeeks(NUMBER_OF_WEEKS_BEFORE_HB_TEST_2_BECOMES_DUE))) {
+                    fulfillMilestoneIfPossible(entityId, anmId, SCHEDULE_INA_HB_2, SCHEDULE_INA_HB_2, parse(date));
+                } else {
+                    scheduler.enrollIntoSchedule(entityId, SCHEDULE_INA_HB_2, parse(date));
+                }
+            }
+        }
+        else {
+            logger.warn("Tried to Create Schedule for HB Test but Lab test variable is selected NO  for CASE ID" + entityId);
+            return;
+        }
+    }
 }
