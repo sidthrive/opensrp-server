@@ -59,6 +59,9 @@ public class DrishtiScheduleConstants {
         public static final String SCHEDULE_INA_HB_1 = "INA Hb Test 1";
         public static final String SCHEDULE_INA_HB_2 = "INA Hb Test 2";
         public static final String SCHEDULE_INA_HB_FOLLOW = "INA Hb Test Follow";
+        public static final String SCHEDULE_INA_IFA_1 = "INA IFA Test 1";
+        public static final String SCHEDULE_INA_IFA_2 = "INA IFA Test 2";
+        public static final String SCHEDULE_INA_IFA_3 = "INA IFA Test 3";
     }
 
     public static class ECSchedulesConstants {

@@ -299,6 +299,21 @@ public class ANCService {
         allMothers.update(mother);
 
         ancSchedulesService.hbTestVisitDone(submission.entityId(), submission.anmId(), submission.getField("laboratoriumPeriksaHbDilakukan"), submission.getField(ANC_VISIT_DATE_FIELD),
-                submission.getField("laboratoriumPeriksaHbAnemia"),mother.lmp());
+                submission.getField("laboratoriumPeriksaHbAnemia"), mother.lmp());
+    }
+
+    public void indonesiaIFATest(FormSubmission submission) {
+        Mother mother = allMothers.findByCaseId(submission.entityId());
+        if (mother == null) {
+            logger.warn("Tried to handle Indonesia TT provided without registered mother. Submission: " + submission);
+            return;
+        }
+
+        //ambil value dari form dengan nama field = "statusImunisasitt"
+        String pelayananfe = submission.getField("pelayananfe");
+        ancSchedulesService.InaIFAhasDone(submission.entityId(),
+                submission.anmId(),
+                pelayananfe,
+                submission.getField(ANC_VISIT_DATE_FIELD));
     }
 }

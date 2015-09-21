@@ -22,8 +22,8 @@ public class ANCSchedulesService {
     public static final int NUMBER_OF_WEEKS_BEFORE_HB_TEST_2_BECOMES_DUE = 28;
     private static Logger logger = LoggerFactory.getLogger(ANCSchedulesService.class.toString());
 
-    private static final String[] NON_ANC_SCHEDULES = {SCHEDULE_EDD, SCHEDULE_LAB,  SCHEDULE_TT_1, SCHEDULE_IFA_1,
-            SCHEDULE_HB_TEST_1,  SCHEDULE_DELIVERY_PLAN};
+    private static final String[] NON_ANC_SCHEDULES = {SCHEDULE_EDD, SCHEDULE_LAB,  SCHEDULE_TT_1,
+            SCHEDULE_INA_HB_1,  SCHEDULE_DELIVERY_PLAN, SCHEDULE_INA_IFA_1 };
     private HealthSchedulerService scheduler;
 
     @Autowired
@@ -35,6 +35,7 @@ public class ANCSchedulesService {
         for (String schedule : NON_ANC_SCHEDULES) {
         	scheduler.enrollIntoSchedule(caseId, schedule, referenceDateForSchedule);
         }
+
         enrollIntoCorrectMilestoneOfANCCare(caseId, referenceDateForSchedule);
     }
 
@@ -187,7 +188,7 @@ public class ANCSchedulesService {
     //indonesian version
     public void hbTestVisitDone(String entityId, String anmId, String laboratoriumPeriksaHbDilakukan1, String date, String laboratoriumPeriksaHbAnemia1,LocalDate lmp) {
         if("ya".equalsIgnoreCase(laboratoriumPeriksaHbDilakukan1)) {
-            if(fulfillMilestoneIfPossible(entityId,anmId,SCHEDULE_INA_HB_1,SCHEDULE_INA_HB_1,parse(date))){
+            if(fulfillMilestoneIfPossible(entityId, anmId, SCHEDULE_INA_HB_1, SCHEDULE_INA_HB_1, parse(date))){
                 if ("positif".equalsIgnoreCase(laboratoriumPeriksaHbAnemia1)) {
                     scheduler.enrollIntoSchedule(entityId, SCHEDULE_INA_HB_FOLLOW, parse(date));
                 } else {
@@ -203,8 +204,24 @@ public class ANCSchedulesService {
             }
         }
         else {
-            logger.warn("Tried to Create Schedule for HB Test but Lab test variable is selected NO  for CASE ID" + entityId);
-            return;
+            logger.warn("Tried to Create Schedule for HB Test but HB Lab test variable is not selected  for CASE ID" + entityId);
+
         }
     }
+
+    public void InaIFAhasDone(String entityId, String anmId, String pelayananfe, String date) {
+        if("ya".equalsIgnoreCase(pelayananfe)) {
+            if (fulfillMilestoneIfPossible(entityId, anmId, SCHEDULE_INA_IFA_1, SCHEDULE_INA_IFA_1, parse(date))) {
+                scheduler.enrollIntoSchedule(entityId, SCHEDULE_INA_IFA_2, parse(date));
+            } else if (fulfillMilestoneIfPossible(entityId, anmId, SCHEDULE_INA_IFA_2, SCHEDULE_INA_IFA_2, parse(date))) {
+                scheduler.enrollIntoSchedule(entityId, SCHEDULE_INA_IFA_3, parse(date));
+            }
+        }
+        else
+        {
+            logger.warn("Tried to Create Schedule for IFA Test but pelayananfe variable is not selected  for CASE ID" + entityId);
+
+        }
+    }
+
 }

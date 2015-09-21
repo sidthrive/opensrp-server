@@ -8,13 +8,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.MockitoAnnotations.initMocks;
 import static org.opensrp.common.util.DateUtil.fakeIt;
 import static org.opensrp.common.util.DateUtil.today;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_ANC;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_DELIVERY_PLAN;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_EDD;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_HB_TEST_1;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_IFA_1;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_LAB;
-import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_TT_1;
+import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.*;
 import static org.powermock.api.mockito.PowerMockito.verifyNoMoreInteractions;
 import static org.powermock.api.mockito.PowerMockito.verifyZeroInteractions;
 import static org.powermock.api.mockito.PowerMockito.when;
@@ -333,8 +327,9 @@ public class ANCSchedulesServiceTest extends BaseUnitTest {
         verify(scheduler).enrollIntoSchedule("Case X", SCHEDULE_EDD, lmp);
         verify(scheduler).enrollIntoSchedule("Case X", SCHEDULE_LAB, lmp);
         verify(scheduler).enrollIntoSchedule("Case X", SCHEDULE_TT_1, lmp);
-        verify(scheduler).enrollIntoSchedule("Case X", SCHEDULE_IFA_1, lmp);
-        verify(scheduler).enrollIntoSchedule("Case X", SCHEDULE_HB_TEST_1, lmp);
         verify(scheduler).enrollIntoSchedule("Case X", SCHEDULE_DELIVERY_PLAN, lmp);
+        verify(scheduler).enrollIntoSchedule("Case X", SCHEDULE_INA_HB_1, lmp);
+        verify(scheduler).enrollIntoSchedule("Case X", SCHEDULE_INA_IFA_1, lmp);
+
     }
 }

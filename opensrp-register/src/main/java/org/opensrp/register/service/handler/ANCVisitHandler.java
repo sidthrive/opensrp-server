@@ -20,5 +20,6 @@ public class ANCVisitHandler implements FormSubmissionHandler {
         ancService.ancVisit(submission);
         ancService.indonesiaTtProvided(submission);
         ancService.indonesiaHBtest(submission);
+        ancService.indonesiaIFATest(submission);
     }
 }
