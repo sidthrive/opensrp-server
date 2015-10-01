@@ -56,6 +56,7 @@ public class HandlerMapper implements IHandlerMapper {
             KbHandler kbHandler,
             KbFollowUpHandler kbFollowUpHandler,
             KartuIbuHandler kartuIbuHandler,
+            PNCDokumentasiHandler pncDokumentasiHandler,
             MCTSReportService mctsReportService)
 	{
 		
@@ -95,9 +96,10 @@ public class HandlerMapper implements IHandlerMapper {
                 .put(KOHORT_KB_PELAYANAN, kbHandler)
                 .put(KOHORT_KB_UPDATE, kbFollowUpHandler)
                 .put(KARTU_IBU_REGISTRATION, kartuIbuHandler)
+                .put(DOKUMENTASI_PERSALINAN, pncDokumentasiHandler)
                 .map();
 
-	}
+    }
 
 	@Override
 	public Map<String, FormSubmissionHandler> handlerMapper() {

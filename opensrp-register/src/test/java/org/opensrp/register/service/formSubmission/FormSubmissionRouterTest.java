@@ -102,6 +102,8 @@ public class FormSubmissionRouterTest {
     private KbFollowUpHandler kbFollowUpHandler;
     @Mock
     private KartuIbuHandler kartuIbuHandler;
+    @Mock
+    private PNCDokumentasiHandler pncDokumentasiHandler;
 	@Before
     public void setUp() throws Exception {
     	
@@ -142,6 +144,7 @@ public class FormSubmissionRouterTest {
                  kbHandler,
                 kbFollowUpHandler,
                 kartuIbuHandler,
+                pncDokumentasiHandler,
 	             mReportService);
 	
 
