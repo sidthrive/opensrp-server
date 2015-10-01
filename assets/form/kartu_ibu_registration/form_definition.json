@@ -9,6 +9,11 @@
         "shouldLoadValue": true
       },
       {
+        "name": "unique_id",
+        "bind": "/model/instance/kartu_ibu/unique_id",
+        "shouldLoadValue" : true
+      },
+      {
         "name": "puskesmas",
         "bind": "/model/instance/kartu_ibu/puskesmas"
       },

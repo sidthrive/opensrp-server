@@ -6,6 +6,9 @@
           </formhub>
           <start/>
           <today/>
+	  <td_sistolik/>
+	  <td_diastolik/>
+	  
           <reg_date/>
           <deviceid/>
           <simserial/>

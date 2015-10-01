@@ -6,32 +6,32 @@
    <label class="question non-select ">
 			<span lang="" class="question-label active">Tanggal pemberian imunisasi Hb 0-7 hari</span>
 			<span lang="" class="or-hint active">Tanggal dan bulan diberikan imunisasi HB 0</span>
-			<input type="date" name="/Baby_Immunization/tanggal_pemberian_imunisasi_hb_07" data-constraint=".&lt;  /Baby_Immunization/today " data-type-xml="date" />
+			<input type="date" name="/Baby_Immunization/tanggal_pemberian_imunisasi_hb_07" data-constraint=".&lt;=  /Baby_Immunization/today " data-type-xml="date" />
 		</label>
 		<label class="question non-select ">
 			<span lang="" class="question-label active">Tanggal pemberian imunisasi BCG dan Polio 1</span>
 			<span lang="" class="or-hint active">Tanggal dan bulan pemberian imunisasi BCG dan polio 1</span>
-			<input type="date" name="/Baby_Immunization/tanggal_pemberian_imunisasi_bcg_dan_Polio1" data-constraint=".&lt;  /Baby_Immunization/today " data-type-xml="date" />
+			<input type="date" name="/Baby_Immunization/tanggal_pemberian_imunisasi_bcg_dan_Polio1" data-constraint=".&lt;=  /Baby_Immunization/today " data-type-xml="date" />
 		</label>
 		<label class="question non-select ">
 			<span lang="" class="question-label active">Tanggal pemberian imunisasi DPT/HB1/Polio 2</span>
 			<span lang="" class="or-hint active">Tanggal dan bulan pemberian imunisasi DPT 1, HB1 dan Polio 2</span>
-			<input type="date" name="/Baby_Immunization/tanggal_pemberian_imunisasi_dpthb1Polio2" data-constraint=".&lt;  /Baby_Immunization/today " data-type-xml="date" />
+			<input type="date" name="/Baby_Immunization/tanggal_pemberian_imunisasi_dpthb1Polio2" data-constraint=".&lt;=  /Baby_Immunization/today " data-type-xml="date" />
 		</label>
 		<label class="question non-select ">
 			<span lang="" class="question-label active">Tanggal pemberian imunisasi DPT/HB2/Polio 3</span>
 			<span lang="" class="or-hint active">Tanggal dan bulan pemberian imunisasi DPT 2, HB2 dan Polio 3</span>
-			<input type="date" name="/Baby_Immunization/tanggal_pemberian_imunisasi_dpthb2Polio3" data-constraint=".&lt;  /Baby_Immunization/today " data-type-xml="date" />
+			<input type="date" name="/Baby_Immunization/tanggal_pemberian_imunisasi_dpthb2Polio3" data-constraint=".&lt;=  /Baby_Immunization/today " data-type-xml="date" />
 		</label>
 		<label class="question non-select ">
 			<span lang="" class="question-label active">Tanggal pemberian imunisasi DPT/HB3/Polio 4</span>
 			<span lang="" class="or-hint active">Tanggal dan bulan pemberian imunisasi DPT 3, HB3 dan Polio 4</span>
-			<input type="date" name="/Baby_Immunization/tanggal_pemberian_imunisasi_dpthb3Polio4" data-constraint=".&lt;  /Baby_Immunization/today " data-type-xml="date" />
+			<input type="date" name="/Baby_Immunization/tanggal_pemberian_imunisasi_dpthb3Polio4" data-constraint=".&lt;=  /Baby_Immunization/today " data-type-xml="date" />
 		</label>
 		<label class="question non-select ">
 			<span lang="" class="question-label active">Tanggal pemberian imunisasi Campak</span>
 			<span lang="" class="or-hint active">Tanggal dan bulan pemberian imunisasi campak</span>
-			<input type="date" name="/Baby_Immunization/tanggal_pemberian_imunisasi_campak" data-constraint=".&lt;  /Baby_Immunization/today " data-type-xml="date" />
+			<input type="date" name="/Baby_Immunization/tanggal_pemberian_imunisasi_campak" data-constraint=".&lt;=  /Baby_Immunization/today " data-type-xml="date" />
 		</label>
 
    <fieldset id="or-preload-items" style="display:none;">

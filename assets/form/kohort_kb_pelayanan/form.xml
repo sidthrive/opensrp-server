@@ -15,6 +15,18 @@
       </span>
       <input type="text" name="/tambah_kb/generated_note_name_10" data-type-xml="string" readonly="readonly" />
    </label>
+	<label class="question non-select ">
+      <span lang="" class="or-constraint-msg active">Nilai yang dimasukkan tidak memenuhi syarat, mohon periksa kembali</span>
+      <span lang="" class="question-label active">TD (Sistolik)</span>
+      <span lang="" class="or-hint active">Menunjukkan tekanan darah (Sistolik) Ibu pada saat kunjungan ANC (mmHg)</span>
+      <input type="number" name="/tambah_kb/td_sistolik" data-constraint=".&gt;0 and .&lt;1000" data-type-xml="int" />
+   </label>
+   <label class="question non-select ">
+      <span lang="" class="or-constraint-msg active">Nilai yang dimasukkan tidak memenuhi syarat, mohon periksa kembali</span>
+      <span lang="" class="question-label active">TD (Diastolik)</span>
+      <span lang="" class="or-hint active">Menunjukkan tekanan darah (Diastolik) Ibu pada saat kunjungan ANC (mmHg)</span>
+      <input type="number" name="/tambah_kb/td_diastolik" data-constraint=".&gt;0 and .&lt;1000" data-type-xml="int" />
+   </label>
    <label class="question non-select ">
       <span lang="" class="or-constraint-msg active">Nilai yang dimasukkan tidak memenuhi syarat, mohon periksa kembali</span>
       <span lang="" class="question-label active">Paritas</span>

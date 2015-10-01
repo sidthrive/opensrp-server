@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <model>
 	<instance>
-		<PNC_visit id="PNC_Visit" version="201506200408">
+		<PNC_Visit id="PNC_Visit" version="201506200408">
 			<formhub>
 				<uuid />
 			</formhub>
@@ -48,6 +48,6 @@
 			<meta>
 				<instanceID />
 			</meta>
-		</PNC_visit>
+		</PNC_Visit>
 	</instance>
 </model>

@@ -26,9 +26,9 @@
    </label>
    <label class="question non-select ">
       <span lang="" class="or-constraint-msg active">abortus tidak boleh lebih dari Gravida - Partus</span>
-      <span lang="" class="question-label active">Abortus</span>
+      <span lang="Bahasa" class="question-label active" data-itext-id="/Register_ANC/abortus:label">Abortus</span>
       <span lang="" class="or-hint active">Menunjukkan jumlah berapa kali Ibu keguguran</span>
-      <input type="number" name="/Register_ANC_only/abortus" data-constraint=".&gt;-1 and .&lt;=( /Register_ANC_only/gravida - /Register_ANC_only/partus )" data-calculate=" /Register_ANC_only/gravida - /Register_ANC_only/partus " data-type-xml="int" />
+      <input type="number" name="/Register_ANC_only/abortus" data-constraint=".&gt;-1 and .&lt;=100" data-type-xml="int" />
    </label>
    <label class="question non-select ">
       <span lang="" class="or-constraint-msg active">Nilai yang dimasukkan tidak memenuhi syarat, mohon periksa kembali</span>
@@ -282,9 +282,9 @@
    </label>
    <label class="question non-select ">
       <span lang="" class="or-constraint-msg active">Kunjungan ANC harus sesuai dengan trimester dari ibu</span>
-      <span lang="" class="question-label active">K1 - K4?</span>
+      <span lang="Bahasa" class="question-label active" data-itext-id="/tambah_anc.xlsx/anc_ke:label">K1 - K4?</span>
       <span lang="" class="or-hint active">Diisi dengan K1 atau K2 sampai dengan K4</span>
-      <input type="number" name="/Register_ANC_only/anc_ke" data-constraint="if(( /Register_ANC_only/trimester_ke ='1'), .=1, (if( /Register_ANC_only/trimester_ke ='2', .=2, (if( /Register_ANC_only/trimester_ke ='3', .&gt;=3, '')))))" data-type-xml="int" />
+      <input type="number" name="/Register_ANC_only/anc_ke" data-constraint=".&gt;0 and .&lt;=4" data-type-xml="int" />
    </label>
    <fieldset class="question ">
       <fieldset>
@@ -1169,7 +1169,7 @@
       </label>
    </fieldset>
    <fieldset id="or-calculated-items" style="display:none;">
-   <label class="calculation non-select ">
+      <label class="calculation non-select ">
          <input autocomplete="off" type="hidden" name="/Register_ANC_only/reg_date" data-calculate=" /Register_ANC_only/today " data-type-xml="date" />
       </label>
       <label class="calculation non-select ">
@@ -1182,7 +1182,7 @@
          <input type="hidden" name="/Register_ANC_only/usia_klinis" data-calculate="int((( /Register_ANC_only/today  -  /Register_ANC_only/tanggal_hpht ) div 7)+1)" data-type-xml="string" />
       </label>
       <label class="calculation non-select ">
-         <input type="hidden" name="/Register_ANC_only/trimester_ke" data-calculate="if(( /Register_ANC_only/usia_klinis &lt;'28'), 1, (if( /Register_ANC_only/usia_klinis &gt;='28' and  /Register_ANC_only/usia_klinis &lt;='36', 2, (if( /Register_ANC_only/usia_klinis &gt;'36', 3, '')))))" data-type-xml="string" />
+         <input type="hidden" name="/Register_ANC_only/trimester_ke" data-calculate="if(( /Register_ANC_only/usia_klinis &lt;='14'), 1, (if( /Register_ANC_only/usia_klinis &gt;='15' and  /Register_ANC/usia_klinis &lt;='28', 2, (if( /Register_ANC_only/usia_klinis &gt;'29', 3, '')))))" data-type-xml="string" />
       </label>
       <label class="calculation non-select ">
          <input type="hidden" name="/Register_ANC_only/taksiran_berat_janin" data-calculate="if(selected( /Register_ANC_only/kepala_terhadap_janin_pap ,'masuk'), (( /Register_ANC_only/tfu -11)*155), (if(selected( /Register_ANC_only/kepala_terhadap_janin_pap ,'belum_masuk'), (( /Register_ANC_only/tfu -12)*155), 0)))" data-type-xml="string" />
