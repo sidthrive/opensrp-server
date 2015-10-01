@@ -448,4 +448,9 @@ public class ECService {
         allEligibleCouples.close(submission.entityId());
         //#TODO: actionService.markAllAlertsAsInactive(submission.entityId());
     }
+    public void registerKartuIbu(FormSubmission submission) {
+        EligibleCouple eligibleCouple = allEligibleCouples.findByCaseId(submission.entityId());
+        allEligibleCouples.update(eligibleCouple.withANMIdentifier(submission.anmId()));
+
+    }
 }

@@ -46,7 +46,7 @@ public class LocationLoaderTest {
     public void shouldReturnLocationFromChildEntityIfBindTypeIsChild() {
         when(allChildren.findByCaseId("child id 1")).thenReturn(child);
 
-        locationLoader.loadLocationFor("child", "child id 1");
+        locationLoader.loadLocationFor("anak", "child id 1");
 
         verify(child).motherCaseId();
         verify(mother).ecCaseId();

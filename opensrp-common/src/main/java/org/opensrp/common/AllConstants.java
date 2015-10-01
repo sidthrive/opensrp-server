@@ -62,6 +62,7 @@ public class AllConstants {
         public static final String RECORD_ECPS = "record_ecps";
         public static final String KOHORT_KB_PELAYANAN = "kohort_kb_pelayanan";
         public static final String KOHORT_KB_UPDATE ="kohort_kb_update";
+        public static final String KARTU_IBU_REGISTRATION ="kartu_ibu_registration";
     }
 
     public static class Report {
@@ -166,6 +167,7 @@ public class AllConstants {
         public static final String TT_DOSE_FIELD = "ttDose";
         public static final String TT_DATE_FIELD = "ttDate";
         public static final String THAYI_CARD_NUMBER = "thayiCardNumber";
+        public static final String ID_IBU = "motherId";
     }
 
     public static class ANCVisitFormFields {
@@ -443,7 +445,7 @@ public class AllConstants {
     }
 
     public static class FormEntityTypes {
-        public static final String CHILD_TYPE = "child";
+        public static final String CHILD_TYPE = "anak";
         public static final String MOTHER_TYPE = "ibu";
         public static final String ELIGIBLE_COUPLE_TYPE = "eligible_couple";
         public static final String MCTS_REPORT_TYPE = "MCTSReport";

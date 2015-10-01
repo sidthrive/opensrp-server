@@ -64,13 +64,13 @@ public class KbService {
     }
 
     public void registerKB(FormSubmission submission) {
-        String motherId = submission.getField(AllConstants.ANCFormFields.MOTHER_ID);
+        String motherId = submission.getField(AllConstants.ANCFormFields.ID_IBU);
 
-//        if (!eligibleCouples.exists(submission.entityId())) {
-//            logger.warn(format("Found mother without registered eligible couple. Ignoring: {0} for mother with id: {1} for ANM: {2}",
-//                    submission.entityId(), motherId, submission.anmId()));
-//            return;
-//        }
+        if (!eligibleCouples.exists(submission.entityId())) {
+            logger.warn(format("Found mother without registered eligible couple. Ignoring: {0} for mother with id: {1} for ANM: {2}",
+                    submission.entityId(), motherId, submission.anmId()));
+            return;
+        }
 
         Mother mother = allMothers.findByCaseId(motherId);
         allMothers.update(mother.withAnm(submission.anmId()));

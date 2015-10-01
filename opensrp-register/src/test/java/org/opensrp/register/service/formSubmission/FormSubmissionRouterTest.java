@@ -100,6 +100,8 @@ public class FormSubmissionRouterTest {
     private KbHandler kbHandler;
     @Mock
     private KbFollowUpHandler kbFollowUpHandler;
+    @Mock
+    private KartuIbuHandler kartuIbuHandler;
 	@Before
     public void setUp() throws Exception {
     	
@@ -139,6 +141,7 @@ public class FormSubmissionRouterTest {
 	             ancInvestigationsHandler,
                  kbHandler,
                 kbFollowUpHandler,
+                kartuIbuHandler,
 	             mReportService);
 	
 
