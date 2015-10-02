@@ -1,14 +1,14 @@
 {
-  "name": "PNC 1",
+  "name": "PNC 2",
   "absolute": true,
   "milestones": [
     {
-      "name": "PNC 1",
+      "name": "PNC 2",
       "scheduleWindows": {
         "earliest": ["0 Day"],
-        "due": ["0 Days"],
-        "late": ["3 Days"],
-        "max": ["1 Weeks", "1 Day"]
+        "due": ["3 Days"],
+        "late": ["8 Weeks"],
+        "max": ["4 Weeks", "1 Day"]
       },
       "alerts": [
         {
@@ -19,7 +19,7 @@
         },
         {
           "window": "late",
-          "offset": ["3 Days"],
+          "offset": ["8 Days"],
           "interval": ["1 Day"],
           "count": "5"
         }

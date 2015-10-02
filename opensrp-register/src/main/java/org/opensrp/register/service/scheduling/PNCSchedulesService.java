@@ -1,11 +1,15 @@
 package org.opensrp.register.service.scheduling;
 
 import static java.text.MessageFormat.format;
+import static java.util.logging.Level.parse;
 import static org.opensrp.register.DrishtiScheduleConstants.MotherScheduleConstants.SCHEDULE_AUTO_CLOSE_PNC;
 
 import org.joda.time.LocalDate;
 import org.opensrp.common.AllConstants;
 import org.opensrp.dto.BeneficiaryType;
+import static org.joda.time.LocalDate.parse;
+import static org.opensrp.common.util.IntegerUtil.tryParse;
+import org.opensrp.register.domain.Mother;
 import org.opensrp.scheduler.HealthSchedulerService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,5 +59,19 @@ public class PNCSchedulesService {
     
     public void generateMotherClosedAlert(String entityId, String anmIdentifier) {
         scheduler.closeBeneficiary(BeneficiaryType.mother, entityId, anmIdentifier, AllConstants.AUTO_CLOSE_PNC_CLOSE_REASON);
+    }
+
+    public void pnvVisitEnroll(String entityId, String hariKeKF, String anmId, String date) {
+        logger.info(format("Enrolling mother into PNC Visit schedule. Id: ", entityId));
+        if("kf2".equalsIgnoreCase(hariKeKF)){
+            scheduler.unEnrollFromSchedule(entityId, anmId, "PNC 1");
+
+            scheduler.enrollIntoSchedule(entityId, "PNC 2", date);
+        }
+        else if("kf3".equalsIgnoreCase(hariKeKF)){
+            scheduler.unEnrollFromSchedule(entityId, anmId, "PNC 2");
+            scheduler.enrollIntoSchedule(entityId, "PNC 3", date);
+        }
+
     }
 }
