@@ -4,18 +4,7 @@ import static org.motechproject.scheduletracking.api.domain.WindowName.due;
 import static org.motechproject.scheduletracking.api.domain.WindowName.earliest;
 import static org.motechproject.scheduletracking.api.domain.WindowName.late;
 import static org.motechproject.scheduletracking.api.domain.WindowName.max;
-import static org.opensrp.register.DrishtiScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_BCG;
-import static org.opensrp.register.DrishtiScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_DPT_BOOSTER1;
-import static org.opensrp.register.DrishtiScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_DPT_BOOSTER2;
-import static org.opensrp.register.DrishtiScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_MEASLES;
-import static org.opensrp.register.DrishtiScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_MEASLES_BOOSTER;
-import static org.opensrp.register.DrishtiScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_OPV_0_AND_1;
-import static org.opensrp.register.DrishtiScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_OPV_2;
-import static org.opensrp.register.DrishtiScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_OPV_3;
-import static org.opensrp.register.DrishtiScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_OPV_BOOSTER;
-import static org.opensrp.register.DrishtiScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_PENTAVALENT_1;
-import static org.opensrp.register.DrishtiScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_PENTAVALENT_2;
-import static org.opensrp.register.DrishtiScheduleConstants.ChildScheduleConstants.CHILD_SCHEDULE_PENTAVALENT_3;
+import static org.opensrp.register.DrishtiScheduleConstants.ChildScheduleConstants.*;
 import static org.opensrp.register.DrishtiScheduleConstants.ECSchedulesConstants.EC_SCHEDULE_CONDOM_REFILL;
 import static org.opensrp.register.DrishtiScheduleConstants.ECSchedulesConstants.EC_SCHEDULE_DMPA_INJECTABLE_REFILL;
 import static org.opensrp.register.DrishtiScheduleConstants.ECSchedulesConstants.EC_SCHEDULE_FEMALE_STERILIZATION_FOLLOWUP;
@@ -71,7 +60,10 @@ public class AlertHandler {
 
                 CHILD_SCHEDULE_PENTAVALENT_1,
                 CHILD_SCHEDULE_PENTAVALENT_2,
-                CHILD_SCHEDULE_PENTAVALENT_3
+                CHILD_SCHEDULE_PENTAVALENT_3,
+
+                CHILD_SCHEDULE_BCG_POLIO,
+                CHILD_SCHEDULE_CAMPAK
         );
     }
 

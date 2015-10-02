@@ -41,8 +41,8 @@ public class AnakSchedulesService {
 
     public void enrollChild(String childId, String referenceDate) {
 
-        scheduler.enrollIntoSchedule(childId, "BCG",parse(referenceDate));
-        scheduler.enrollIntoSchedule(childId, "Measles Vaccination", parse(referenceDate));
+        scheduler.enrollIntoSchedule(childId, "BCG POLIO",parse(referenceDate));
+        scheduler.enrollIntoSchedule(childId, "CAMPAK", parse(referenceDate));
         //  scheduler.enrollIntoSchedule(childId, "Measles Vaccination",parse(referenceDate));
 
 
