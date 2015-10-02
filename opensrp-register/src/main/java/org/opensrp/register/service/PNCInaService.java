@@ -47,6 +47,7 @@ public class PNCInaService {
     public void dokumentasiPersalinan(FormSubmission submission) {
         Mother mother = allMothers.findByCaseId(submission.entityId());
         String keadaanIbu = submission.getField("keadaanIbu");
+        String KeadaanBayi = submission.getField("keadaanBayi");
         if (mother == null) {
             logger.warn(format("Failed to handle delivery outcome as there is no mother registered with ID: {0}", submission.entityId()));
             return;
@@ -60,5 +61,6 @@ public class PNCInaService {
         } else if ("hidup".equalsIgnoreCase(keadaanIbu)) {
             pncInaScheduleService.PersalinanisDone(submission.entityId(), submission.getField(REFERENCE_DATE));
         }
+
     }
 }
