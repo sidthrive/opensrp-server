@@ -1,13 +1,13 @@
 {
-    "name": "DPT2 POLIO3",
+    "name": "POLIO BOOSTER",
     "absolute": true,
     "milestones": [
         {
-            "name": "DPT2 POLIO3",
+            "name": "POLIO BOOSTER",
             "scheduleWindows": {
                 "earliest": ["0 Days"],
-                "due": ["4 Weeks"],
-                "late": ["8 Weeks"],
+                "due": ["20 Weeks"],
+                "late": ["1 Year"],
                 "max": ["1 Year"]
             },
             "alerts": [
@@ -19,7 +19,7 @@
                 },
                 {
                     "window": "late",
-                    "offset": ["4 Weeks"],
+                    "offset": ["20 Weeks"],
                     "interval": ["1 Day"],
                     "count": "350"
                 }

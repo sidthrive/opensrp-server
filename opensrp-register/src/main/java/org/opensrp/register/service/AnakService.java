@@ -69,4 +69,17 @@ public class AnakService {
         anakSchedulesService.enrollChild(submission.getField("childId"), referenceDate);
     }
 
+    public void UpdateImmnunisasiBayi(FormSubmission submission) {
+        Child child = allChildren.findByCaseId(submission.entityId());
+        if (child == null) {
+            logger.warn("Found immunization update without registered child for entity ID: " + submission.entityId());
+            return;
+        }
+        anakSchedulesService.ImmunizationhasDone(submission.entityId(),
+                submission.anmId(),
+                submission.getField("submissionDate"));
+
+        //   anakSchedulesService.updateEnrollments(submission.entityId(), );
+    }
+
 }

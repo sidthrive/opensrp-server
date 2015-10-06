@@ -63,7 +63,14 @@ public class AlertHandler {
                 CHILD_SCHEDULE_PENTAVALENT_3,
 
                 CHILD_SCHEDULE_BCG_POLIO,
-                CHILD_SCHEDULE_CAMPAK
+                CHILD_SCHEDULE_CAMPAK,
+                "BCG POLIO",
+                "BCG POLIO2",
+                "BCG POLIO3",
+                "POLIO BOOSTER",
+                "NEONATAL VISIT 1",
+                "NEONATAL VISIT 2",
+                "NEONATAL VISIT 3"
         );
     }
 

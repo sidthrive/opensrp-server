@@ -92,6 +92,8 @@ public class HandlerMapperTest {
 	private KartuIbuHandler	kartuIbuHandler;
 	@Mock
 	private PNCDokumentasiHandler pncDokumentasiHandler;
+	@Mock
+	private KartuAnakImmunizationHandler kartuAnakImmunizationHandler;
 	
 	@Before
 	public void setUp() throws Exception {
@@ -132,6 +134,7 @@ public class HandlerMapperTest {
 				kbFollowUpHandler,
 				kartuIbuHandler,
 				pncDokumentasiHandler,
+				kartuAnakImmunizationHandler,
 				mctsReportService);
 	}
 	

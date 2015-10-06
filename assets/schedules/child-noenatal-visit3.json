@@ -1,14 +1,14 @@
 {
-    "name": "DPT2 POLIO3",
+    "name": "NEONATAL VISIT 3",
     "absolute": true,
     "milestones": [
         {
-            "name": "DPT2 POLIO3",
+            "name": "NEONATAL VISIT 3",
             "scheduleWindows": {
                 "earliest": ["0 Days"],
-                "due": ["4 Weeks"],
-                "late": ["8 Weeks"],
-                "max": ["1 Year"]
+                "due": ["8 Days"],
+                "late": ["4 Weeks"],
+                "max": ["4 Weeks", "1 Day"]
             },
             "alerts": [
                 {
@@ -19,7 +19,7 @@
                 },
                 {
                     "window": "late",
-                    "offset": ["4 Weeks"],
+                    "offset": ["2 Days"],
                     "interval": ["1 Day"],
                     "count": "350"
                 }

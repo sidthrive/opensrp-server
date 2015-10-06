@@ -6,8 +6,8 @@
             "name": "BCG POLIO",
             "scheduleWindows": {
                 "earliest": ["0 Days"],
-                "due": ["8 Weeks"],
-                "late": ["1 Year"],
+                "due": ["4 Weeks"],
+                "late": ["8 Weeks"],
                 "max": ["1 Year"]
             },
             "alerts": [
@@ -19,7 +19,7 @@
                 },
                 {
                     "window": "late",
-                    "offset": ["2 Weeks"],
+                    "offset": ["4 Weeks"],
                     "interval": ["1 Day"],
                     "count": "350"
                 }

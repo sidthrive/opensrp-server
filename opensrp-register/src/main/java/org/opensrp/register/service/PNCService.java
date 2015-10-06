@@ -356,7 +356,7 @@ public class PNCService {
         updatePNCVisitInaDatesOfMother(submission, mother);
         updatePNCInaVisitDetails(submission, mother);
         allMothers.update(mother);
-        pncSchedulesService.pnvVisitEnroll(submission.entityId(), hariKeKF,submission.anmId(), submission.getField(REFERENCE_DATE));
+        pncSchedulesService.pnvVisitEnroll(submission.entityId(), hariKeKF,submission.anmId(), submission.getField("submissionDate"));
     }
     private void updatePNCVisitInaDatesOfMother(FormSubmission submission, Mother mother) {
         String visitDate = submission.getField(REFERENCE_DATE);
