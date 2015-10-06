@@ -38,7 +38,7 @@ public class MinimumThreeANCVisitsHappenedOnTimeRuleTest {
         Map<String, String> reportFields =
                 create("id", "mother id 1")
                         .put("referenceDate", "2013-01-01")
-                        .put("ancVisitDate", "2013-07-16")
+                        .put("ancDate", "2013-07-16")
                         .map();
 
         when(mothers.findByCaseId("mother id 1")).thenReturn(mother);
@@ -52,7 +52,7 @@ public class MinimumThreeANCVisitsHappenedOnTimeRuleTest {
         Map<String, String> reportFields =
                 create("id", "mother id 1")
                         .put("referenceDate", "2013-01-01")
-                        .put("ancVisitDate", "2013-10-08")
+                        .put("ancDate", "2013-10-08")
                         .map();
 
         when(mothers.findByCaseId("mother id 1")).thenReturn(mother);
@@ -66,7 +66,7 @@ public class MinimumThreeANCVisitsHappenedOnTimeRuleTest {
         Map<String, String> reportFields =
                 create("id", "mother id 1")
                         .put("referenceDate", "2013-01-01")
-                        .put("ancVisitDate", "2013-07-16")
+                        .put("ancDate", "2013-07-16")
                         .map();
 
         when(mothers.findByCaseId("mother id 1")).thenReturn(mother);
@@ -80,7 +80,7 @@ public class MinimumThreeANCVisitsHappenedOnTimeRuleTest {
         Map<String, String> reportFields =
                 create("id", "mother id 1")
                         .put("referenceDate", "2013-01-01")
-                        .put("ancVisitDate", "2013-07-15")
+                        .put("ancDate", "2013-07-15")
                         .map();
 
         when(mothers.findByCaseId("mother id 1")).thenReturn(mother);
@@ -94,7 +94,7 @@ public class MinimumThreeANCVisitsHappenedOnTimeRuleTest {
         Map<String, String> reportFields =
                 create("id", "mother id 1")
                         .put("referenceDate", "2013-01-01")
-                        .put("ancVisitDate", "2013-10-09")
+                        .put("ancDate", "2013-10-09")
                         .map();
 
         when(mothers.findByCaseId("mother id 1")).thenReturn(mother);

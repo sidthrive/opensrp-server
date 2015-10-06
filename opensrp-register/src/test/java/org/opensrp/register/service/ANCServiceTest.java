@@ -168,7 +168,7 @@ public class ANCServiceTest {
                 .withFormName("anc_visit")
                 .withANMId("anm id 1")
                 .withEntityId("entity id 1")
-                .addFormField("ancVisitDate", "2013-01-01")
+                .addFormField("ancDate", "2013-01-01")
                 .addFormField("ancKe", "2")
                 .addFormField("someKey", "someValue")
                 .addFormField("bbKg", "55")
@@ -185,7 +185,7 @@ public class ANCServiceTest {
 
         verify(allMothers).update(mother
                 .withANCVisits(asList(
-                        create("ancVisitDate", "2013-01-01")
+                        create("ancDate", "2013-01-01")
                                 .put("bbKg", "55")
                                 .put("tandaVitalTDSistolik", "120")
                                 .put("tandaVitalTDDiastolik", "80")
@@ -201,7 +201,7 @@ public class ANCServiceTest {
                 .withFormName("anc_visit")
                 .withANMId("anm id 1")
                 .withEntityId("entity id 1")
-                .addFormField("ancVisitDate", "2013-01-01")
+                .addFormField("ancDate", "2013-01-01")
                 .addFormField("ancKe", "2")
                 .addFormField("someKey", "someValue")
                 .addFormField("bbKg", "55")
@@ -209,7 +209,7 @@ public class ANCServiceTest {
                 .addFormField("tandaVitalTDDiastolik", "80")
                 .build();
         List<Map<String, String>> ancVisits = new ArrayList<>();
-        ancVisits.add(create("ancVisitDate", "2012-09-01")
+        ancVisits.add(create("ancDate", "2012-09-01")
                 .put("bbKg", "55")
                 .put("tandaVitalTDSistolik", "121")
                 .put("tandaVitalTDDiastolik", "81")
@@ -226,13 +226,13 @@ public class ANCServiceTest {
         Mother updatedMother = new Mother("entity id 1", "ec id 1", "TC1")
                 .withDetails(mapOf("someKey", "someValue"))
                 .withANCVisits(asList(
-                        create("ancVisitDate", "2012-09-01")
+                        create("ancDate", "2012-09-01")
                                 .put("bbKg", "55")
                                 .put("tandaVitalTDSistolik", "121")
                                 .put("tandaVitalTDDiastolik", "81")
                                 .put("ancKe", "1")
                                 .map(),
-                        create("ancVisitDate", "2013-01-01")
+                        create("ancDate", "2013-01-01")
                                 .put("bbKg", "55")
                                 .put("tandaVitalTDSistolik", "120")
                                 .put("tandaVitalTDDiastolik", "80")
@@ -253,7 +253,7 @@ public class ANCServiceTest {
                 .withEntityId("mother id 1")
                 .addFormField("thayiCardNumber", "TC1")
                 .addFormField("ecCaseId", "ec id 1")
-                .addFormField("ancVisitDate", "2013-01-01")
+                .addFormField("ancDate", "2013-01-01")
                 .addFormField("ancKe", "2")
                 .addFormField("someKey", "someValue")
                 .addFormField("tandaVitalTDSistolik", "140")
@@ -270,7 +270,7 @@ public class ANCServiceTest {
      //   verify(motherReportingService).ancVisit(new SafeMap(create("someKey", "someValue").put("tandaVitalTDDiastolik", "90").put("tandaVitalTDSistolik", "140").map()));
 
         Mother updatedMother = new Mother("mother id 1", "ec id 1", "TC1")
-                .withANCVisits(asList(create("ancVisitDate", "2013-01-01")
+                .withANCVisits(asList(create("ancDate", "2013-01-01")
                         .put("bbKg", null)
                         .put("tandaVitalTDSistolik", "140")
                         .put("tandaVitalTDDiastolik", "90")
@@ -292,7 +292,7 @@ public class ANCServiceTest {
                 .withEntityId("mother id 1")
                 .addFormField("thayiCardNumber", "TC1")
                 .addFormField("ecCaseId", "ec id 1")
-                .addFormField("ancVisitDate", "2013-01-01")
+                .addFormField("ancDate", "2013-01-01")
                 .addFormField("ancKe", "2")
                 .addFormField("someKey", "someValue")
                 .addFormField("tandaVitalTDSistolik", "140")
@@ -312,7 +312,7 @@ public class ANCServiceTest {
         verify(ancSchedulesService).ancVisitHasHappened("mother id 1", "anm id 1", 2, "2013-01-01");
      //   verify(motherReportingService).ancVisit(new SafeMap(create("someKey", "someValue").put("tandaVitalTDDiastolik", "90").put("tandaVitalTDSistolik", "140").map()));
         Mother updatedMother = new Mother("mother id 1", "ec id 1", "TC1")
-                .withANCVisits(asList(create("ancVisitDate", "2013-01-01")
+                .withANCVisits(asList(create("ancDate", "2013-01-01")
                         .put("bbKg", null)
                         .put("tandaVitalTDSistolik", "140")
                         .put("tandaVitalTDDiastolik", "90")
@@ -334,7 +334,7 @@ public class ANCServiceTest {
                 .withEntityId("mother id 1")
                 .addFormField("thayiCardNumber", "TC1")
                 .addFormField("ecCaseId", "ec id 1")
-                .addFormField("ancVisitDate", "2013-01-01")
+                .addFormField("ancDate", "2013-01-01")
                 .addFormField("ancKe", "2")
                 .addFormField("someKey", "someValue")
                 .addFormField("tandaVitalTDSistolik", "120")

@@ -112,7 +112,7 @@ public class FormDownLoadController {
 	    for (int i = 0; i < files.length; i++) {
 	    	if(new File(files[i].getPath()).isDirectory()){
 		        formVersionDefinition = getFormName_Definition(files[i].getPath()+"/"+FORMS_DEFINITION_FILE_NAME, files[i].getName());        
-		        if (files.length > 0 && i< files.length-1){
+		        if (files.length > 0 && i< files.length-2){
 		            formName_Version_DefinitionJson +=  formVersionDefinition + ",";
 		        }else{
 		            formName_Version_DefinitionJson +=  formVersionDefinition;
