@@ -28,11 +28,12 @@ public class PNCVisitHandlerTest {
 
     @Test
     public void shouldDelegateFormSubmissionHandleToPNCService() throws Exception {
-        FormSubmission submission = new FormSubmission("anm id 1", "instance id 1", "pnc_visit", "entity id 1", 0L, "1", null, 0L);
+        FormSubmission submission = new FormSubmission("anm id 1", "instance id 1", "kartu_pnc_visit", "entity id 1", 0L, "1", null, 0L);
 
         handler.handle(submission);
 
-        verify(pncService).pncVisitHappened(submission);
-        verify(childService).pncVisitHappened(submission);
+        verify(pncService).pncVisitIna(submission);
+       //verify(childService).pncVisitHappened(submission);
+        //ver
     }
 }

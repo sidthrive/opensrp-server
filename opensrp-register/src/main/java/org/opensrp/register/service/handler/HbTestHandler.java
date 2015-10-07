@@ -17,6 +17,8 @@ public class HbTestHandler implements FormSubmissionHandler {
 
     @Override
     public void handle(FormSubmission submission) {
-        ancService.hbTest(submission);
+
+        //Indonesia HB test is provided in anc visit form
+        //ancService.hbTest(submission);
     }
 }

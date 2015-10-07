@@ -4,6 +4,7 @@ import java.util.Map;
 
 import org.opensrp.common.util.EasyMap;
 import org.opensrp.form.repository.AllFormSubmissions;
+import org.opensrp.register.PNCRegister;
 import org.opensrp.register.service.reporting.MCTSReportService;
 import org.opensrp.service.formSubmission.handler.FormSubmissionHandler;
 import org.opensrp.service.formSubmission.handler.IHandlerMapper;
@@ -54,6 +55,10 @@ public class HandlerMapper implements IHandlerMapper {
             ANCInvestigationsHandler ancInvestigationsHandler,
             KbHandler kbHandler,
             KbFollowUpHandler kbFollowUpHandler,
+            KartuIbuHandler kartuIbuHandler,
+            PNCDokumentasiHandler pncDokumentasiHandler,
+            KartuAnakImmunizationHandler kartuAnakImmunizationHandler,
+
             MCTSReportService mctsReportService)
 	{
 		
@@ -92,9 +97,12 @@ public class HandlerMapper implements IHandlerMapper {
                 .put(ANC_INVESTIGATIONS, ancInvestigationsHandler)
                 .put(KOHORT_KB_PELAYANAN, kbHandler)
                 .put(KOHORT_KB_UPDATE, kbFollowUpHandler)
+                .put(KARTU_IBU_REGISTRATION, kartuIbuHandler)
+                .put(DOKUMENTASI_PERSALINAN, pncDokumentasiHandler)
+                .put(KOHORT_ANAK_IMMUNIZATION, kartuAnakImmunizationHandler)
                 .map();
 
-	}
+    }
 
 	@Override
 	public Map<String, FormSubmissionHandler> handlerMapper() {

@@ -344,4 +344,29 @@ public class PNCService {
     private boolean isDeliveryOutcomeStillBirth(FormSubmission submission) {
         return AllConstants.DeliveryOutcomeFields.STILL_BIRTH_VALUE.equalsIgnoreCase(submission.getField(AllConstants.DeliveryOutcomeFields.DELIVERY_OUTCOME));
     }
+
+    public void pncVisitIna(FormSubmission submission) {
+        Mother mother = allMothers.findByCaseId(submission.entityId());
+        if (mother == null) {
+            logger.warn("Found PNC visit without registered mother for entity ID: " + submission.entityId());
+            return;
+        }
+        String hariKeKF = submission.getField("hariKeKF");
+
+        updatePNCVisitInaDatesOfMother(submission, mother);
+        updatePNCInaVisitDetails(submission, mother);
+        allMothers.update(mother);
+        pncSchedulesService.pnvVisitEnroll(submission.entityId(), hariKeKF,submission.anmId(), submission.getField("submissionDate"));
+    }
+    private void updatePNCVisitInaDatesOfMother(FormSubmission submission, Mother mother) {
+        String visitDate = submission.getField(REFERENCE_DATE);
+        String pncVisitDates = mother.getDetail(VISIT_DATES_FIELD_NAME) == null
+                ? visitDate
+                : mother.getDetail(VISIT_DATES_FIELD_NAME) + " " + visitDate;
+        mother.details().put(VISIT_DATES_FIELD_NAME, pncVisitDates);
+    }
+    private void updatePNCInaVisitDetails(FormSubmission submission, Mother mother) {
+        mother.addPNCVisit(new PNCVisit()
+                .withDate(submission.getField(REFERENCE_DATE)));
+    }
 }

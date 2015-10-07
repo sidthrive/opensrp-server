@@ -61,13 +61,13 @@ public class ANCService {
     }
 
     public void registerANC(FormSubmission submission) {
-        String motherId = submission.getField(AllConstants.ANCFormFields.MOTHER_ID);
+        String motherId = submission.getField(AllConstants.ANCFormFields.ID_IBU);
 
-//        if (!eligibleCouples.exists(submission.entityId())) {
-//            logger.warn(format("Found mother without registered eligible couple. Ignoring: {0} for mother with id: {1} for ANM: {2}",
-//                    submission.entityId(), motherId, submission.anmId()));
-//            return;
-//        }
+       if (!eligibleCouples.exists(submission.entityId())) {
+           logger.warn(format("Found mother without registered eligible couple. Ignoring: {0} for mother with id: {1} for ANM: {2}",
+                   submission.entityId(), motherId, submission.anmId()));
+           return;
+        }
 
         Mother mother = allMothers.findByCaseId(motherId);
         allMothers.update(mother.withAnm(submission.anmId()));
@@ -266,5 +266,54 @@ public class ANCService {
                 .map();
         mother.updateANCInvestigationsInformation(ancInvestigations);
         allMothers.update(mother);
+    }
+
+    public void RegisterHbTest(FormSubmission submission) {
+        Mother mother = allMothers.findByCaseId(submission.entityId());
+        if(mother == null){
+            logger.warn("Tried to Register HB test without registered mother for CASE ID" + submission.entityId());
+            return;
+        }
+        Map<String, String> hbTest = create(REFERENCE_DATE, submission.getField(REFERENCE_DATE))
+                .put("laboratoriumPeriksaHbHasil", submission.getField("laboratoriumPeriksaHbHasil"))
+                .map();
+        mother.updateHBTestInformation(hbTest);
+        allMothers.update(mother);
+
+        ancSchedulesService.hbTestRegistrationDone(submission.entityId(), submission.anmId(), submission.getField("laboratoriumPeriksaHbDilakukan"), submission.getField(REFERENCE_DATE),
+                submission.getField("laboratoriumPeriksaHbAnemia"));
+
+    }
+
+
+    public void indonesiaHBtest(FormSubmission submission) {
+        Mother mother = allMothers.findByCaseId(submission.entityId());
+        if(mother == null){
+            logger.warn("Tried to Register HB test without registered mother for CASE ID" + submission.entityId());
+            return;
+        }
+        Map<String, String> hbTest = create(ANC_VISIT_DATE_FIELD, submission.getField(ANC_VISIT_DATE_FIELD))
+                .put("laboratoriumPeriksaHbHasil", submission.getField("laboratoriumPeriksaHbHasil"))
+                .map();
+        mother.updateHBTestInformation(hbTest);
+        allMothers.update(mother);
+
+        ancSchedulesService.hbTestVisitDone(submission.entityId(), submission.anmId(), submission.getField("laboratoriumPeriksaHbDilakukan"), submission.getField(ANC_VISIT_DATE_FIELD),
+                submission.getField("laboratoriumPeriksaHbAnemia"), mother.lmp());
+    }
+
+    public void indonesiaIFATest(FormSubmission submission) {
+        Mother mother = allMothers.findByCaseId(submission.entityId());
+        if (mother == null) {
+            logger.warn("Tried to handle Indonesia TT provided without registered mother. Submission: " + submission);
+            return;
+        }
+
+        //ambil value dari form dengan nama field = "statusImunisasitt"
+        String pelayananfe = submission.getField("pelayananfe");
+        ancSchedulesService.InaIFAhasDone(submission.entityId(),
+                submission.anmId(),
+                pelayananfe,
+                submission.getField(ANC_VISIT_DATE_FIELD));
     }
 }

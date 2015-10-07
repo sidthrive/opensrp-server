@@ -29,7 +29,7 @@ public class ReporterFactoryTest {
 
     @Test
     public void shouldReturnChildReporterWhenBindTypeIsChild() {
-        IReporter reporter = reporterFactory.reporterFor("child");
+        IReporter reporter = reporterFactory.reporterFor("anak");
         assertTrue(reporter instanceof ChildReporter);
     }
 

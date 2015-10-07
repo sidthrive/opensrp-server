@@ -29,6 +29,8 @@ public class DrishtiScheduleConstants {
         public static final String CHILD_SCHEDULE_PENTAVALENT_1 = "PENTAVALENT 1";
         public static final String CHILD_SCHEDULE_PENTAVALENT_2 = "PENTAVALENT 2";
         public static final String CHILD_SCHEDULE_PENTAVALENT_3 = "PENTAVALENT 3";
+        public static final String CHILD_SCHEDULE_BCG_POLIO = "BCG POLIO";
+        public static final String CHILD_SCHEDULE_CAMPAK = "CAMPAK";
     }
 
     public static class MotherScheduleConstants {
@@ -56,7 +58,13 @@ public class DrishtiScheduleConstants {
         public static final String SCHEDULE_KB_INJECT_DEPOPROVERA = "KB Injection Depoprovera";
         public static final String SCHEDULE_KB_INJECT_CYCLOFEM = "KB Injection Cyclofem";
         public static final String SCHEDULE_KB_IUD = "KB IUD";
-
+        public static final String SCHEDULE_INA_HB_1 = "INA Hb Test 1";
+        public static final String SCHEDULE_INA_HB_2 = "INA Hb Test 2";
+        public static final String SCHEDULE_INA_HB_FOLLOW = "INA Hb Test Follow";
+        public static final String SCHEDULE_INA_IFA_1 = "INA IFA Test 1";
+        public static final String SCHEDULE_INA_IFA_2 = "INA IFA Test 2";
+        public static final String SCHEDULE_INA_IFA_3 = "INA IFA Test 3";
+        public static final String SCHEDULE_INA_PNC_1 ="PNC 1";
     }
 
     public static class ECSchedulesConstants {

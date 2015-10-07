@@ -100,6 +100,12 @@ public class FormSubmissionRouterTest {
     private KbHandler kbHandler;
     @Mock
     private KbFollowUpHandler kbFollowUpHandler;
+    @Mock
+    private KartuIbuHandler kartuIbuHandler;
+    @Mock
+    private PNCDokumentasiHandler pncDokumentasiHandler;
+    @Mock
+    private KartuAnakImmunizationHandler kartuAnakImmunizationHandler;
 	@Before
     public void setUp() throws Exception {
     	
@@ -139,6 +145,9 @@ public class FormSubmissionRouterTest {
 	             ancInvestigationsHandler,
                  kbHandler,
                 kbFollowUpHandler,
+                kartuIbuHandler,
+                pncDokumentasiHandler,
+                kartuAnakImmunizationHandler,
 	             mReportService);
 	
 
@@ -402,7 +411,7 @@ public class FormSubmissionRouterTest {
 
     @Test
     public void shouldDelegatePNCVisitFormSubmissionHandlingToPNCVisitHandler() throws Exception {
-        FormSubmission formSubmission = new FormSubmission("anm id 1", "instance id 1", "pnc_visit", "entity id 1", 0L, "1", null, 0L);
+        FormSubmission formSubmission = new FormSubmission("anm id 1", "instance id 1", "kartu_pnc_visit", "entity id 1", 0L, "1", null, 0L);
         when(formSubmissionsRepository.findByInstanceId("instance id 1")).thenReturn(formSubmission);
 
         router.route("instance id 1");

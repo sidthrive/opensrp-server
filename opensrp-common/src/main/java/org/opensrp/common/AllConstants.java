@@ -43,7 +43,7 @@ public class AllConstants {
         public static final String DELIVERY_PLAN = "delivery_plan";
         public static final String PNC_REGISTRATION_OA = "pnc_registration_oa";
         public static final String PNC_CLOSE = "pnc_close";
-        public static final String PNC_VISIT = "pnc_visit";
+        public static final String PNC_VISIT = "kartu_pnc_visit";
         public static final String CHILD_REGISTRATION_EC = "child_registration_ec";
         public static final String CHILD_REGISTRATION_OA = "child_registration_oa";
         public static final String CHILD_IMMUNIZATIONS = "child_immunizations";
@@ -62,6 +62,9 @@ public class AllConstants {
         public static final String RECORD_ECPS = "record_ecps";
         public static final String KOHORT_KB_PELAYANAN = "kohort_kb_pelayanan";
         public static final String KOHORT_KB_UPDATE ="kohort_kb_update";
+        public static final String KARTU_IBU_REGISTRATION ="kartu_ibu_registration";
+        public static final String DOKUMENTASI_PERSALINAN ="kartu_pnc_dokumentasi_persalinan";
+        public static final String KOHORT_ANAK_IMMUNIZATION = "kohort_bayi_immunization";
     }
 
     public static class Report {
@@ -85,9 +88,9 @@ public class AllConstants {
         public static final String INDICATOR = "indicator";
         public static final String SERVICE_PROVIDED_DATE = "date";
         public static final String DRISTHI_ENTITY_ID = "dristhiEntityId";
-        public static final String VILLAGE = "village";
-        public static final String SUB_CENTER = "subCenter";
-        public static final String PHC = "phc";
+        public static final String VILLAGE = "desa";
+        public static final String SUB_CENTER = "posyandu";
+        public static final String PHC = "puskesmas";
         public static final String QUANTITY = "quantity";
         public static final String SERVICE_PROVIDER_ANM = "ANM";
     }
@@ -158,7 +161,7 @@ public class AllConstants {
     public static class ANCFormFields {
         public static final String MOTHER_ID = "id";
         public static final String REGISTRATION_DATE = "registrationDate";
-        public static final String ANC_VISIT_DATE_FIELD = "ancVisitDate";
+        public static final String ANC_VISIT_DATE_FIELD = "ancDate";
         public static final String ANC_VISIT_NUMBER_FIELD = "ancKe";
         public static final String TT1_DOSE_VALUE = "tt1";
         public static final String TT2_DOSE_VALUE = "tt2";
@@ -166,6 +169,7 @@ public class AllConstants {
         public static final String TT_DOSE_FIELD = "ttDose";
         public static final String TT_DATE_FIELD = "ttDate";
         public static final String THAYI_CARD_NUMBER = "thayiCardNumber";
+        public static final String ID_IBU = "motherId";
     }
 
     public static class ANCVisitFormFields {
@@ -443,7 +447,7 @@ public class AllConstants {
     }
 
     public static class FormEntityTypes {
-        public static final String CHILD_TYPE = "child";
+        public static final String CHILD_TYPE = "anak";
         public static final String MOTHER_TYPE = "ibu";
         public static final String ELIGIBLE_COUPLE_TYPE = "eligible_couple";
         public static final String MCTS_REPORT_TYPE = "MCTSReport";

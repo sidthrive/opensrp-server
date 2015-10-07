@@ -14,8 +14,12 @@
         "source": "ibu.kartu_ibu.id"
       },
       {
-        "name": "ancVisitDate",
+        "name": "referenceDate",
         "bind": "/model/instance/ANC_Visit/anc_date"
+      },
+      {
+        "name": "ancDate",
+        "bind": "/model/instance/ANC_Visit/anc_date_2"
       },
       {
         "name": "tanggalHPHT",
@@ -52,11 +56,13 @@
       },
       {
         "name": "tandaVitalTDSistolik",
-        "bind": "/model/instance/ANC_Visit/td_sistolik"
+        "bind": "/model/instance/ANC_Visit/td_sistolik",
+        "source": "ibu.kartu_ibu.tandaVitalTDSistolik"
       },
       {
         "name": "tandaVitalTDDiastolik",
-        "bind": "/model/instance/ANC_Visit/td_diastolik"
+        "bind": "/model/instance/ANC_Visit/td_diastolik",
+        "source": "ibu.kartu_ibu.tandaVitalTDDiastolik"
       },
       {
         "name": "hasilPemeriksaanLILA",

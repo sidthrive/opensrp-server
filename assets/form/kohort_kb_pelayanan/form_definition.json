@@ -22,6 +22,14 @@
         "bind": "/model/instance/tambah_kb/umur"
       },
       {
+        "name": "tdSistolik",
+        "bind": "/model/instance/tambah_kb/td_sistolik"
+      },
+      {
+        "name": "tdDiastolik",
+        "bind": "/model/instance/tambah_kb/td_diastolik"
+      },
+      {
         "name": "paritas",
         "bind": "/model/instance/tambah_kb/paritas"
       },

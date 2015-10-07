@@ -10,8 +10,8 @@
       },
       {
         "name": "kiId",
-        "shouldLoadValue": true,
-        "source": "ibu.kartu_ibu.id"
+        "source": "ibu.kartu_ibu.id",
+        "shouldLoadValue": true
       },
       {
         "name": "referenceDate",
@@ -28,11 +28,15 @@
       },
       {
         "name": "tandaVitalTDSistolik",
-        "bind": "/model/instance/PNC_Visit/tanda_vital_td_sistolik"
+        "bind": "/model/instance/PNC_Visit/tanda_vital_td_sistolik",
+        "source": "ibu.kartu_ibu.tandaVitalTDSistolik",
+        "shouldLoadValue": true
       },
       {
         "name": "tandaVitalTDDiastolik",
-        "bind": "/model/instance/PNC_Visit/tanda_vital_td_diastolik"
+        "bind": "/model/instance/PNC_Visit/tanda_vital_td_diastolik",
+        "source": "ibu.kartu_ibu.tandaVitalTDDiastolik",
+        "shouldLoadValue": true
       },
       {
         "name": "tandaVitalSuhu",
