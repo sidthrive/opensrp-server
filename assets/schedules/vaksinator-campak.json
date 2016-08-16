@@ -1,0 +1,28 @@
+{
+  "name":"Campak",
+  "absolute":"true",
+  "milestones":[
+    {
+      "name":"Campak",
+      "scheduleWindows":{
+        "due":["4 Week","2 Day"],
+        "late":["12 Month"],
+        "max":["1 Year","1 Day"]
+      },
+      "alerts":[
+        {
+          "window":"due",
+          "offset":["9 Months"],
+          "interval":["1 Day"],
+          "count":"30"
+        },
+        {
+          "window":"late",
+          "offset":["10 Months"],
+          "interval":["1 Day"],
+          "count":"60"
+        }
+      ]
+    }
+  ]
+}

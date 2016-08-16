@@ -1,0 +1,29 @@
+{
+  "name":"BCG Polio 1",
+  "absolute":"true",
+  "milestones":[
+    {
+      "name":"BCG Polio 1",
+      "scheduleWindows":{
+        "due":["4 Week","2 Day"],
+        "late":["11 Month"],
+        "max":["1 Year","1 Day"]
+      },
+      "alerts":[
+
+        {
+          "window":"due",
+          "offset":["1 Month"],
+          "interval":["1 Day"],
+          "count":"30"
+        },
+        {
+          "window":"late",
+          "offset":["2 Months"],
+          "interval":["1 Day"],
+          "count":"330"
+        }
+      ]
+    }
+  ]
+}

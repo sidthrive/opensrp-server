@@ -1,0 +1,28 @@
+{
+  "name":"DPT HB 3 polio 4 IPV",
+  "absolute":"true",
+  "milestones":[
+    {
+      "name":"DPT HB 3 polio 4 IPV",
+      "scheduleWindows":{
+        "due":["4 Week","2 Day"],
+        "late":["12 Month"],
+        "max":["1 Year","1 Day"]
+      },
+      "alerts":[
+        {
+          "window":"due",
+          "offset":["4 Months"],
+          "interval":["1 Day"],
+          "count":"30"
+        },
+        {
+          "window":"late",
+          "offset":["5 Months"],
+          "interval":["1 Day"],
+          "count":"210"
+        }
+      ]
+    }
+  ]
+}

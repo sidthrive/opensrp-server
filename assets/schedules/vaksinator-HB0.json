@@ -1,0 +1,36 @@
+{
+  "name":"HB0",
+  "absolute":"true",
+  "milestones":[
+    {
+      "name":"HB0",
+      "scheduleWindows":{
+        "earliest":["7 Day"],
+        "due":["4 Week","2 Day"],
+        "late":["12 Month"],
+        "max":["1 Year","1 Day"]
+      },
+      "alerts":[
+        {
+          "window":"recomended",
+          "offset":["0 Week"],
+          "interval":["1 Day"],
+          "count":"7"
+
+        },
+        {
+          "window":"due",
+          "offset":["1 Week"],
+          "interval":["1 Day"],
+          "count":"23"
+        },
+        {
+          "window":"late",
+          "offset":["30 Day"],
+          "interval":["1 Day"],
+          "count":"330"
+        }
+      ]
+    }
+  ]
+}

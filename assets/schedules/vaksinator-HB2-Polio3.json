@@ -1,0 +1,28 @@
+{
+  "name":"DPT HB 2 Polio 3",
+  "absolute":"true",
+  "milestones":[
+    {
+      "name":"DPT HB 2 Polio 3",
+      "scheduleWindows":{
+        "due":["4 Week","2 Day"],
+        "late":["12 Month"],
+        "max":["1 Year","1 Day"]
+      },
+      "alerts":[
+        {
+          "window":"due",
+          "offset":["3 Months"],
+          "interval":["1 Day"],
+          "count":"30"
+        },
+        {
+          "window":"late",
+          "offset":["4 Months"],
+          "interval":["1 Day"],
+          "count":"270"
+        }
+      ]
+    }
+  ]
+}
