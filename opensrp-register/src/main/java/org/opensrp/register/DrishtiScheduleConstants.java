@@ -29,16 +29,16 @@ public class DrishtiScheduleConstants {
         public static final String CHILD_SCHEDULE_PENTAVALENT_1 = "PENTAVALENT 1";
         public static final String CHILD_SCHEDULE_PENTAVALENT_2 = "PENTAVALENT 2";
         public static final String CHILD_SCHEDULE_PENTAVALENT_3 = "PENTAVALENT 3";
-//        public static final String CHILD_SCHEDULE_BCG_POLIO = "BCG POLIO";
-//        public static final String CHILD_SCHEDULE_CAMPAK = "CAMPAK";
+        public static final String CHILD_SCHEDULE_BCG_POLIO = "BCG POLIO";
+        public static final String CHILD_SCHEDULE_CAMPAK = "CAMPAK";
 
-        public static final String CHILD_SCHEDULE_HB0 = "HB0";
-        public static final String CHILD_SCHEDULE_BCG_POLIO_1 = "BCG Polio 1";
-        public static final String CHILD_SCHEDULE_HB1 = "DPT HB 1 Polio 2";
-        public static final String CHILD_SCHEDULE_HB2 = "DPT HB 2 Polio 3";
-        public static final String CHILD_SCHEDULE_HB3 = "DPT HB 3 polio 4 IPV";
-        public static final String CHILD_SCHEDULE_CAMPAK = "Campak";
-        public static final String CHILD_SCHEDULE_CAMPAK_LANJUTAN = "Campak lanjutan";
+        public static final String CHILD_SCHEDULE_HB0_VAKSINATOR = "HB0";
+        public static final String CHILD_SCHEDULE_BCG_POLIO_1_VAKSINATOR = "BCG Polio 1";
+        public static final String CHILD_SCHEDULE_HB1_VAKSINATOR = "DPT HB 1 Polio 2";
+        public static final String CHILD_SCHEDULE_HB2_VAKSINATOR = "DPT HB 2 Polio 3";
+        public static final String CHILD_SCHEDULE_HB3_VAKSINATOR = "DPT HB 3 polio 4 IPV";
+        public static final String CHILD_SCHEDULE_CAMPAK_VAKSINATOR = "Campak";
+        public static final String CHILD_SCHEDULE_CAMPAK_LANJUTAN_VAKSINATOR = "Campak lanjutan";
     }
 
     public static class MotherScheduleConstants {
