@@ -62,23 +62,23 @@ public class AlertHandler {
                 CHILD_SCHEDULE_PENTAVALENT_2,
                 CHILD_SCHEDULE_PENTAVALENT_3,
 
-//                CHILD_SCHEDULE_BCG_POLIO,
-//                CHILD_SCHEDULE_CAMPAK,
-//                "BCG POLIO",
-//                "BCG POLIO2",
-//                "BCG POLIO3",
-//                "POLIO BOOSTER",
-//                "NEONATAL VISIT 1",
-//                "NEONATAL VISIT 2",
-//                "NEONATAL VISIT 3",
-
-                CHILD_SCHEDULE_HB0,
-                CHILD_SCHEDULE_BCG_POLIO_1,
-                CHILD_SCHEDULE_HB1,
-                CHILD_SCHEDULE_HB2,
-                CHILD_SCHEDULE_HB3,
+                CHILD_SCHEDULE_BCG_POLIO,
                 CHILD_SCHEDULE_CAMPAK,
-                CHILD_SCHEDULE_CAMPAK_LANJUTAN
+                "BCG POLIO",
+                "BCG POLIO2",
+                "BCG POLIO3",
+                "POLIO BOOSTER",
+                "NEONATAL VISIT 1",
+                "NEONATAL VISIT 2",
+                "NEONATAL VISIT 3",
+
+                CHILD_SCHEDULE_HB0_VAKSINATOR,
+                CHILD_SCHEDULE_BCG_POLIO_1_VAKSINATOR,
+                CHILD_SCHEDULE_HB1_VAKSINATOR,
+                CHILD_SCHEDULE_HB2_VAKSINATOR,
+                CHILD_SCHEDULE_HB3_VAKSINATOR,
+                CHILD_SCHEDULE_CAMPAK_VAKSINATOR,
+                CHILD_SCHEDULE_CAMPAK_LANJUTAN_VAKSINATOR
         );
     }
 
