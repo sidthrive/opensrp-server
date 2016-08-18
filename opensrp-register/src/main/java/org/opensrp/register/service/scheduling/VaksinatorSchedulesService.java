@@ -30,30 +30,30 @@ public class VaksinatorSchedulesService {
 
     //enroll schedule for kb_registration
     public void registered(String entityId, String anmId, String referenceDate) {
-        scheduler.enrollIntoSchedule(entityId,CHILD_SCHEDULE_HB0,parse(referenceDate));
-        scheduler.enrollIntoSchedule(entityId,CHILD_SCHEDULE_BCG_POLIO_1,parse(referenceDate));
-        scheduler.enrollIntoSchedule(entityId,CHILD_SCHEDULE_HB1,parse(referenceDate));
-        scheduler.enrollIntoSchedule(entityId,CHILD_SCHEDULE_HB2,parse(referenceDate));
-        scheduler.enrollIntoSchedule(entityId,CHILD_SCHEDULE_HB3,parse(referenceDate));
-        scheduler.enrollIntoSchedule(entityId,CHILD_SCHEDULE_CAMPAK,parse(referenceDate));
-        scheduler.enrollIntoSchedule(entityId,CHILD_SCHEDULE_CAMPAK_LANJUTAN,parse(referenceDate));
+        scheduler.enrollIntoSchedule(entityId,CHILD_SCHEDULE_HB0_VAKSINATOR,parse(referenceDate));
+        scheduler.enrollIntoSchedule(entityId,CHILD_SCHEDULE_BCG_POLIO_1_VAKSINATOR,parse(referenceDate));
+        scheduler.enrollIntoSchedule(entityId,CHILD_SCHEDULE_HB1_VAKSINATOR,parse(referenceDate));
+        scheduler.enrollIntoSchedule(entityId,CHILD_SCHEDULE_HB2_VAKSINATOR,parse(referenceDate));
+        scheduler.enrollIntoSchedule(entityId,CHILD_SCHEDULE_HB3_VAKSINATOR,parse(referenceDate));
+        scheduler.enrollIntoSchedule(entityId,CHILD_SCHEDULE_CAMPAK_VAKSINATOR,parse(referenceDate));
+        scheduler.enrollIntoSchedule(entityId,CHILD_SCHEDULE_CAMPAK_LANJUTAN_VAKSINATOR,parse(referenceDate));
     }
 
     public void hasGiven(String form, String entityId, String anmId) {
         if(form.contains(AllConstants.Form.HB0_VISIT))
-            scheduler.unEnrollFromSchedule(entityId,anmId,CHILD_SCHEDULE_HB0);
+            scheduler.unEnrollFromSchedule(entityId,anmId,CHILD_SCHEDULE_HB0_VAKSINATOR);
         else if(form.contains(AllConstants.Form.BCG_VISIT))
-            scheduler.unEnrollFromSchedule(entityId,anmId,CHILD_SCHEDULE_BCG_POLIO_1);
+            scheduler.unEnrollFromSchedule(entityId,anmId,CHILD_SCHEDULE_BCG_POLIO_1_VAKSINATOR);
         else if(form.contains(AllConstants.Form.HB1_VISIT))
-            scheduler.unEnrollFromSchedule(entityId,anmId,CHILD_SCHEDULE_HB1);
+            scheduler.unEnrollFromSchedule(entityId,anmId,CHILD_SCHEDULE_HB1_VAKSINATOR);
         else if(form.contains(AllConstants.Form.HB2_VISIT))
-            scheduler.unEnrollFromSchedule(entityId,anmId,CHILD_SCHEDULE_HB2);
+            scheduler.unEnrollFromSchedule(entityId,anmId,CHILD_SCHEDULE_HB2_VAKSINATOR);
         else if(form.contains(AllConstants.Form.HB3_VISIT))
-            scheduler.unEnrollFromSchedule(entityId,anmId,CHILD_SCHEDULE_HB3);
+            scheduler.unEnrollFromSchedule(entityId,anmId,CHILD_SCHEDULE_HB3_VAKSINATOR);
         else if(form.equalsIgnoreCase(AllConstants.Form.CAMPAK_VISIT))
             scheduler.unEnrollFromSchedule(entityId,anmId,CHILD_SCHEDULE_CAMPAK);
         else if(form.contains(AllConstants.Form.CAMPAK_LANJUTAN_VISIT))
-            scheduler.unEnrollFromSchedule(entityId,anmId,CHILD_SCHEDULE_CAMPAK_LANJUTAN);
+            scheduler.unEnrollFromSchedule(entityId,anmId,CHILD_SCHEDULE_CAMPAK_LANJUTAN_VAKSINATOR);
 
     }
 }
