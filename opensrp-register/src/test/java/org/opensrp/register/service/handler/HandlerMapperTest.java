@@ -85,7 +85,22 @@ public class HandlerMapperTest {
 	KbHandler kbHandler;
 	@Mock
 	KbFollowUpHandler kbFollowUpHandler;
-
+	@Mock
+	VaksinatorHandler vaksinatorHandler;
+	@Mock
+	VaksinatorHB0Handler vaksinatorHB0Handler;
+	@Mock
+	VaksinatorBCGHandler vaksinatorBCGHandler;
+	@Mock
+	VaksinatorHB1Handler vaksinatorHB1Handler;
+	@Mock
+	VaksinatorHB2Handler vaksinatorHB2Handler;
+	@Mock
+	VaksinatorHB3Handler vaksinatorHB3Handler;
+	@Mock
+	VaksinatorCampakHandler vaksinatorCampakHandler;
+	@Mock
+	VaksinatorAddCampakHandler vaksinatorAddCampakHandler;
 	@Mock
 	private HandlerMapper handlerMapper;
 	@Mock
@@ -129,13 +144,21 @@ public class HandlerMapperTest {
 	             postpartumFamilyPlanningHandler,
 	             recordECPsHandler,
 	             ecEditHandler,
-				ancInvestigationsHandler,
-				kbHandler,
-				kbFollowUpHandler,
-				kartuIbuHandler,
-				pncDokumentasiHandler,
-				kartuAnakImmunizationHandler,
-				mctsReportService);
+				 ancInvestigationsHandler,
+			     kbHandler,
+		         kbFollowUpHandler,
+				 kartuIbuHandler,
+				 pncDokumentasiHandler,
+				 kartuAnakImmunizationHandler,
+				 vaksinatorHandler,
+				 vaksinatorHB0Handler,
+				 vaksinatorBCGHandler,
+				 vaksinatorHB1Handler,
+				 vaksinatorHB2Handler,
+				 vaksinatorHB3Handler,
+				 vaksinatorCampakHandler,
+				 vaksinatorAddCampakHandler,
+	 			 mctsReportService);
 	}
 	
 	 @Test
