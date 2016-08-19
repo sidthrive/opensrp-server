@@ -31,6 +31,8 @@ public class DrishtiScheduleConstants {
         public static final String CHILD_SCHEDULE_PENTAVALENT_3 = "PENTAVALENT 3";
         public static final String CHILD_SCHEDULE_BCG_POLIO = "BCG POLIO";
         public static final String CHILD_SCHEDULE_CAMPAK = "CAMPAK";
+        public static final String CHILD_MONTHLY_VISIT = "MONTHLY VISIT";
+
     }
 
     public static class MotherScheduleConstants {

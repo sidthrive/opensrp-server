@@ -58,6 +58,7 @@ public class HandlerMapper implements IHandlerMapper {
             KartuIbuHandler kartuIbuHandler,
             PNCDokumentasiHandler pncDokumentasiHandler,
             KartuAnakImmunizationHandler kartuAnakImmunizationHandler,
+			NutritionistVisit giziVisit,
 
             MCTSReportService mctsReportService)
 	{
@@ -100,6 +101,7 @@ public class HandlerMapper implements IHandlerMapper {
                 .put(KARTU_IBU_REGISTRATION, kartuIbuHandler)
                 .put(DOKUMENTASI_PERSALINAN, pncDokumentasiHandler)
                 .put(KOHORT_ANAK_IMMUNIZATION, kartuAnakImmunizationHandler)
+				.put(KUNJUNGAN_GIZI, giziVisit)
                 .map();
 
     }

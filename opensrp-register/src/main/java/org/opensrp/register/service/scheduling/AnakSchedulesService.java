@@ -85,4 +85,9 @@ public class AnakSchedulesService {
         }
     }
 
+    public void visithasdone(String entityId, String anmId, String tanggalPenimbangan) {
+        if(fulfillMilestoneIfPossible(entityId,anmId,"MONTHLY VISIT","MONTHLY VISIT",parse(tanggalPenimbangan))){
+            scheduler.enrollIntoSchedule(entityId,"MONTHLY VISIT",parse(tanggalPenimbangan));
+        }
+    }
 }

@@ -106,6 +106,8 @@ public class FormSubmissionRouterTest {
     private PNCDokumentasiHandler pncDokumentasiHandler;
     @Mock
     private KartuAnakImmunizationHandler kartuAnakImmunizationHandler;
+    @Mock
+    private NutritionistVisit nutritionistVisit;
 	@Before
     public void setUp() throws Exception {
     	
@@ -148,6 +150,7 @@ public class FormSubmissionRouterTest {
                 kartuIbuHandler,
                 pncDokumentasiHandler,
                 kartuAnakImmunizationHandler,
+                nutritionistVisit,
 	             mReportService);
 	
 

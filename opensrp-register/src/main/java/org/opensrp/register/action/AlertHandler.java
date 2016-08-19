@@ -70,7 +70,8 @@ public class AlertHandler {
                 "POLIO BOOSTER",
                 "NEONATAL VISIT 1",
                 "NEONATAL VISIT 2",
-                "NEONATAL VISIT 3"
+                "NEONATAL VISIT 3",
+                "MONTHLY VISIT"
         );
     }
 
